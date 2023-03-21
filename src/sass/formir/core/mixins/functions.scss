@@ -1,0 +1,51 @@
+
+@mixin gradient($start, $end) {
+  background-color: $start;
+  background: -webkit-gradient(#{"linear, left top, left bottom, from(${start}), to(${end})"});
+  background: -webkit-linear-gradient(#{"top, ${start}, ${end}"});
+  background: -moz-linear-gradient(#{"top, ${start}, ${end}"});
+  background: -ms-linear-gradient(#{"top, ${start}, ${end}"});
+  background: -o-linear-gradient(#{"top, ${start}, ${end}"});
+}
+@mixin horizontal-gradient($start, $end) {
+  background-color: $start;
+  background-image: -webkit-gradient(linear, left top, right top, from($start), to($end));
+  background-image: -webkit-linear-gradient(left, $start, $end);
+  background-image: -moz-linear-gradient(left, $start, $end);
+  background-image: -ms-linear-gradient(left, $start, $end);
+  background-image: -o-linear-gradient(left, $start, $end);
+}
+@mixin transform-xy($x, $y) {
+  -ms-transform: translate($x, $y);
+  -webkit-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+@mixin transform($transform) {
+  -ms-transform: $transform;
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+@mixin transition($transform) {
+  -ms-transition: $transform;
+  -webikit-transition: $transform;
+  transition: $transform;
+}
+@mixin transform-style($transform-style) {
+  transform-style: $transform-style;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@mixin position-sticky() {
+  -webkit-position: sticky;
+  position: sticky;
+}

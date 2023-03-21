@@ -1,0 +1,20 @@
+/*!
+ *  Formir Plugins by @konrad-k - http://formir.io
+ *  All rights reserved - Copyright © 2020
+ */
+
+// SETUP
+  // Includes with formir Setup
+
+// CORE
+  //// MIXINS - This part is required
+    @import "formir/core/mixins/display";
+    @import "formir/core/mixins/flex";
+    @import "formir/core/mixins/functions";
+  // includes with formir Core
+
+// PLUGINS
+  @import "formir/plugins/room";
+
+// THEMES
+  // includes with formir Templates
