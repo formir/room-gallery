@@ -1,9 +1,11 @@
-import './sass/formir-room.scss'
+import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
+import './sass/formir-room.scss'
 import Room from './components/Room'
 import { parseRooms, parseWalls } from './helpers/parse'
 
-const RoomGallery = () => {
+const RoomGallery = (props) => {
+  const { fetchHandler, dataItems, fetchUrl } = props
   const [currentState, setCurrentState] = useState({ items: [], rooms: [], activeItem: null })
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dark, setDark] = useState(false)
@@ -52,14 +54,13 @@ const RoomGallery = () => {
   }
 
   useEffect(() => {
-    const dataFetch = async () => {
-      const data = await (
-        await fetch('data.json')
-      ).json()
-      parseItems(data.items)
+    if (dataItems) {
+      parseItems(dataItems)
+    } else if (fetchHandler) {
+      fetchHandler(fetchUrl).then((fetchItems) => {
+        parseItems(fetchItems)
+      })
     }
-
-    dataFetch()
   }, [])
 
   return (
@@ -107,6 +108,12 @@ const RoomGallery = () => {
       }
     </>
   )
+}
+
+RoomGallery.propTypes = {
+  fetchHandler: PropTypes.object,
+  dataItems: PropTypes.object,
+  fetchUrl: PropTypes.object
 }
 
 export default RoomGallery

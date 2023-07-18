@@ -4,9 +4,16 @@ import './index.css'
 import RoomGallery from './RoomGallery'
 import reportWebVitals from './reportWebVitals'
 
+const dataFetch = async (url) => {
+  const data = await (
+    await fetch(url)
+  ).json()
+  return data.items
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <RoomGallery />
+    <RoomGallery fetchHandler={dataFetch} fetchUrl={'/data.json'} />
   </React.StrictMode>,
   document.getElementById('root')
 )
