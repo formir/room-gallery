@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import Wall from './Wall'
 
 function Room (props) {
-  const { room, rooms, position } = props
+  const { room, rooms, position, number } = props
 
-  return <div
+  return room.walls && <div
     key={room.id}
-    className={`walls ${room.id === (rooms.length - 1) ? 'last' : ''} ${room.id === 0 ? 'first' : ''}`}
+    className={`walls ${number === (rooms.length - 1) ? 'last' : ''} ${number === 0 ? 'first' : ''}`}
     style={
       {
-        transform: 'rotateY(' + (position.y * 90) + 'deg) translateX(' + ((room.id - position.x) * 100) + '%)'
+        transform: 'rotateY(' + (position.y * 90) + 'deg) translateX(' + ((number - position.x) * 100) + '%)'
       }
     }>
     { room.walls.map(wall => (
@@ -29,7 +29,8 @@ function Room (props) {
 Room.propTypes = {
   position: PropTypes.object,
   rooms: PropTypes.object,
-  room: PropTypes.object
+  room: PropTypes.object,
+  number: PropTypes.object
 }
 
 export default Room

@@ -67,9 +67,10 @@ const RoomGallery = () => {
       { currentState.rooms.length > 0 && <div className={`room ${dark ? 'room-dark' : ''} ${zoom ? 'room-zoom' : ''}`}>
           <div className="room-body">
             <div className="room-arena">
-              { currentState.rooms.map(room => (
+              { currentState.rooms.map((room, key) => (
                 <Room
-                  key={room.id}
+                  key={key}
+                  number={key}
                   room={room}
                   rooms={currentState.rooms}
                   position={position}/>
