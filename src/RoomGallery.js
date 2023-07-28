@@ -53,6 +53,13 @@ const RoomGallery = (props) => {
     setZoom(!zoom)
   }
 
+  const dataFetch = async (url) => {
+    const data = await (
+      await fetch(url)
+    ).json()
+    return data.items
+  }
+
   useEffect(() => {
     if (dataItems) {
       parseItems(dataItems)
@@ -60,6 +67,12 @@ const RoomGallery = (props) => {
       fetchHandler(fetchUrl).then((fetchItems) => {
         parseItems(fetchItems)
       })
+    } else if (fetchUrl) {
+      dataFetch(fetchUrl).then((fetchItems) => {
+        parseItems(fetchItems)
+      })
+    } else {
+      console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
     }
   }, [])
 
