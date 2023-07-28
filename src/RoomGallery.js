@@ -111,9 +111,9 @@ const RoomGallery = (props) => {
 }
 
 RoomGallery.propTypes = {
-  fetchHandler: PropTypes.object,
-  dataItems: PropTypes.object,
-  fetchUrl: PropTypes.object
+  fetchHandler: PropTypes.instanceOf(Promise),
+  dataItems: PropTypes.arrayOf(PropTypes.object),
+  fetchUrl: PropTypes.string
 }
 
 export default RoomGallery
