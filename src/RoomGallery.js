@@ -61,18 +61,20 @@ const RoomGallery = (props) => {
   }
 
   useEffect(() => {
-    if (dataItems) {
-      parseItems(dataItems)
-    } else if (fetchHandler) {
-      fetchHandler(fetchUrl).then((fetchItems) => {
-        parseItems(fetchItems)
-      })
-    } else if (fetchUrl) {
-      dataFetch(fetchUrl).then((fetchItems) => {
-        parseItems(fetchItems)
-      })
-    } else {
-      console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
+    if (currentState.items.length === 0) {
+      if (dataItems) {
+        parseItems(dataItems)
+      } else if (fetchHandler) {
+        fetchHandler(fetchUrl).then((fetchItems) => {
+          parseItems(fetchItems)
+        })
+      } else if (fetchUrl) {
+        dataFetch(fetchUrl).then((fetchItems) => {
+          parseItems(fetchItems)
+        })
+      } else {
+        console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
+      }
     }
   }, [])
 
@@ -107,6 +109,7 @@ const RoomGallery = (props) => {
             <div className="room-paginations">
               { currentState.items.map((item, index) => (
                 item.image && <button
+                  className={index === currentState.activeItem.index ? 'active' : ''}
                   key={index}
                   onClick={() => setCurrent(item) }>
                     {index + 1}

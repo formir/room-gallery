@@ -161,9 +161,6 @@ $dark-room-button-current-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
 $dark-room-canvas-border: 10px solid $room-button-background;
 $dark-room-canvas-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 
-
-
-
 // ROOM
 
 /// MIXING that you can modify - buttons, but be careful
@@ -211,6 +208,10 @@ $dark-room-canvas-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   box-sizing: content-box;
   &:hover {
     text-decoration: none;
+  }
+  &.active {
+    color: $room-button-background;
+    background-color: $room-button-color;
   }
 }
 
