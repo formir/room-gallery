@@ -21,16 +21,16 @@ const RoomGallery = (props) => {
   }
 
   const nextItem = () => {
-    if (currentState.activeItem.id < currentState.items.length) {
-      setCurrent(currentState.items[currentState.activeItem.id + 1])
+    if (currentState.activeItem.index < currentState.items.length) {
+      setCurrent(currentState.items[currentState.activeItem.index + 1])
     } else {
       setCurrent(currentState.items[currentState.items.length])
     }
   }
 
   const prevItem = () => {
-    if (currentState.activeItem.id > 0) {
-      setCurrent(currentState.items[currentState.activeItem.id - 1])
+    if (currentState.activeItem.index > 0) {
+      setCurrent(currentState.items[currentState.activeItem.index - 1])
     } else {
       setCurrent(currentState.items[0])
     }
@@ -81,35 +81,35 @@ const RoomGallery = (props) => {
       { currentState.rooms.length > 0 && <div className={`room ${dark ? 'room-dark' : ''} ${zoom ? 'room-zoom' : ''}`}>
           <div className="room-body">
             <div className="room-arena">
-              { currentState.rooms.map((room, key) => (
+              { currentState.rooms.map((room, index) => (
                 <Room
-                  key={key}
-                  number={key}
+                  key={index}
+                  index={index}
                   room={room}
                   rooms={currentState.rooms}
                   position={position}/>
               )) }
             </div>
             <div className="room-navigations">
-              { currentState.activeItem.id > 0 &&
+              { currentState.activeItem.index > 0 &&
                 <button className="prev" onClick={() => prevItem()}>
-                  <span>{currentItem().id}</span>
+                  <span>{currentItem().index}</span>
                 </button>
               }
               {
-                currentState.items.length > currentState.activeItem.id + 1 &&
+                currentState.items.length > currentState.activeItem.index + 1 &&
                 <button className="next" onClick={() => nextItem()}>
-                  <span>{currentItem().id + 2.0}</span>
+                  <span>{currentItem().index + 2.0}</span>
                 </button>
               }
 
             </div>
             <div className="room-paginations">
-              { currentState.items.map(item => (
+              { currentState.items.map((item, index) => (
                 item.image && <button
-                  key={item.id}
+                  key={index}
                   onClick={() => setCurrent(item) }>
-                    {item.id + 1}
+                    {index + 1}
                   </button>
               ))}
             </div>
@@ -124,7 +124,7 @@ const RoomGallery = (props) => {
 }
 
 RoomGallery.propTypes = {
-  fetchHandler: PropTypes.instanceOf(Promise),
+  fetchHandler: PropTypes.func,
   dataItems: PropTypes.arrayOf(PropTypes.object),
   fetchUrl: PropTypes.string
 }

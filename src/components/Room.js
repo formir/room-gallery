@@ -3,21 +3,20 @@ import PropTypes from 'prop-types'
 import Wall from './Wall'
 
 function Room (props) {
-  const { room, rooms, position, number } = props
+  const { room, rooms, position, index } = props
 
   return room.walls && <div
-    key={room.id}
-    className={`walls ${number === (rooms.length - 1) ? 'last' : ''} ${number === 0 ? 'first' : ''}`}
+    className={`walls ${index === (rooms.length - 1) ? 'last' : ''} ${index === 0 ? 'first' : ''}`}
     style={
       {
-        transform: 'rotateY(' + (position.y * 90) + 'deg) translateX(' + ((number - position.x) * 100) + '%)'
+        transform: 'rotateY(' + (position.y * 90) + 'deg) translateX(' + ((index - position.x) * 100) + '%)'
       }
     }>
-    { room.walls.map(wall => (
+    { room.walls.map((wall, wallIndex) => (
       wall.visible &&
       <Wall
         room={room}
-        key={wall.id}
+        key={wallIndex}
         wall={wall}
       />
     )) }
@@ -28,9 +27,9 @@ function Room (props) {
 
 Room.propTypes = {
   position: PropTypes.object,
-  rooms: PropTypes.object,
+  rooms: PropTypes.arrayOf(PropTypes.object),
   room: PropTypes.object,
-  number: PropTypes.object
+  index: PropTypes.number
 }
 
 export default Room
