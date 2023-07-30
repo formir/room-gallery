@@ -61,7 +61,7 @@ const RoomGallery = (props) => {
   }
 
   useEffect(() => {
-    if (currentState.items.length === 0) {
+    if (currentState.items.length === 0 && preRooms.length === 0 && preItems.length === 0) {
       if (dataItems) {
         parseItems(dataItems)
       } else if (fetchHandler) {
