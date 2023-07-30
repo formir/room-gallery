@@ -11,10 +11,7 @@ const RoomGallery = (props) => {
   const [dark, setDark] = useState(false)
   const [zoom, setZoom] = useState(false)
 
-  const preRooms = []
-  const preItems = []
-
-  const parseItems = (dataItems) => {
+  const parseItems = (dataItems, preItems, preRooms) => {
     parseRooms(dataItems, preRooms)
     const activeItem = parseWalls(dataItems, preItems, preRooms)
     setCurrentState({ rooms: preRooms, items: preItems, activeItem })
@@ -61,20 +58,20 @@ const RoomGallery = (props) => {
   }
 
   useEffect(() => {
-    if (currentState.items.length === 0 && preRooms.length === 0 && preItems.length === 0) {
-      if (dataItems) {
-        parseItems(dataItems)
-      } else if (fetchHandler) {
-        fetchHandler(fetchUrl).then((fetchItems) => {
-          parseItems(fetchItems)
-        })
-      } else if (fetchUrl) {
-        dataFetch(fetchUrl).then((fetchItems) => {
-          parseItems(fetchItems)
-        })
-      } else {
-        console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
-      }
+    const preItems = []
+    const preRooms = []
+    if (dataItems) {
+      parseItems(dataItems)
+    } else if (fetchHandler) {
+      fetchHandler(fetchUrl).then((fetchItems) => {
+        parseItems(fetchItems, preItems, preRooms)
+      })
+    } else if (fetchUrl) {
+      dataFetch(fetchUrl).then((fetchItems) => {
+        parseItems(fetchItems, preItems, preRooms)
+      })
+    } else {
+      console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
     }
   }, [])
 
