@@ -13,8 +13,7 @@ function insertItem (item, roomKey = 0, direction, wallKey, preRooms) {
 export function parseRooms (items, preRooms) {
   const itemCount = items.length
   const roomsNeed = Math.ceil((itemCount - 2) / 2)
-  let n = 0
-  while (n++ < roomsNeed) {
+  for (let n = 0; n < roomsNeed; n++) {
     const room = {
       index: n,
       key: n,

@@ -5,11 +5,17 @@ import Room from './components/Room'
 import { parseRooms, parseWalls } from './helpers/parse'
 
 const RoomGallery = (props) => {
-  const { fetchHandler, dataItems, fetchUrl } = props
+  const { fetchHandler, dataItems, fetchUrl, ...styles } = props
   const [currentState, setCurrentState] = useState({ items: [], rooms: [], activeItem: null })
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dark, setDark] = useState(false)
   const [zoom, setZoom] = useState(false)
+
+  const kebabize = (string) => {
+    // uppercase after a non-uppercase or uppercase before non-uppercase
+    const upper = /(?<!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
+    return string.replace(upper, '-$&').replace(/^-/, '').toLowerCase()
+  }
 
   const parseItems = (dataItems, preItems, preRooms) => {
     parseRooms(dataItems, preRooms)
@@ -72,6 +78,25 @@ const RoomGallery = (props) => {
       })
     } else {
       console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
+    }
+  }, [])
+
+  const stylesVariables = ['lightRoomBackgroundBlendMode', 'lightRoomBodyBackground', 'lightRoomTextColor', 'lightRoomFloorBackground', 'lightRoomFloorShadow',
+    'lightRoomWallBackground', 'lightRoomWallShadow', 'lightRoomCeilBackground', 'lightRoomCeilShadow', 'lightRoomButtonBackground', 'lightRoomButtonColor',
+    'lightRoomButtonBorder', 'lightRoomButtonShadow', 'lightRoomButtonCurrentBackground', 'lightRoomButtonCurrentBorder', 'lightRoomButtonCurrentColor',
+    'lightRoomButtonCurrentShadow', 'lightRoomCanvasBorder', 'lightRoomCanvasShadow', 'darkRoomBackgroundBlendMode', 'darkRoomBodyBackground', 'darkRoomTextColor',
+    'darkRoomFloorBackground', 'darkRoomFloorShadow', 'darkRoomWallBackground', 'darkRoomWallShadow', 'darkRoomCeilBackground', 'darkRoomCeilShadow',
+    'darkRoomButtonBackground', 'darkRoomButtonColor', 'darkRoomButtonBorder', 'darkRoomButtonShadow', 'darkRoomButtonCurrentBackground',
+    'darkRoomButtonCurrentBorder', 'darkRoomButtonCurrentColor', 'darkRoomButtonCurrentShadow', 'darkRoomCanvasBorder', 'darkRoomCanvasShadow']
+
+  useEffect(() => {
+    if (styles) {
+      const rootStyle = document.querySelector(':root').style
+      stylesVariables.forEach((style) => {
+        if (styles?.styles?.[style]) {
+          rootStyle.setProperty('--' + kebabize(style), styles.styles[style])
+        }
+      })
     }
   }, [])
 

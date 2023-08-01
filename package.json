@@ -1,7 +1,6 @@
 {
   "name": "room-react",
-  "main": "./src/RoomGallery",
-  "types": "./src/RoomGallery",
+  "main": "./src/components/RoomGallery",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
