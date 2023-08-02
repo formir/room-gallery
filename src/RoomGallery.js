@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './sass/formir-room.scss'
 import Room from './components/Room'
 import { parseRooms, parseWalls } from './helpers/parse'
+import { stylesVariables } from './helpers/types'
 
 const RoomGallery = (props) => {
   const { fetchHandler, dataItems, fetchUrl, ...styles } = props
@@ -80,14 +81,6 @@ const RoomGallery = (props) => {
     }
   }, [])
 
-  const stylesVariables = ['lightRoomBackgroundBlendMode', 'lightRoomBodyBackground', 'lightRoomTextColor', 'lightRoomFloorBackground', 'lightRoomFloorShadow',
-    'lightRoomWallBackground', 'lightRoomWallShadow', 'lightRoomCeilBackground', 'lightRoomCeilShadow', 'lightRoomButtonBackground', 'lightRoomButtonColor',
-    'lightRoomButtonBorder', 'lightRoomButtonShadow', 'lightRoomButtonCurrentBackground', 'lightRoomButtonCurrentBorder', 'lightRoomButtonCurrentColor',
-    'lightRoomButtonCurrentShadow', 'lightRoomCanvasBorder', 'lightRoomCanvasShadow', 'darkRoomBackgroundBlendMode', 'darkRoomBodyBackground', 'darkRoomTextColor',
-    'darkRoomFloorBackground', 'darkRoomFloorShadow', 'darkRoomWallBackground', 'darkRoomWallShadow', 'darkRoomCeilBackground', 'darkRoomCeilShadow',
-    'darkRoomButtonBackground', 'darkRoomButtonColor', 'darkRoomButtonBorder', 'darkRoomButtonShadow', 'darkRoomButtonCurrentBackground',
-    'darkRoomButtonCurrentBorder', 'darkRoomButtonCurrentColor', 'darkRoomButtonCurrentShadow', 'darkRoomCanvasBorder', 'darkRoomCanvasShadow']
-
   useEffect(() => {
     const rootStyle = document.querySelector(':root').style
     stylesVariables.forEach((style) => {
@@ -149,7 +142,7 @@ RoomGallery.propTypes = {
   fetchHandler: PropTypes.func,
   dataItems: PropTypes.arrayOf(PropTypes.object),
   fetchUrl: PropTypes.string,
-  styles: PropTypes.arrayOf(stylesVariables),
+  styles: PropTypes.arrayOf(stylesVariables)
 }
 
 export default RoomGallery
