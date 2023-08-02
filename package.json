@@ -1,8 +1,8 @@
 {
-  "name": "room-react",
-  "main": "./src/RoomGallery",
-  "types": "./src/RoomGallery",
-  "version": "0.1.0",
+  "name": "react-room-gallery",
+  "main": "./src/RoomGallery.js",
+  "types": "./react-room-gallery.d.ts",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

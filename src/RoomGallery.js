@@ -12,7 +12,6 @@ const RoomGallery = (props) => {
   const [zoom, setZoom] = useState(false)
 
   const kebabize = (string) => {
-    // uppercase after a non-uppercase or uppercase before non-uppercase
     const upper = /(?<!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
     return string.replace(upper, '-$&').replace(/^-/, '').toLowerCase()
   }
@@ -90,15 +89,13 @@ const RoomGallery = (props) => {
     'darkRoomButtonCurrentBorder', 'darkRoomButtonCurrentColor', 'darkRoomButtonCurrentShadow', 'darkRoomCanvasBorder', 'darkRoomCanvasShadow']
 
   useEffect(() => {
-    if (styles) {
-      const rootStyle = document.querySelector(':root').style
-      stylesVariables.forEach((style) => {
-        if (styles?.styles?.[style]) {
-          rootStyle.setProperty('--' + kebabize(style), styles.styles[style])
-        }
-      })
-    }
-  }, [])
+    const rootStyle = document.querySelector(':root').style
+    stylesVariables.forEach((style) => {
+      if (styles?.styles?.[style]) {
+        rootStyle.setProperty('--' + kebabize(style), styles.styles[style])
+      }
+    })
+  }, [styles])
 
   return (
     <>
@@ -151,7 +148,8 @@ const RoomGallery = (props) => {
 RoomGallery.propTypes = {
   fetchHandler: PropTypes.func,
   dataItems: PropTypes.arrayOf(PropTypes.object),
-  fetchUrl: PropTypes.string
+  fetchUrl: PropTypes.string,
+  styles: PropTypes.arrayOf(stylesVariables),
 }
 
 export default RoomGallery
