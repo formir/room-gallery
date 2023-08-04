@@ -4,7 +4,7 @@ import './index.css'
 import RoomGallery from './RoomGallery'
 import reportWebVitals from './reportWebVitals'
 
-const dataFetch = async (url) => {
+const dataFetch = async (url: string) => {
   const data = await (
     await fetch(url)
   ).json()
@@ -12,7 +12,7 @@ const dataFetch = async (url) => {
 }
 
 const container = document.getElementById('root')
-const root = createRoot(container)
+const root = createRoot(container!)
 root.render(<RoomGallery fetchHandler={dataFetch} fetchUrl={'/data.json'} styles={ { darkRoomFloorBackground: 'red' } } />)
 
 // If you want to start measuring performance in your app, pass a function

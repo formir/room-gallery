@@ -1,10 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Wall from './Wall'
+import { Wall, WallType } from './Wall'
 
-function Room (props) {
-  const { room, rooms, position, index } = props
+export interface RoomI {
+  room: RoomType;
+  rooms: Array<WallType>;
+  position: {x: number, y: number};
+  index: number;
+}
 
+export type RoomType = {
+  walls: Array<WallType>
+  position: {x: number, y: number};
+  index: number;
+}
+
+export const Room = ({ room, rooms, position, index }: RoomI) => {
   return room.walls && <div
     className={`walls ${index === (rooms.length - 1) ? 'last' : ''} ${index === 0 ? 'first' : ''}`}
     style={
@@ -17,19 +28,12 @@ function Room (props) {
       <Wall
         room={room}
         key={wallIndex}
-        wall={wall}
+        direction={wall.direction}
+        items={wall.items}
+        visible={wall.visible}
       />
     )) }
     <div className="ceil"></div>
     <div className="floor"></div>
   </div>
 }
-
-Room.propTypes = {
-  position: PropTypes.object,
-  rooms: PropTypes.arrayOf(PropTypes.object),
-  room: PropTypes.object,
-  index: PropTypes.number
-}
-
-export default Room

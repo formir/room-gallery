@@ -1,26 +1,33 @@
-import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, FC } from 'react'
 import './sass/formir-room.scss'
-import Room from './components/Room'
-import { parseRooms, parseWalls } from './helpers/parse'
-import { stylesVariables } from './helpers/types'
+import { Room } from './components/Room'
+import { ItemType } from './components/Item'
+import { parseRooms, parseWalls, kebabize } from './helpers/parse'
+import { StylesVariables } from './helpers/types'
 
-const RoomGallery = (props) => {
-  const { fetchHandler, dataItems, fetchUrl, ...styles } = props
-  const [currentState, setCurrentState] = useState({ items: [], rooms: [], activeItem: null })
+interface RoomGalleryProps {
+  fetchHandler?: (fetchUrl:string) => Promise<Array<any>>;
+  dataItems?: Array<ItemType>;
+  fetchUrl?: string;
+  styles?: {};
+}
+
+interface parseItemsI {
+  dataItems: Array<any>;
+  preItems?: Array<any>;
+  preRooms?: Array<any>;
+}
+
+const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, styles }) => {
+  const [currentState, setCurrentState] = useState({ items: [] as Array<any>, rooms: [] as Array<any>, activeItem: {index: 0 as number} })
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dark, setDark] = useState(false)
   const [zoom, setZoom] = useState(false)
 
-  const kebabize = (string) => {
-    const upper = /(?<!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
-    return string.replace(upper, '-$&').replace(/^-/, '').toLowerCase()
-  }
-
-  const parseItems = (dataItems, preItems, preRooms) => {
-    parseRooms(dataItems, preRooms)
-    const activeItem = parseWalls(dataItems, preItems, preRooms)
-    setCurrentState({ rooms: preRooms, items: preItems, activeItem })
+  const parseItems = ({dataItems, preItems, preRooms}: parseItemsI) => {
+    parseRooms(dataItems, preRooms!)
+    const activeItem = parseWalls(dataItems, preItems!, preRooms!)
+    setCurrentState({ rooms: preRooms!, items: preItems!, activeItem })
   }
 
   const nextItem = () => {
@@ -43,7 +50,7 @@ const RoomGallery = (props) => {
     return currentState.activeItem
   }
 
-  const setCurrent = (item) => {
+  const setCurrent = (item: any) => {
     setCurrentState({ items: currentState.items, rooms: currentState.rooms, activeItem: item })
     setPosition({ y: item.position.y, x: item.position.x })
   }
@@ -56,7 +63,7 @@ const RoomGallery = (props) => {
     setZoom(!zoom)
   }
 
-  const dataFetch = async (url) => {
+  const dataFetch = async (url: string) => {
     const data = await (
       await fetch(url)
     ).json()
@@ -64,17 +71,17 @@ const RoomGallery = (props) => {
   }
 
   useEffect(() => {
-    const preItems = []
-    const preRooms = []
+    const preItems = [] as Array<{}>
+    const preRooms = [] as Array<{}>
     if (dataItems) {
-      parseItems(dataItems)
+      parseItems({dataItems})
     } else if (fetchHandler) {
-      fetchHandler(fetchUrl).then((fetchItems) => {
-        parseItems(fetchItems, preItems, preRooms)
+      fetchHandler(fetchUrl!).then((fetchItems: Array<{}>) => {
+        parseItems({dataItems: fetchItems, preItems, preRooms})
       })
     } else if (fetchUrl) {
-      dataFetch(fetchUrl).then((fetchItems) => {
-        parseItems(fetchItems, preItems, preRooms)
+      dataFetch(fetchUrl).then((fetchItems: Array<{}>) => {
+        parseItems({dataItems: fetchItems, preItems, preRooms})
       })
     } else {
       console.error('Provide items for gallery using one of two methods: fetchUrl or dataItems.')
@@ -82,12 +89,15 @@ const RoomGallery = (props) => {
   }, [])
 
   useEffect(() => {
-    const rootStyle = document.querySelector(':root').style
-    stylesVariables.forEach((style) => {
-      if (styles?.styles?.[style]) {
-        rootStyle.setProperty('--' + kebabize(style), styles.styles[style])
-      }
-    })
+    const root = document.querySelector(':root')
+    if (root instanceof HTMLElement) {
+      const rootStyle = root.style
+      styles && Object.keys(styles).forEach((key: string) => {
+        if (key && key in StylesVariables) {
+          rootStyle.setProperty('--' + kebabize(key), styles[key as keyof typeof styles])
+        }
+      })
+    }
   }, [styles])
 
   return (
@@ -119,7 +129,7 @@ const RoomGallery = (props) => {
 
             </div>
             <div className="room-paginations">
-              { currentState.items.map((item, index) => (
+              { currentState.items.map((item: any, index) => (
                 item.image && <button
                   className={index === currentState.activeItem.index ? 'active' : ''}
                   key={index}
@@ -136,13 +146,6 @@ const RoomGallery = (props) => {
       }
     </>
   )
-}
-
-RoomGallery.propTypes = {
-  fetchHandler: PropTypes.func,
-  dataItems: PropTypes.arrayOf(PropTypes.object),
-  fetchUrl: PropTypes.string,
-  styles: PropTypes.arrayOf(stylesVariables)
 }
 
 export default RoomGallery

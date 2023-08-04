@@ -1,52 +1,53 @@
-function insertItem (item, roomKey = 0, direction, wallKey, preRooms) {
+import { Direction } from './../components/Wall'
+
+function insertItem (item: any, roomIndex = 0, direction: Direction, wallIndex: number, preRooms: Array<any>) {
   const wall = {
-    key: wallKey,
+    index: wallIndex,
     visible: true,
     direction,
-    items: []
+    items: [] as Array<any>
   }
 
   wall.items.push(item)
-  preRooms[roomKey].walls.push(wall)
+  preRooms[roomIndex].walls.push(wall)
 }
 
-export function parseRooms (items, preRooms) {
+export function parseRooms (items: Array<any>, preRooms: Array<any>) {
   const itemCount = items.length
   const roomsNeed = Math.ceil((itemCount - 2) / 2)
   for (let n = 0; n < roomsNeed; n++) {
     const room = {
       index: n,
-      key: n,
       walls: []
     }
     preRooms.push(room)
   }
 }
 
-export function parseWalls (items, preItems, preRooms) {
+export function parseWalls (items: Array<any>, preItems: Array<any>, preRooms: Array<any>) {
   const itemCount = items.length
   const roomsNeed = Math.ceil((itemCount - 2) / 2)
   let y = 0
   let x = 0
-  let direction = 'n'
+  let direction = Direction.n
 
-  const updateItem = (item, index) => {
+  const updateItem = (item: any, index: number) => {
     item.index = index
     item.position = { x, y }
-    item.key = index
+    item.index = index
     preItems.push(item)
     insertItem(item, x, direction, index, preRooms)
   }
 
   for (let i = 1; i <= (roomsNeed * 2 + 2); i++) {
     if (i === (roomsNeed + 1)) {
-      direction = 'e'
+      direction = Direction.e
       y = 1
     } else if (i >= (roomsNeed + 2) && i < (roomsNeed * 2 + 2)) {
-      direction = 's'
+      direction = Direction.e
       y = 2
     } else if (i === (roomsNeed * 2 + 2)) {
-      direction = 'w'
+      direction = Direction.w
       y = 3
     }
 
@@ -61,4 +62,9 @@ export function parseWalls (items, preItems, preRooms) {
   }
 
   return preItems[0]
+}
+
+export const kebabize = (string: string) => {
+  const upper = /(?<!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
+  return string.replace(upper, '-$&').replace(/^-/, '').toLowerCase()
 }
