@@ -1,10 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Wall, WallType } from './Wall'
 
 export interface RoomI {
   room: RoomType;
-  rooms: Array<WallType>;
+  rooms: Array<RoomType>;
   position: {x: number, y: number};
   index: number;
 }

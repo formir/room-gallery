@@ -9,7 +9,8 @@ export interface ItemI {
 export interface ItemType {
   description: string;
   image: string;
-  index?: number;
+  index: number;
+  position: {x: number, y: number};
 }
 
 export const Item = ({ image, description } : ItemI) =>  {

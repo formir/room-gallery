@@ -2,24 +2,25 @@ import React, { useState, useEffect, FC } from 'react'
 import './sass/formir-room.scss'
 import { Room } from './components/Room'
 import { ItemType } from './components/Item'
+import { RoomType } from './components/Room'
 import { parseRooms, parseWalls, kebabize } from './helpers/parse'
-import { StylesVariables } from './helpers/types'
+import { StylesVariables} from './helpers/types'
 
 interface RoomGalleryProps {
-  fetchHandler?: (fetchUrl:string) => Promise<Array<any>>;
+  fetchHandler?: (fetchUrl:string) => Promise<Array<ItemType>>;
   dataItems?: Array<ItemType>;
   fetchUrl?: string;
-  styles?: {};
+  styles?: object;
 }
 
 interface parseItemsI {
-  dataItems: Array<any>;
-  preItems?: Array<any>;
-  preRooms?: Array<any>;
+  dataItems: Array<ItemType>;
+  preItems?: Array<ItemType>;
+  preRooms?: Array<RoomType>;
 }
 
 const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, styles }) => {
-  const [currentState, setCurrentState] = useState({ items: [] as Array<any>, rooms: [] as Array<any>, activeItem: {index: 0 as number} })
+  const [currentState, setCurrentState] = useState({ items: [] as Array<ItemType>, rooms: [] as Array<RoomType>, activeItem: {index: 0} as ItemType })
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dark, setDark] = useState(false)
   const [zoom, setZoom] = useState(false)
@@ -50,7 +51,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
     return currentState.activeItem
   }
 
-  const setCurrent = (item: any) => {
+  const setCurrent = (item: ItemType) => {
     setCurrentState({ items: currentState.items, rooms: currentState.rooms, activeItem: item })
     setPosition({ y: item.position.y, x: item.position.x })
   }
@@ -71,16 +72,16 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }
 
   useEffect(() => {
-    const preItems = [] as Array<{}>
-    const preRooms = [] as Array<{}>
+    const preItems = [] as Array<ItemType>
+    const preRooms = [] as Array<RoomType>
     if (dataItems) {
       parseItems({dataItems})
     } else if (fetchHandler) {
-      fetchHandler(fetchUrl!).then((fetchItems: Array<{}>) => {
+      fetchHandler(fetchUrl!).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})
       })
     } else if (fetchUrl) {
-      dataFetch(fetchUrl).then((fetchItems: Array<{}>) => {
+      dataFetch(fetchUrl).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})
       })
     } else {
@@ -129,7 +130,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
 
             </div>
             <div className="room-paginations">
-              { currentState.items.map((item: any, index) => (
+              { currentState.items.map((item, index) => (
                 item.image && <button
                   className={index === currentState.activeItem.index ? 'active' : ''}
                   key={index}
