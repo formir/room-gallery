@@ -47,7 +47,7 @@ export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, p
       direction = Direction.e
       y = 1
     } else if (i >= (roomsNeed + 2) && i < (roomsNeed * 2 + 2)) {
-      direction = Direction.e
+      direction = Direction.s
       y = 2
     } else if (i === (roomsNeed * 2 + 2)) {
       direction = Direction.w
