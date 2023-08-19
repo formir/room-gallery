@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item, ItemI } from './Item'
+import { Item, ItemType } from './Item'
 import { RoomType } from './Room'
 
 export enum Direction {
@@ -11,22 +11,22 @@ export enum Direction {
 
 export interface WallI {
   direction: Direction;
-  items: Array<ItemI>;
+  items: Array<ItemType>;
   room: RoomType;
   visible: boolean;
 }
 
 export type WallType = {
   direction: Direction,
-  items: Array<ItemI>,
-  room: RoomType;
+  items: Array<ItemType>,
+  room?: RoomType;
   visible: boolean;
 }
 
 export const Wall = ({ direction, items }: WallI) => {
   return <div className={`wall wall-${direction}`}>
     { items.map(item => (
-      <Item key={item.index} index={item.index} description={item.description} image={item.image}></Item>
+      <Item key={item.index} index={item.index} description={item.description} image={item.image} element={item?.element}></Item>
     ))}
   </div>
 }

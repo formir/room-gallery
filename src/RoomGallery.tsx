@@ -11,43 +11,61 @@ interface RoomGalleryProps {
   dataItems?: Array<ItemType>;
   fetchUrl?: string;
   styles?: object;
+  children?: JSX.Element[] | JSX.Element;
 }
 
 interface parseItemsI {
-  dataItems: Array<ItemType>;
+  dataItems?: Array<ItemType>;
+  childrenItems?: JSX.Element[] | JSX.Element;
+  nodeItems?: Element | NodeListOf<Element>;
   preItems?: Array<ItemType>;
   preRooms?: Array<RoomType>;
 }
 
-const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, styles }) => {
+const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, styles, children }) => {
   const [currentState, setCurrentState] = useState({ items: [] as Array<ItemType>, rooms: [] as Array<RoomType>, activeItem: {index: 0} as ItemType })
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [dark, setDark] = useState(false)
   const [zoom, setZoom] = useState(false)
 
-  const parseItems = ({dataItems, preItems, preRooms}: parseItemsI) => {
-    parseRooms(dataItems, preRooms!)
-    const activeItem = parseWalls(dataItems, preItems!, preRooms!)
+  const parseItems = ({dataItems, childrenItems, preItems, preRooms}: parseItemsI) => {
+    let itemsToParse = [];
+    if (childrenItems) {
+      itemsToParse = [...(Array.isArray(childrenItems) ? childrenItems : [childrenItems])]
+      const newItems = [] as Array<ItemType>
+      itemsToParse.forEach((element) => {
+        newItems.push({element: element})
+      })
+      itemsToParse = newItems
+    } else {
+      itemsToParse = dataItems as Array<ItemType>
+    }
+    parseRooms(itemsToParse, preRooms!)
+    const activeItem = parseWalls(itemsToParse, preItems!, preRooms!)
     setCurrentState({ rooms: preRooms!, items: preItems!, activeItem })
   }
 
-  const nextItem = () => {
-    if (currentState.activeItem.index < currentState.items.length) {
-      setCurrent(currentState.items[currentState.activeItem.index + 1])
-    } else {
-      setCurrent(currentState.items[currentState.items.length])
-    }
+  const gotoNextItem = () => {
+    setCurrent(getNextItem());
   }
 
-  const prevItem = () => {
-    if (currentState.activeItem.index > 0) {
-      setCurrent(currentState.items[currentState.activeItem.index - 1])
-    } else {
-      setCurrent(currentState.items[0])
-    }
+  const getNextItem = () => {
+    return currentState.activeItem.index < currentState.items.length ? 
+      currentState.items[currentState.activeItem.index + 1] :
+      currentState.items[currentState.items.length]
   }
 
-  const currentItem = () => {
+  const gotoPrevItem = () => {
+    setCurrent(getPrevItem());
+  }
+
+  const getPrevItem = () => {
+    return currentState.activeItem.index > 0 ?
+    currentState.items[currentState.activeItem.index - 1] :
+    currentState.items[0]
+  }
+
+  const getCurrentItem = () => {
     return currentState.activeItem
   }
 
@@ -74,8 +92,10 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   useEffect(() => {
     const preItems = [] as Array<ItemType>
     const preRooms = [] as Array<RoomType>
-    if (dataItems) {
-      parseItems({dataItems})
+    if (children) {
+      parseItems({ childrenItems: children, preItems, preRooms })
+    } else if (dataItems) {
+      parseItems({ dataItems, preItems, preRooms })
     } else if (fetchHandler) {
       fetchHandler(fetchUrl!).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})
@@ -116,22 +136,21 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
               )) }
             </div>
             <div className="room-navigations">
-              { currentState.activeItem.index > 0 &&
-                <button className="prev" onClick={() => prevItem()}>
-                  <span>{currentItem().index}</span>
+              { currentState.activeItem.index > 0 && getPrevItem() &&
+                <button className="prev" onClick={() => gotoPrevItem()}>
+                  <span>{getCurrentItem().index}</span>
                 </button>
               }
               {
-                currentState.items.length > currentState.activeItem.index + 1 &&
-                <button className="next" onClick={() => nextItem()}>
-                  <span>{currentItem().index + 2.0}</span>
+                currentState.items.length > currentState.activeItem.index + 1 && getNextItem() &&
+                <button className="next" onClick={() => gotoNextItem()}>
+                  <span>{getCurrentItem().index + 2.0}</span>
                 </button>
               }
-
             </div>
             <div className="room-paginations">
               { currentState.items.map((item, index) => (
-                item.image && <button
+                item && <button
                   className={index === currentState.activeItem.index ? 'active' : ''}
                   key={index}
                   onClick={() => setCurrent(item) }>

@@ -11,4 +11,6 @@ const dataFetch = async (url: string) => {
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-root.render(<RoomGallery fetchHandler={dataFetch} fetchUrl={process.env.PUBLIC_URL + '/data.json'} styles={ { } } />)
+//root.render(<RoomGallery fetchHandler={dataFetch} fetchUrl={process.env.PUBLIC_URL + '/data.json'} styles={ { } } />)
+
+root.render(<RoomGallery><div>1</div><div>2</div></RoomGallery>)
