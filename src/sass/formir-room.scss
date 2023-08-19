@@ -261,7 +261,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   border-radius: $room-button-size;
   padding: 0;
   box-shadow: $room-button-shadow;
-  bottom: $room-button-zoom-position;
+  top: $room-button-zoom-position;
   text-align: center;
   cursor: pointer;
   opacity: $room-button-opacity;

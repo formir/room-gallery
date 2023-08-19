@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://formir.io/room-react/static/css/main.10b5d315.css",
-    "main.js": "https://formir.io/room-react/static/js/main.c2d94a10.js",
+    "main.css": "https://formir.io/room-react/static/css/main.93a9162a.css",
+    "main.js": "https://formir.io/room-react/static/js/main.6863d32b.js",
     "static/media/floor.png": "https://formir.io/room-react/static/media/floor.97539ffd33fb9d17555b.png",
     "static/media/wall.png": "https://formir.io/room-react/static/media/wall.50666aef545f25914cf6.png",
     "static/media/room.svg?vxjq6": "https://formir.io/room-react/static/media/room.26ba8a3b80609594a9bb.svg",
@@ -9,11 +9,11 @@
     "static/media/room.woff?vxjq6": "https://formir.io/room-react/static/media/room.78a8eded81279dd8d145.woff",
     "static/media/room.ttf?vxjq6": "https://formir.io/room-react/static/media/room.ae63a7e1c866e3318e2f.ttf",
     "index.html": "https://formir.io/room-react/index.html",
-    "main.10b5d315.css.map": "https://formir.io/room-react/static/css/main.10b5d315.css.map",
-    "main.c2d94a10.js.map": "https://formir.io/room-react/static/js/main.c2d94a10.js.map"
+    "main.93a9162a.css.map": "https://formir.io/room-react/static/css/main.93a9162a.css.map",
+    "main.6863d32b.js.map": "https://formir.io/room-react/static/js/main.6863d32b.js.map"
   },
   "entrypoints": [
-    "static/css/main.10b5d315.css",
-    "static/js/main.c2d94a10.js"
+    "static/css/main.93a9162a.css",
+    "static/js/main.6863d32b.js"
   ]
 }
