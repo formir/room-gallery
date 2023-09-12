@@ -36,9 +36,10 @@ export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, p
   let y = 0
   let x = 0
   let direction = Direction.n
+  let wasWest = false
 
   const updateItem = (item: ItemType | null, index: number) => {
-    let newItem = {} as ItemType;
+    let newItem = {} as ItemType
     if (item) {
       newItem = {...item}
       newItem.index = index
@@ -52,16 +53,20 @@ export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, p
   for (let i = 1; i <= numberOfLiteration; i++) {
     if (roomsNeed === 1) {
       direction = directions[i - 1];
-      y = i - 1;
+      y = i - 1
     } else if (i === (roomsNeed + 1)) {
-      direction = Direction.e;
-      y = 1;
+      direction = Direction.e
+      y = 1
     } else if (i >= (roomsNeed + 2) && i < (roomsNeed * 2 + 2)) {
-      direction = Direction.s;
-      y = 2;
+      direction = Direction.s
+      y = 2
     } else if (i === (roomsNeed * 2 + 2)) {
-      direction = Direction.w;
-      y = 3;
+      direction = Direction.w
+      y = 3
+    }
+
+    if (direction === Direction.w && x === 0) {
+      wasWest = true
     }
 
     const item = { ...items[i - 1] }
@@ -72,6 +77,10 @@ export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, p
     } else if (i > (roomsNeed + 1) && i < (roomsNeed * 2 + 1)) {
       x--
     }
+  }
+
+  if (!wasWest) {
+    insertItem(null, 0, Direction.w, numberOfLiteration, preRooms)
   }
 
   return preItems[0]

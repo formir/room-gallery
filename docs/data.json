@@ -1,67 +1,165 @@
 {
   "items": [
     {
-      "image": "https://picsum.photos/id/237/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/237/150/100",
+        "prompt": "https://picsum.photos/id/237/600/400",
+        "original": "https://picsum.photos/id/237/300/200",
+        "zoom": "https://picsum.photos/id/237/2400/1600"
+      },
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     {
-      "image": "https://picsum.photos/id/238/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/238/150/100",
+        "prompt": "https://picsum.photos/id/238/600/400",
+        "original": "https://picsum.photos/id/238/1200/800",
+        "zoom": "https://picsum.photos/id/238/2400/1600"
+      },
       "description": "Suspendisse eu tortor non nibh fermentum cursus."
     },
     {
-      "image": "https://picsum.photos/id/239/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/239/150/100",
+        "prompt": "https://picsum.photos/id/239/600/400",
+        "original": "https://picsum.photos/id/239/1200/800",
+        "zoom": "https://picsum.photos/id/239/2400/1600"
+      },
       "description": "Nullam placerat odio eget purus rhoncus, eget eleifend augue congue."
     },
     {
-      "image": "https://picsum.photos/id/240/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/240/150/100",
+        "prompt": "https://picsum.photos/id/240/600/400",
+        "original": "https://picsum.photos/id/240/1200/800",
+        "zoom": "https://picsum.photos/id/240/2400/1600"
+      },
       "description": "Nam vitae sem a arcu sodales rhoncus quis vel mi."
     },
     {
-      "image": "https://picsum.photos/id/241/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/237/150/100",
+        "prompt": "https://picsum.photos/id/237/600/400",
+        "original": "https://picsum.photos/id/237/300/200",
+        "zoom": "https://picsum.photos/id/237/2400/1600"
+      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "image": {
+        "thumb": "https://picsum.photos/id/241/150/100",
+        "prompt": "https://picsum.photos/id/241/600/400",
+        "original": "https://picsum.photos/id/241/1200/800",
+        "zoom": "https://picsum.photos/id/241/2400/1600"
+      },
       "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
     },
     {
-      "image": "https://picsum.photos/id/242/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/242/150/100",
+        "prompt": "https://picsum.photos/id/242/600/400",
+        "original": "https://picsum.photos/id/242/1200/800",
+        "zoom": "https://picsum.photos/id/242/2400/1600"
+      },
       "description": "Aliquam pretium nulla et lorem viverra venenatis."
     },
     {
-      "image": "https://picsum.photos/id/243/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/243/150/100",
+        "prompt": "https://picsum.photos/id/243/600/400",
+        "original": "https://picsum.photos/id/243/1200/800",
+        "zoom": "https://picsum.photos/id/243/2400/1600"
+      },
       "description": "Phasellus sed sapien eget elit tincidunt euismod."
     },
     {
-      "image": "https://picsum.photos/id/244/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/244/150/100",
+        "prompt": "https://picsum.photos/id/244/600/400",
+        "original": "https://picsum.photos/id/244/1200/800",
+        "zoom": "https://picsum.photos/id/244/2400/1600"
+      },
       "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
     },
     {
-      "image": "https://picsum.photos/id/250/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/250/150/100",
+        "prompt": "https://picsum.photos/id/250/600/400",
+        "original": "https://picsum.photos/id/250/1200/800",
+        "zoom": "https://picsum.photos/id/250/2400/1600"
+      },
       "description": "Donec bibendum enim sed purus interdum, non mollis libero facilisis."
     },
     {
-      "image": "https://picsum.photos/id/251/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/251/150/100",
+        "prompt": "https://picsum.photos/id/251/600/400",
+        "original": "https://picsum.photos/id/251/1200/800",
+        "zoom": "https://picsum.photos/id/251/2400/1600"
+      },
       "description": "Morbi molestie est sed turpis tempus, id dictum magna faucibus."
     },
     {
-      "image": "https://picsum.photos/id/247/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/247/150/100",
+        "prompt": "https://picsum.photos/id/247/600/400",
+        "original": "https://picsum.photos/id/247/1200/800",
+        "zoom": "https://picsum.photos/id/247/2400/1600"
+      },
       "description": "Maecenas vel felis vitae augue maximus aliquam."
     },
     {
-      "image": "https://picsum.photos/id/248/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/248/150/100",
+        "prompt": "https://picsum.photos/id/248/600/400",
+        "original": "https://picsum.photos/id/248/1200/800",
+        "zoom": "https://picsum.photos/id/248/2400/1600"
+      },
       "description": "Vivamus ullamcorper ipsum a odio commodo, eu facilisis tellus pulvinar."
     },
     {
-      "image": "https://picsum.photos/id/238/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/238/150/100",
+        "prompt": "https://picsum.photos/id/238/600/400",
+        "original": "https://picsum.photos/id/238/1200/800",
+        "zoom": "https://picsum.photos/id/238/2400/1600"
+      },
       "description": "Suspendisse eu tortor non nibh fermentum cursus."
     },
     {
-      "image": "https://picsum.photos/id/239/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/239/150/100",
+        "prompt": "https://picsum.photos/id/239/600/400",
+        "original": "https://picsum.photos/id/239/1200/800",
+        "zoom": "https://picsum.photos/id/239/2400/1600"
+      },
       "description": "Nullam placerat odio eget purus rhoncus, eget eleifend augue congue."
     },
     {
-      "image": "https://picsum.photos/id/240/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/240/150/100",
+        "prompt": "https://picsum.photos/id/240/600/400",
+        "original": "https://picsum.photos/id/240/1200/800",
+        "zoom": "https://picsum.photos/id/240/2400/1600"
+      },
       "description": "Nam vitae sem a arcu sodales rhoncus quis vel mi."
     },
     {
-      "image": "https://picsum.photos/id/241/1200/800",
+      "image": {
+        "thumb": "https://picsum.photos/id/241/150/100",
+        "prompt": "https://picsum.photos/id/241/600/400",
+        "original": "https://picsum.photos/id/241/1200/800",
+        "zoom": "https://picsum.photos/id/241/2400/1600"
+      },
+      "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
+    },
+    {
+      "image": {
+        "thumb": "https://picsum.photos/id/241/150/100",
+        "prompt": "https://picsum.photos/id/241/600/400",
+        "original": "https://picsum.photos/id/241/1200/800",
+        "zoom": "https://picsum.photos/id/241/2400/1600"
+      },
       "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
     }
   ]

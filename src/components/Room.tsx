@@ -9,7 +9,7 @@ export interface RoomI {
 }
 
 export type RoomType = {
-  walls: Array<WallType>
+  walls: Array<WallType>;
   position: {x: number, y: number};
   index: number;
 }

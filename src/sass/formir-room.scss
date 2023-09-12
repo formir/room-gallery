@@ -4,23 +4,13 @@
  */
 // FONTS
 
-@font-face {
-  font-family: 'room';
-  src:  url('./../fonts/room.eot?vxjq6');
-  src:  url('./../fonts/room.eot?vxjq6#iefix') format('embedded-opentype'),
-    url('./../fonts/room.ttf?vxjq6') format('truetype'),
-    url('./../fonts/room.woff?vxjq6') format('woff'),
-    url('./../fonts/room.svg?vxjq6#room') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
 
 // SETUP
 
 /// CLASSES
 $room: room;  // main wrapper
 $room-dark: room-dark;
+$room-dark-auto: room-dark-auto;
 $room-body: room-body;  // body of room
 $room-arena: room-arena;  // next wrapper coled arena
 $room-walls: walls; // walls in 3d
@@ -33,12 +23,13 @@ $room-item-desc: item-desc; // image drescription
 $room-zoom: room-zoom; // zoom control input
 $room-paginations: room-paginations; // pagination wrapper
 $room-navigations: room-navigations;
-$room-prev-button: prev;
-$room-next-button: next;
+$room-prev-button: room-prev;
+$room-next-button: room-next;
+$room-icon: room-icon;
 $room-zoom-button: room-zoom-btn;  // button to zoom in
 $room-dark-button: room-dark-btn;
 $room-exit-button: room-exit-btn;  // button to live zoom
-$room-canvas: canvas; // class for border/canvas style
+$room-canvas: room-canvas; // class for border/canvas style
 
 
 /// CORE
@@ -85,7 +76,8 @@ $room-text-padding: 20px 0;
 $room-navigations-margin: 20px;
 $room-button-size: 35px;
 $room-pagination-button-size: 25px;
-$room-pagination-buttons-space: 3px;
+$room-pagination-buttons-space: 7px;
+$room-nav-button-size: 35px;
 
 
 $room-buttons-position: 5%;  // horizontally (y)
@@ -95,7 +87,7 @@ $room-button-zoom-width: $room-button-size;
 $room-button-exit-width: $room-button-size;
 $room-button-dark-width: $room-button-size;
 $room-pagination-position: 5%;
-$room-button-transition:  opacity 0.5s linear;
+$room-button-transition: opacity 0.5s linear;
 
 $room-button-opacity: 1;
 
@@ -123,11 +115,11 @@ $room-canvas-shadow: var(--room-canvas-shadow);
 $light-room-background-blend-mode: var(--light-room-background-blend-mode, multiply);
 $light-room-body-background: var(--light-room-body-background, #fff);
 $light-room-text-color: var(--light-room-text-color, #2d2d2d);
-$light-room-floor-background: var(--light-room-floor-background, #21262c url('./../img/plugins/room/floor.png') repeat 400px 600px);
+$light-room-floor-background: var(--light-room-floor-background, #21262c url('./../img/floor.png') repeat 400px 600px);
 $light-room-floor-shadow: var(--light-room-floor-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
-$light-room-wall-background: var(--light-room-wall-background, #fff url('./../img/plugins/room/wall.png') repeat 30px 30px);
+$light-room-wall-background: var(--light-room-wall-background, #fff url('./../img/wall.png') repeat 30px 30px);
 $light-room-wall-shadow: var(--light-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.1), 0 0 100px rgba(0, 0, 0, 0.2) inset);
-$light-room-ceil-background: var(--light-room-ceil-background, #fff url('./../img/plugins/room/wall.png') repeat 30px 30px);
+$light-room-ceil-background: var(--light-room-ceil-background, #fff url('./../img/wall.png') repeat 30px 30px);
 $light-room-ceil-shadow: var(--light-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
 $light-room-button-background: var(--light-room-button-background, #3c3642);
 $light-room-button-color: var(--light-room-button-color, #fff);
@@ -144,11 +136,11 @@ $light-room-canvas-shadow: var(--light-room-canvas-shadow, 1px 1px 3px rgba(0, 0
 $dark-room-background-blend-mode: var(--dark-room-background-blend-mode, screen);
 $dark-room-body-background: var(--dark-room-body-background, #1c1e24);
 $dark-room-text-color: var(--dark-room-text-color, #fff);
-$dark-room-floor-background: var(--dark-room-floor-background, #241c11 url('./../img/plugins/room/dark-floor.jpg') repeat 150px 150px);
+$dark-room-floor-background: var(--dark-room-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
 $dark-room-floor-shadow: var(--dark-room-floor-shadow, none);
-$dark-room-wall-background: var(--dark-room-wall-background, #1c1e24 url('./../img/plugins/room/dark-wall.jpg') repeat 150px 150px);
+$dark-room-wall-background: var(--dark-room-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
 $dark-room-wall-shadow: var(--dark-room-wall-shadow, 0 0 50px rgba(0,0,0,0.7),0 0 100px rgba(0,0,0,0.7) inset);
-$dark-room-ceil-background: var(--dark-room-ceil-background, #1c1e24 url('./../img/plugins/room/dark-wall.jpg') repeat 150px 150px);
+$dark-room-ceil-background: var(--dark-room-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
 $dark-room-ceil-shadow: var(--dark-room-ceil-shadow, 0 0 100px rgba(0,0,0,0.7),0 0 150px rgba(0,0,0,0.7) inset);
 $dark-room-button-background: var(--dark-room-button-background, #fff);
 $dark-room-button-color: var(--dark-room-button-color, #000);
@@ -191,27 +183,48 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   box-shadow: $room-button-current-shadow;
 }
 
+@mixin room-button-icon() {
+  height: auto;
+  width: 60%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
 @mixin room-button($size: $room-button-size) {
-  background: $room-button-background;
-  border-radius: $size;
   height: $size;
-  min-width: $size - $size/3;
-  padding: 0 $size/3/2;
+  min-width: $size - calc($size / 3);
+  padding: 0 calc( $size / 3 / 2);
   color: $room-button-color;
   line-height: $size;
-  font-size: $size/2.5;
+  font-size: calc($size / 2.5);
   border: $room-button-border;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
   box-sizing: content-box;
+  &:not(.#{room-icon}) {
+    background: $room-button-background;
+    border-radius: $size;
+    &.active {
+      color: $room-button-background;
+      background-color: $room-button-color;
+    }
+  }
+  &.#{room-icon} {
+    background: none;
+    font-size: calc( $size / 1.8 );
+    &:not(.active) {
+      filter: invert(100%);
+    }
+  }
   &:hover {
     text-decoration: none;
-  }
-  &.active {
-    color: $room-button-background;
-    background-color: $room-button-color;
   }
 }
 
@@ -223,13 +236,21 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   top: 0;
   bottom: 0;
   margin: auto;
-  border-radius: 0 $size $size $size;
   font-weight: bold;
   border: 0 none;
-  transform: rotate(-45deg);
-  span {
-    transform: rotate(45deg);
-    display: inline-block;
+  width: $room-nav-button-size;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:not(.#{room-icon}) {
+    height: $room-nav-button-size;
+    transform: rotate(-45deg);
+    border-radius: 0 $size $size $size;
+    span {
+      transform: rotate(45deg);
+      display: inline-block;
+    }
   }
 }
 
@@ -241,13 +262,21 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   top: 0;
   bottom: 0;
   margin: auto;
-  border-radius: $size 0 $size $size;
   font-weight: bold;
   border: 0 none;
-  transform: rotate(45deg);
-  span {
-    transform: rotate(-45deg);
-    display: inline-block;
+  width: $room-nav-button-size;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:not(.#{room-icon}) {
+    height: $room-nav-button-size;
+    border-radius: $size 0 $size $size;
+    transform: rotate(45deg);
+    span {
+      transform: rotate(-45deg);
+      display: inline-block;
+    }
   }
 }
 
@@ -257,20 +286,24 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   width: $room-button-exit-width;
   height: $room-button-size;
   line-height: $room-button-size;
-  background-color: $room-button-background;
-  border-radius: $room-button-size;
   padding: 0;
-  box-shadow: $room-button-shadow;
   top: $room-button-zoom-position;
   text-align: center;
   cursor: pointer;
   opacity: $room-button-opacity;
   will-change: opacity;
   border: 0 none;
-  &:after {
-    content: "\e902";
-    font-family: 'room';
-    font-size: $room-button-size/2;
+  &:not(.#{room-icon}) {
+    background-color: $room-button-background;
+    border-radius: $room-button-size;
+    box-shadow: $room-button-shadow;
+    svg, img {
+      @include room-button-icon;
+    }
+  }
+  &.#{room-icon} {
+    background: none;
+    filter: invert(100%);
   }
   &:hover {
     opacity: 1;
@@ -286,20 +319,24 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   top: $room-button-zoom-position;
   height: $room-button-size;
   line-height: $room-button-size;
-  background-color: $room-button-background;
-  border-radius: $room-button-size;
   border: 0;
   padding: 0;
   width: $room-button-zoom-width;
-  box-shadow: $room-button-shadow;
   text-align: center;
   cursor: pointer;
   will-change: opacity;
   transition: $room-button-transition;
-  &:after {
-    content: "\e901";
-    font-family: 'room';
-    font-size: $room-button-size/2;
+  &:not(.#{room-icon}) {
+    background-color: $room-button-background;
+    border-radius: $room-button-size;
+    box-shadow: $room-button-shadow;
+    svg, img {
+      @include room-button-icon;
+    }
+  }
+  &.#{room-icon} {
+    background: none;
+    filter: invert(100%);
   }
   &:hover {
     opacity: 1;
@@ -315,19 +352,23 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   top: $room-button-dark-position;
   height: $room-button-size;
   line-height: $room-button-size;
-  background-color: $room-button-background;
-  border-radius: $room-button-size;
   width: $room-button-dark-width;
-  box-shadow: $room-button-shadow;
   text-align: center;
   border: 0;
   cursor: pointer;
   will-change: opacity;
   transition: $room-button-transition;
-  &:after {
-    content: "\e900";
-    font-family: 'room';
-    font-size: $room-button-size/2;
+  &:not(.#{room-icon}) {
+    background-color: $room-button-background;
+    border-radius: $room-button-size;
+    box-shadow: $room-button-shadow;
+    svg, img {
+      @include room-button-icon;
+    }
+  }
+  &.#{room-icon} {
+    background: none;
+    filter: invert(100%);
   }
   &:hover {
     opacity: 1;
@@ -366,7 +407,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     margin: auto;
     position: absolute;
     z-index: $room-zindex + 100;
-    display: none;
     @include room-exit-button;
   }
   
@@ -377,9 +417,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     margin: auto;
     z-index: 4;
     button {
-      + button {
-        margin-left: $room-pagination-buttons-space;
-      }
+      margin: calc( $room-pagination-buttons-space / 2 );
     }
     button {
       @include room-button;
@@ -392,6 +430,25 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     }
     .#{$room-next-button} {
       @include room-next-button;
+    }
+    .#{room-icon} {
+      background: none;
+      filter: invert(100%);
+      svg, img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+  button.#{room-icon} {
+    svg, img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
     }
   }
   .#{$room-paginations}  {
@@ -538,6 +595,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
         left: 0;
         right: 0;
         margin: auto;
+        transition: opacity 0.5s;
       }
     }
     .#{$room-item-desc} {
@@ -573,22 +631,22 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
       width: $room-s-w;
     }
     &.wall-n {
-      transform: translateZ(-$room-s-w/2);
+      transform: translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-w {
-      transform: rotateY(90deg) translateZ(-$room-s-w/2);
+      transform: rotateY(90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-s {
-      transform: rotateY(180deg) translateZ(-$room-s-w/2);
+      transform: rotateY(180deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-e {
-      transform: rotateY(-90deg) translateZ(-$room-s-w/2);
+      transform: rotateY(-90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.#{$room-ceil} {
-      transform: rotateX(-90deg) translateZ(-$room-s-w/2) rotate(180deg);
+      transform: rotateX(-90deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
     }
     &.#{$room-floor}  {
-      $room-s-w-2: $room-s-w / 2;
+      $room-s-w-2: calc($room-s-w / 2);
       @if not (unit($room-s-w) == px) {
         $room-s-w-2-set: strip-unit($room-s-w-2) + vw;
         $room-s-h-set: strip-unit($room-s-h) + vh;
@@ -784,12 +842,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 .#{$room} {
   &.#{$room-zoom} {
     .#{$room-body} {
-      .#{$room-exit-button} {
-        display: block;
-      }
-      .#{$room-paginations} , .#{$room-zoom-button} {
-        display: none;
-      }
       .#{$room-arena} {
         transition: transform $room-rotate-speed $room-rotate-timing;
         -webkit-transform: scale($room-scale-zoom);
@@ -848,7 +900,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 }
 
 @media (prefers-color-scheme: dark) {
-  .#{$room} {
+  .#{$room}.#{$room-dark-auto} {
     --room-body-background-blend-mode: #{$dark-room-background-blend-mode};
     --room-body-background: #{$dark-room-body-background};
     --room-text-color: #{$dark-room-text-color};
