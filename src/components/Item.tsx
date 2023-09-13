@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, ReactEventHandler, useContext } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import { GalleryContext } from './../RoomGallery'
 
 
@@ -56,7 +56,6 @@ export const Item = ({ image, description, element, index, position } : ItemType
   function displayOriginal() {
     return typeof image === "object" && ((image.prompt && atCurrentPosition()) || !image.prompt ) 
   }
-  
 
   if (element) {
     return <>{element}</>;
