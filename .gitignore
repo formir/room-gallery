@@ -1,3 +1,18 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+node_modules
+test-coverage
+.history
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/4ce80
+!.vscode/extensions.json
+*.code-workspace
+=======
+>>>>>>> Stashed changes
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -12,3 +27,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< Updated upstream
+=======
+>>>>>>> b4c10946062172b103dc423e625e98430da0fd55
+>>>>>>> Stashed changes

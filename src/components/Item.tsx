@@ -33,34 +33,28 @@ export const Item = ({ image, description, element, index, position } : ItemType
     setPromptLoaded(true)
   }
 
+  const atCurrentPosition = () => {
+    return currentPosition.x - position.x < 1 && currentPosition.x - position.x > -1 && currentPosition.y === position.y
+  }
+
   useEffect(() => {
     if (refOriginImage.current && refOriginImage.current.complete) {
       originOnLoad()
     }
-  })
-
-  useEffect(() => {
     if (refZoomImage.current && refZoomImage.current.complete) {
       zoomOnLoad()
     }
-  })
-
-  useEffect(() => {
     if (refPromptImage.current && refPromptImage.current.complete) {
       promptOnLoad()
     }
-  })
+  }, [])
 
   function displayZoom() {
-    return zoom && typeof image === "object" && image.zoom
-  }
-
-  function displayPrompt() {
-    return typeof image === "object" && !zoom && image.prompt && !originLoaded
+    return zoom && typeof image === "object" && image.zoom && atCurrentPosition()
   }
 
   function displayOriginal() {
-    return typeof image === "object" && ((image.prompt && (currentPosition.x - position.x < 1 && currentPosition.x - position.x > -1 && currentPosition.y === position.y)) || !image.prompt ) 
+    return typeof image === "object" && ((image.prompt && atCurrentPosition()) || !image.prompt ) 
   }
   
 
