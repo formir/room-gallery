@@ -1,5 +1,5 @@
 import { Direction } from './../components/Wall'
-import { ItemType } from './../components/Item'
+import { ItemType, Position } from './../components/Item'
 import { RoomType } from './../components/Room'
 import { WallType } from './../components/Wall'
 
@@ -17,6 +17,10 @@ function insertItem (item: ItemType | null, roomIndex = 0, direction: Direction,
   preRooms[roomIndex].walls.push(wall)
 }
 
+export const findItemByPosition = (position: Position, items: Array<ItemType>) => {
+  return items.find((item) => (item.position.x === position.x && position.y === position.y ? item : null ))
+}
+
 export function parseRooms (items: Array<ItemType>, preRooms: Array<RoomType>) {
   const itemCount = items.length
   const roomsNeed = Math.ceil((itemCount - 2) / 2) || 1
@@ -29,7 +33,7 @@ export function parseRooms (items: Array<ItemType>, preRooms: Array<RoomType>) {
   }
 }
 
-export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, preRooms: Array<RoomType>) {
+export function parseWalls(items: Array<ItemType>, preItems: Array<ItemType>, preRooms: Array<RoomType>, position: Position = {x: 0, y: 0}) {
   const itemCount = items.length
   const numberOfLiteration = itemCount > 4 ? itemCount : 4 
   const roomsNeed = Math.ceil((itemCount - 2) / 2) || 1
@@ -83,7 +87,7 @@ export function parseWalls (items: Array<ItemType>, preItems: Array<ItemType>, p
     insertItem(null, 0, Direction.w, numberOfLiteration, preRooms)
   }
 
-  return preItems[0]
+  return findItemByPosition(position, preItems)
 }
 
 export const kebabize = (string: string) => {

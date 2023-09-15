@@ -1,4 +1,4 @@
-import { ItemType } from './../components/Item'
+import { ItemType, Position } from './../components/Item'
 import { RoomType } from './../components/Room'
 
 export enum ArrowNav {
@@ -63,7 +63,7 @@ export type RoomGallerySettingsType = {
   paginations?: keyof typeof Paginations;
   paginationsOnZoom?: keyof typeof PaginationsOnZoom;
   arrowNavOnZoom?: keyof typeof ArrowNavOnZoom;
-  defaultPosition?: {x: number, y: number}
+  defaultPosition?: Position
   icons?: {
     next?: JSX.Element
     prev?: JSX.Element

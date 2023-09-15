@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect, useContext } from 'react'
 import { GalleryContext } from './../RoomGallery'
 
+export type Position = {x: number, y: number}
 
 export type ItemType = {
   description?: string;
   image?: string | {thumb?: string, prompt: string, original: string, zoom?: string};
   index?: number;
-  position?: {x: number, y: number};
+  position?: Position;
   element?: JSX.Element | Element;
 }
 
