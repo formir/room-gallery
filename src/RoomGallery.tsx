@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FC, createContext } from 'react'
+import { useSwipeable } from "react-swipeable"
 import './sass/formir-room.scss'
 import { 
   RoomGallerySettingsType,
@@ -122,6 +123,14 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
     return (settings.zoomMode === ZoomMode.manual && zoom) || settings.zoomMode === ZoomMode.in
   }
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => gotoNextItem(),
+    onSwipedRight: () => gotoPrevItem(),
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true
+  });
+
   useEffect(() => {
     const preItems = [] as Array<ItemType>
     const preRooms = [] as Array<RoomType>
@@ -156,7 +165,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
 
   return (
     <GalleryContext.Provider value={{currentState, zoom, settings, position}}>
-      { currentState.rooms.length > 0 && <div className={`room ${isDarkMode() ? 'room-dark' : ''} ${isZoomed() ? 'room-zoom' : ''}`}>
+      { currentState.rooms.length > 0 && <div className={`room ${isDarkMode() ? 'room-dark' : ''} ${isZoomed() ? 'room-zoom' : ''}`} {...handlers}>
           <div className="room-body">
             <div className="room-arena">
               { currentState.rooms.map((room, index) => (
