@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, createContext, Suspense } from 'react'
+import React, { useState, useEffect, FC, createContext, Suspense, useRef } from 'react'
 import { useSwipeable } from "react-swipeable"
 import './sass/formir-room.scss'
 import { 
@@ -37,7 +37,11 @@ export const roomGalleryDefaultSettings = {
   paginations: Paginations.number,
   paginationsOnZoom: PaginationsOnZoom.hide,
   arrowNavOnZoom: ArrowNavOnZoom.show,
-  defaultPosition: {x: 0, y: 0}
+  defaultPosition: { x: 0, y: 0 },
+  swipeToNav: true,
+  swipeToZoom: true,
+  keypressToNav: true,
+  keypressToZoom: true
 } as RoomGallerySettingsType;
 
 export const GalleryContext = createContext(null);
@@ -53,6 +57,8 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   const [position, setPosition] = useState(settings.defaultPosition)
   const [dark, setDark] = useState(settings.darkMode === DarkMode.dark)
   const [zoom, setZoom] = useState(settings.zoomMode === ZoomMode.in)
+
+  const roomRef = useRef()
 
   const parseItems = ({dataItems, childrenItems, preItems, preRooms}: parseItemsI) => {
     let itemsToParse = [];
@@ -76,8 +82,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }
 
   const gotoNextItem = () => {
-    setCurrent(getNextItem());
-    console.log(getNextItem())
+    getNextItem() && setCurrent(getNextItem())
   }
 
   const getNextItem = () => {
@@ -87,8 +92,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }
 
   const gotoPrevItem = () => {
-    setCurrent(getPrevItem());
-    console.log(getPrevItem())
+    getPrevItem() && setCurrent(getPrevItem())
   }
 
   const getPrevItem = () => {
@@ -137,11 +141,11 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
     return (settings.zoomMode === ZoomMode.manual && zoom) || settings.zoomMode === ZoomMode.in
   }
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => gotoNextItem(),
-    onSwipedRight: () => gotoPrevItem(),
-    onSwipedUp: () => zoomOff(),
-    onSwipedDown: () => zoomOn(),
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => settings.swipeToNav && gotoNextItem(),
+    onSwipedRight: () => settings.swipeToNav && gotoPrevItem(),
+    onSwipedUp: () => settings.swipeToZoom && zoomOff(),
+    onSwipedDown: () => settings.swipeToZoom && zoomOn(),
     swipeDuration: 500,
     preventScrollOnSwipe: true,
     trackMouse: true
@@ -168,6 +172,33 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }, [])
 
   useEffect(() => {
+    const handleKeyDown = (event:any) => {
+      switch (event.key) {
+        case 'ArrowUp':
+          settings.keypressToZoom && zoomOn()
+          break;
+        case 'ArrowDown':
+          settings.keypressToZoom && zoomOff()
+          break;
+        case 'ArrowLeft':
+          settings.keypressToNav && gotoPrevItem()
+          break;
+        case 'ArrowRight':
+          settings.keypressToNav && gotoNextItem()
+          break;
+        default:
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentState.items, position]);
+
+  useEffect(() => {
     const root = document.querySelector(':root')
     if (root instanceof HTMLElement) {
       const rootStyle = root.style
@@ -189,7 +220,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
       <Suspense fallback={<Loading />}>
         {
           currentState.rooms.length > 0 &&
-          <div className={`room ${isDarkMode() ? 'room-dark' : ''} ${isZoomed() ? 'room-zoom' : ''}`}  {...handlers}>
+          <div ref={roomRef} className={`room ${isDarkMode() ? 'room-dark' : ''} ${isZoomed() ? 'room-zoom' : ''}`}  {...swipeHandlers}>
             <div className="room-body">
               <div className="room-arena">
                 {

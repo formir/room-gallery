@@ -63,15 +63,19 @@ export type RoomGallerySettingsType = {
   paginations?: keyof typeof Paginations;
   paginationsOnZoom?: keyof typeof PaginationsOnZoom;
   arrowNavOnZoom?: keyof typeof ArrowNavOnZoom;
-  defaultPosition?: Position
+  defaultPosition?: Position;
   icons?: {
-    next?: JSX.Element
-    prev?: JSX.Element
-    lightOff?: JSX.Element
-    lightOn?: JSX.Element
-    zoomIn?: JSX.Element
-    zoomOut?: JSX.Element
-  }
+    next?: JSX.Element;
+    prev?: JSX.Element;
+    lightOff?: JSX.Element;
+    lightOn?: JSX.Element;
+    zoomIn?: JSX.Element;
+    zoomOut?: JSX.Element;
+  },
+  swipeToNav?: boolean;
+  swipeToZoom?: boolean;
+  keypressToNav?: boolean;
+  keypressToZoom?: boolean;
 }
 
 export interface RoomGalleryProps {
