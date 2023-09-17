@@ -41,7 +41,7 @@ export const roomGalleryDefaultSettings = {
   swipeToNav: true,
   swipeToZoom: true,
   keypressToNav: true,
-  keypressToZoom: true
+  keypressToZoom: true,
 } as RoomGallerySettingsType;
 
 export const GalleryContext = createContext(null);
@@ -59,6 +59,8 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   const [zoom, setZoom] = useState(settings.zoomMode === ZoomMode.in)
 
   const roomRef = useRef()
+
+  const value = { currentState, zoom, dark, position, settings }
 
   const parseItems = ({dataItems, childrenItems, preItems, preRooms}: parseItemsI) => {
     let itemsToParse = [];
@@ -82,7 +84,10 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }
 
   const gotoNextItem = () => {
-    getNextItem() && setCurrent(getNextItem())
+    if (getNextItem()) {
+      setCurrent(getNextItem())
+      if (typeof settings.event.onShowNext === 'function') settings.event.onShowNext(value)
+    }
   }
 
   const getNextItem = () => {
@@ -92,7 +97,10 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }
 
   const gotoPrevItem = () => {
-    getPrevItem() && setCurrent(getPrevItem())
+    if (getPrevItem()) {
+      setCurrent(getPrevItem())
+      if (typeof settings.event.onShowPrev === 'function') settings.event.onShowPrev(value)
+    }
   }
 
   const getPrevItem = () => {
@@ -112,18 +120,24 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
 
   const darkModeToggle = () => {
     setDark(!dark)
+    if (typeof settings.event.onDarkModeOn === 'function' && !dark) settings.event.onDarkModeOn(value)
+    if (typeof settings.event.onDarkModeOff === 'function' && dark) settings.event.onDarkModeOff(value)
   }
 
   const zoomToggle = () => {
     setZoom(!zoom)
+    if (typeof settings.event.onZoomIn === 'function' && !zoom) settings.event.onZoomIn(value)
+    if (typeof settings.event.onZoomOut === 'function' && zoom) settings.event.onZoomOut(value)
   }
 
   const zoomOn = () => {
     setZoom(true)
+    if (typeof settings.event.onZoomOut === 'function') settings.event.onZoomOut(value)
   }
 
   const zoomOff = () => {
     setZoom(false)
+    if (typeof settings.event.onZoomIn === 'function') settings.event.onZoomIn(value)
   }
 
   const dataFetch = async (url: string) => {
@@ -154,6 +168,8 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   useEffect(() => {
     const preItems = [] as Array<ItemType>
     const preRooms = [] as Array<RoomType>
+    if (typeof settings.event.onInit === 'function') settings.event.onInit(value)
+
     if (children) {
       parseItems({ childrenItems: children, preItems, preRooms })
     } else if (dataItems) {
@@ -172,7 +188,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
   }, [])
 
   useEffect(() => {
-    const handleKeyDown = (event:any) => {
+    const handleKeyDown = (event:KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowUp':
           settings.keypressToZoom && zoomOn()
@@ -216,7 +232,7 @@ const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, 
 
 
   return (
-    <GalleryContext.Provider value={{ currentState, zoom, settings, position }}>
+    <GalleryContext.Provider value={value}>
       <Suspense fallback={<Loading />}>
         {
           currentState.rooms.length > 0 &&
