@@ -88,20 +88,22 @@ export type RoomGallerySettingsType = {
 }
 
 export interface RoomGalleryProps {
- fetchHandler?: (fetchUrl:string) => Promise<Array<ItemType>>;
- dataItems?: Array<ItemType>;
- fetchUrl?: string;
- styles?: object;
- children?: JSX.Element[] | JSX.Element;
- settings?: RoomGallerySettingsType;
+  fetchHandler?: (fetchUrl:string) => Promise<Array<ItemType>>;
+  dataItems?: Array<ItemType>;
+  elementItems?: HTMLElement[];
+  fetchUrl?: string;
+  styles?: object;
+  children?: JSX.Element[] | JSX.Element;
+  settings?: RoomGallerySettingsType;
 }
 
 export interface parseItemsI {
- dataItems?: Array<ItemType>;
- childrenItems?: JSX.Element[] | JSX.Element;
- nodeItems?: Element | NodeListOf<Element>;
- preItems?: Array<ItemType>;
- preRooms?: Array<RoomType>;
+  dataItems?: Array<ItemType>;
+  elementItems?: HTMLElement[];
+  childrenItems?: JSX.Element[] | JSX.Element;
+  nodeItems?: Element | NodeListOf<Element>;
+  preItems?: Array<ItemType>;
+  preRooms?: Array<RoomType>;
 }
 
 export enum StylesVariables {

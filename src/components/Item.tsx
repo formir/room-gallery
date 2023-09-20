@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from 'react'
 import { GalleryContext } from './../RoomGallery'
+import DOMPurify from "dompurify";
 
 export type Position = {x: number, y: number}
 
@@ -9,9 +10,10 @@ export type ItemType = {
   index?: number;
   position?: Position;
   element?: JSX.Element | Element;
+  HtmlElement?: HTMLElement;
 }
 
-export const Item = ({ image, description, element, index, position } : ItemType) =>  {
+export const Item = ({ image, description, element, HtmlElement, index, position } : ItemType) =>  {
   const {currentState, zoom, settings, position: currentPosition} = useContext(GalleryContext);
   const [originLoaded, setOriginLoaded] = useState(false)
   const refOriginImage = useRef<HTMLImageElement>(null)
@@ -60,6 +62,8 @@ export const Item = ({ image, description, element, index, position } : ItemType
 
   if (element) {
     return <>{element}</>;
+  } else if (HtmlElement) {
+     return <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(HtmlElement.innerHTML)}}></div>
   } else {
     return <div className="item">
     <div className="item-image">

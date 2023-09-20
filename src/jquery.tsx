@@ -2,13 +2,10 @@
 import { ItemType } from './components/Item'
 import { RoomGallerySettingsType } from './types/types'
 
-const React = require('react'),
-      createRoot = require('react-dom/client'),
-      ReactRoomGallery = require('./RoomGallery')
-
 interface IroomGallery {
   fetchMethod: (fetchUrl: string) => Promise<Array<object>> | string;
   items: HTMLImageElement[];
+  elements: HTMLElement[];
   styles: object;
   settings: RoomGallerySettingsType;
 }
@@ -19,9 +16,12 @@ declare global {
   }
 }
 
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { RoomGallery as ReactRoomGallery } from './RoomGallery'
+
 if (typeof jQuery !== 'undefined') {
   (function ($) {
-    
     $.fn.RoomGallery = function (options: IroomGallery): JQuery {
       return this.each(function () {
         const element = this;
@@ -34,14 +34,17 @@ if (typeof jQuery !== 'undefined') {
         if (typeof options.items === 'object') {
           if (options.items.length > 0) {
             dataItems = [...options.items].map((item) =>
-              item.tagName === 'IMG' ? { image: item.src.toString(), description: item.title.toString() } as ItemType : null
+              item.tagName === 'IMG' && typeof item.tagName === 'string' ?
+                { image: item.src.toString(), description: item.title.toString() } as ItemType : item as ItemType
             );
           }
           props = { ...props, ...{ dataItems: dataItems } };
+        } else if (typeof options.elements === 'object') {
+            props = { ...props, ...{ elementItems: options.elements } };
         } else {
           props = { ...props, [typeof options.fetchMethod === 'string' ? 'fetchUrl' : 'fetchHandler']: options.fetchMethod };
         }
-        const root = createRoot(element!)
+        const root = ReactDOM.createRoot(element)
         root.render(<ReactRoomGallery {...props} />)
       });
     };

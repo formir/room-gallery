@@ -32,6 +32,7 @@ export const Wall = ({ direction, items }: WallI) => {
         description={item.description}
         image={item.image}
         element={item?.element}
+        HtmlElement={item?.HtmlElement}
         position={item.position}
       />
     ))}

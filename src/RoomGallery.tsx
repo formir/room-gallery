@@ -46,7 +46,7 @@ export const roomGalleryDefaultSettings = {
 
 export const GalleryContext = createContext(null);
 
-export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fetchUrl, styles, children, settings }) => {
+export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, elementItems, fetchUrl, styles, children, settings }) => {
   settings = { ...roomGalleryDefaultSettings, ...settings }
   
   const [currentState, setCurrentState] = useState({
@@ -62,13 +62,20 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fet
 
   const value = { currentState, zoom, dark, position, settings }
 
-  const parseItems = ({dataItems, childrenItems, preItems, preRooms}: parseItemsI) => {
+  const parseItems = ({dataItems, childrenItems, elementItems, preItems, preRooms}: parseItemsI) => {
     let itemsToParse = [];
     if (childrenItems) {
       itemsToParse = [...(Array.isArray(childrenItems) ? childrenItems : [childrenItems])]
       const newItems = [] as Array<ItemType>
       itemsToParse.forEach((element) => {
         newItems.push({element: element})
+      })
+      itemsToParse = newItems
+    } else if (elementItems) {
+      itemsToParse = [...elementItems]
+      const newItems = [] as Array<ItemType>
+      itemsToParse.forEach((element) => {
+        newItems.push({HtmlElement: element})
       })
       itemsToParse = newItems
     } else {
@@ -174,6 +181,8 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, fet
       parseItems({ childrenItems: children, preItems, preRooms })
     } else if (dataItems) {
       parseItems({ dataItems, preItems, preRooms })
+    } else if (elementItems) {
+      parseItems({ elementItems: elementItems, preItems, preRooms })
     } else if (fetchHandler) {
       fetchHandler(fetchUrl!).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})

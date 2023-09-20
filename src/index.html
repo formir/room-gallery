@@ -9,18 +9,23 @@
       name="description"
       content="Room Gallery - react demo page"
     />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="apple-touch-icon" href="./logo192.png" />
     <link rel="manifest" href="./manifest.json" />
-    <link rel="stylesheet" href="./index.css"> 
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
     <title>Room Gallery</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <div>
-      <img class="item-original-image" src="https://picsum.photos/id/235/300/200">
-      <img class="item-original-image" src="https://picsum.photos/id/237/300/200">
+      <div class="item">
+        <img class="item-original-image"  onClick="alert('ok')" src="https://picsum.photos/id/235/300/200">
+      </div>
+      <div class="item">
+        <img class="item-original-image"   onClick="alert('ok')" src="https://picsum.photos/id/237/300/200">
+      </div>
     </div>
   </body>
 </html>

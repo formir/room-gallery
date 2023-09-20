@@ -7,6 +7,7 @@ const path = require("path");
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
+  const isIndex = process.env.ENTRY === 'index';
   return {
     entry: {
       index: "./src/index.tsx",
@@ -62,6 +63,9 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss'],
+    },
+    externals: {
+      "jQuery": "jQuery"
     },
     target: "web",
     node: {
