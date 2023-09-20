@@ -8,16 +8,24 @@ const path = require("path");
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
   return {
-    entry: "./src/index.tsx",
+    entry: {
+      index: "./src/index.tsx",
+      roomGallery: "./src/function.tsx",
+      jQueryRoomGallery: "./src/jquery.tsx",
+    },
     output: {
       path: path.join(__dirname, "docs"),
-      filename: "main.js",
+      filename: "[name].js",
+      clean: true
     },
     module: {
       rules: [
         {
           test: /\.(png|jp(e*)g|gif)$/,
           type: "asset/resource",
+          generator : {
+            filename : 'img/[name][ext][query]',
+          }
         },
         {
           test: /\.svg$/i,
@@ -73,8 +81,8 @@ module.exports = (env, argv) => {
         template: './src/index.html',
       }),
       new MiniCssExtractPlugin({
-        filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
+        filename: isDevelopment ? '[name].css' : '[name].css',
+        chunkFilename: isDevelopment ? '[id].css' : '[id].css',
       }),
       new CopyWebpackPlugin({
         patterns: [

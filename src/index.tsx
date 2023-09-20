@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import RoomGallery from './RoomGallery'
+import { RoomGallery } from './RoomGallery'
 
 const dataFetch = async (url: string) => {
   const data = await (
