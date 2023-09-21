@@ -1,11 +1,9 @@
-export interface IroomGallery {
-  element: string | HTMLElement;
-  fetchMethod: (fetchUrl: string) => Promise<Array<object>> | string;
-  items: HTMLImageElement[];
-  elements: HTMLElement[];
-  styles: object;
-  settings: RoomGallerySettingsType;
-}
+
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { RoomGallery as ReactRoomGallery } from './RoomGallery'
+import { ItemType } from './components/Item'
+import { RoomGallerySettingsType, RoomGalleryProps } from './types/types'
 
 declare global {
   interface Window {
@@ -13,33 +11,39 @@ declare global {
   }
 }
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { RoomGallery as ReactRoomGallery } from './RoomGallery'
-import { ItemType } from './components/Item'
-import { RoomGallerySettingsType } from './types/types'
+export interface IroomGallery {
+  element: string | HTMLElement;
+  fetchMethod?: (fetchUrl: string) => Promise<Array<object>> | string;
+  items?: HTMLImageElement[];
+  elements?: HTMLElement[];
+  styles?: object;
+  settings?: RoomGallerySettingsType;
+}
 
-function RoomGallery({ element, fetchMethod, items, elements, styles, settings } : IroomGallery ) {
+export function RoomGallery({ element, fetchMethod, items, elements, styles, settings } : IroomGallery ) {
   const container = typeof element === 'string' ? document.querySelectorAll(element)[0] : element
   let dataItems
-  let props = {
-    styles: styles,
-    settings: settings
-  }
+  let props = {} as RoomGalleryProps
+
+  if (styles) props.styles = styles
+  if (settings) props.settings = settings
   
   if (typeof items === 'object') {
     if (items.length > 0) {
-      dataItems = [...items].map((item) => item.tagName === 'IMG' && typeof item.tagName === 'string' ?
-        ({ image: item.src.toString(), description: item.title.toString() } as ItemType) : item as ItemType)
+      dataItems = [...items].map((item) =>
+      item.tagName === 'IMG' && typeof item.tagName === 'string' ?
+        { image: item.src.toString(), description: item.title.toString() } as ItemType : item as ItemType
+      )
     }
-    props = { ...props, ...{ dataItems: dataItems } }
+    props.dataItems = dataItems
   } else if (typeof elements === 'object') {
-      props = { ...props, ...{ elementItems: elements } };
+      props.elementItems = elements
   } else {
-    props = {...props, [typeof fetchMethod === 'string' ? 'fetchUrl' : 'fetchHandler']: fetchMethod}
+    props = { ...props, [typeof fetchMethod === 'string' ? 'fetchUrl' : 'fetchHandler'] : fetchMethod }
   }
-  
-  const root = ReactDOM.createRoot(container)
-        root.render(<ReactRoomGallery {...props} />)
+  const root = ReactDOM.createRoot(container),
+        room = <ReactRoomGallery {...props} />
+  root.render(room)
+  return { component: room, element: container, props: props }
 }
 window.RoomGallery = RoomGallery;

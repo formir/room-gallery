@@ -215,9 +215,7 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, ele
           break;
       }
     };
-
     document.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -238,7 +236,6 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, ele
   function Loading() {
     return <h2>Loading...</h2>;
   }
-
 
   return (
     <GalleryContext.Provider value={value}>
