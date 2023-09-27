@@ -1,6 +1,6 @@
 /*!
- *  Formir Room v2.0.0 by @konrad-k - http://formir.io/plugins/room.html
- *  All rights reserved - Copyright © 2020
+ *  Formir - Room Gallery v1.0.0-beta by @konrad-k - https://formir.io/room-react/
+ *  All rights reserved - Copyright © 2023
  */
 // FONTS
 
@@ -8,16 +8,18 @@
 // SETUP
 
 /// CLASSES
-$room: room;  // main wrapper
+$room: room-gallery;  // main wrapper
 $room-dark: room-dark;
 $room-dark-auto: room-dark-auto;
 $room-body: room-body;  // body of room
 $room-arena: room-arena;  // next wrapper coled arena
 $room-walls: walls; // walls in 3d
 $room-wall: wall;
+$room-wall-active: wall-active;
 $room-ceil: ceil;
 $room-floor: floor;
 $room-item: item; // item to display on the wall
+$room-item-active: item-active;
 $room-item-image: item-image; // image container
 $room-item-desc: item-desc; // image drescription
 $room-zoom: room-zoom; // zoom control input
@@ -172,8 +174,14 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 }
 
 @mixin  room-item-desc() {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.3rem;
+  p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  span {
+    font-size: 1.1rem;
+  }
 }
 
 @mixin room-pagination-current() {
@@ -395,12 +403,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   max-height: 100%;
   overflow: hidden;
   z-index: $room-zindex;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   @media (max-width: $room-mobile-media-width) {
     width: $room-mobile-size-width;
     height: $room-mobile-size-height;
@@ -496,6 +498,10 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   .#{$room-wall} {
     @include room-wall;
     z-index: 1;
+    pointer-events: none;
+    &.#{$room-wall-active} {
+      pointer-events: auto;
+    }
   }
   .#{$room-ceil} {
     @include room-ceil;
@@ -547,7 +553,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   left: 0;
   right: 0;
   top: 0;
-  pointer-events: none;
   will-change: transform;
   transition: transform $room-rotate-speed $room-rotate-timing;
   @media (max-width: $room-mobile-media-width) {
@@ -561,7 +566,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 
 .#{$room} .#{$room-wall} {
   position: relative;
-  pointer-events: none;
   > * {
     width: $room-item-width;
     height: $room-item-height;
@@ -583,41 +587,44 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
       width: auto;
       object-fit: contain;
     }
-    .#{$room-item-image} {
+  }
+  .#{$room-item-image} {
+    object-fit: contain;
+    flex: 1 0 auto;
+    min-width: 0;
+    min-height: 0;
+    position: relative;
+    width: 100%;
+    > img {
+      height: 100%;
+      max-width: 100%;
       object-fit: contain;
-      flex: 1 0 auto;
-      min-width: 0;
-      min-height: 0;
-      position: relative;
-      width: 100%;
-      > img {
-        height: 100%;
-        max-width: 100%;
-        object-fit: contain;
-        width: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        transition: opacity 0.5s;
-      }
+      width: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transition: opacity 0.5s;
     }
-    .#{$room-item-desc} {
-      flex: 0 1 auto;
-      min-width: 0;
-      min-height: $room-text-min-height;
-      max-height: $room-text-max-height;
-      max-width: $room-text-max-width;
-      padding: $room-text-padding;
-      overflow: auto;
-      margin: 0;
-      box-sizing: content-box;
-      display: flex;
-      align-items: center;
-      @include room-item-desc;
-    }
+  }
+
+  .#{$room-item-desc} {
+    flex: 0 1 auto;
+    min-width: 0;
+    min-height: $room-text-min-height;
+    max-height: $room-text-max-height;
+    max-width: $room-text-max-width;
+    padding: $room-text-padding;
+    overflow: auto;
+    margin: 0;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include room-item-desc;
   }
 }
 
@@ -675,7 +682,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   width: $room-size-width;
   position: absolute;
   margin: 0 auto;
-  pointer-events: none;
   @media (max-width: $room-mobile-media-width) {
     width: $room-mobile-size-width;
     height: $room-mobile-size-height;

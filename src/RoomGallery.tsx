@@ -41,7 +41,7 @@ export const roomGalleryDefaultSettings = {
   swipeToNav: true,
   swipeToZoom: true,
   keypressToNav: true,
-  keypressToZoom: true,
+  keypressToZoom: true
 } as RoomGallerySettingsType;
 
 export const GalleryContext = createContext(null);
@@ -88,6 +88,7 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, ele
       items: preItems!,
       activeItem
     })
+    if (typeof settings?.event?.onRender === 'function') settings?.event?.onRender(value)
   }
 
   const gotoNextItem = () => {
@@ -187,12 +188,13 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, ele
       fetchHandler(fetchUrl!).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})
       })
+
     } else if (fetchUrl) {
       dataFetch(fetchUrl).then((fetchItems: Array<ItemType>) => {
         parseItems({dataItems: fetchItems, preItems, preRooms})
       })
     } else {
-      console.error('Any fetch methods or items provided.')
+      console.error('No fetch methods or items provided. Use one of this props: fetchHandler, dataItems, elementItems, fetchUrl')
     }
   }, [])
 
@@ -242,7 +244,7 @@ export const RoomGallery: FC<RoomGalleryProps> = ({ fetchHandler, dataItems, ele
       <Suspense fallback={<Loading />}>
         {
           currentState.rooms.length > 0 &&
-          <div ref={roomRef} className={`room ${isDarkMode() ? 'room-dark' : ''} ${isZoomed() ? 'room-zoom' : ''}`}  {...swipeHandlers}>
+          <div ref={roomRef} className={`room-gallery${isDarkMode() ? ' room-dark' : ''}${isZoomed() ? ' room-zoom' : ''}`} {...swipeHandlers}>
             <div className="room-body">
               <div className="room-arena">
                 {

@@ -14,6 +14,7 @@ export interface WallI {
   items: Array<ItemType>;
   room: RoomType;
   visible: boolean;
+  active: boolean;
 }
 
 export type WallType = {
@@ -23,17 +24,24 @@ export type WallType = {
   visible: boolean;
 }
 
-export const Wall = ({ direction, items }: WallI) => {
-  return <div className={`wall wall-${direction}`}>
+export const Wall = ({ direction, items, active }: WallI) => {
+  return <div className={`wall wall-${direction}${active ? ' wall-active' : ''}`}>
     { items.map(item => (
       <Item
         key={item.index}
         index={item.index}
-        description={item.description}
-        image={item.image}
+        title={item?.title}
+        description={item?.description}
+        descriptionHtml={item?.descriptionHtml}
+        image={item?.image}
         element={item?.element}
+        html={item?.html}
+        vimeo={item?.vimeo}
+        youtube={item?.youtube}
         HtmlElement={item?.HtmlElement}
         position={item.position}
+        height={item?.height}
+        width={item?.width}
       />
     ))}
   </div>

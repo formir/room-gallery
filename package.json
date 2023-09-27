@@ -1,12 +1,12 @@
 {
-  "name": "room-gallery",
-  "version": "1.0.0",
+  "name": "react-room-gallery",
+  "version": "1.0.0-beta",
   "description": "Virtual gallery",
   "main": "index.js",
   "repository": "https://github.com/formir/room-gallery.git",
   "author": "Konrad Kubrak",
   "license": "MIT",
-  "private": null,
+  "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
     "build": "webpack --mode production"

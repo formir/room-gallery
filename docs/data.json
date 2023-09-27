@@ -1,22 +1,17 @@
 {
   "items": [
     {
-      "image": {
-        "thumb": "https://picsum.photos/id/237/150/100",
-        "prompt": "https://picsum.photos/id/237/600/400",
-        "original": "https://picsum.photos/id/237/300/200",
-        "zoom": "https://picsum.photos/id/237/2400/1600"
-      },
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "image": "formir-room-thumb.png",
+      "title": "The Room Gallery - React & jQuery plugin",
+      "description": "Provided to you in Open Beta during testing and development process.",
+      "height": "280px",
+      "width": "280px"
     },
     {
-      "image": {
-        "thumb": "https://picsum.photos/id/238/150/100",
-        "prompt": "https://picsum.photos/id/238/600/400",
-        "original": "https://picsum.photos/id/238/1200/800",
-        "zoom": "https://picsum.photos/id/238/2400/1600"
-      },
-      "description": "Suspendisse eu tortor non nibh fermentum cursus."
+      "image": "formir-500.png",
+      "descriptionHtml": "<p style='margin: 0 0 10px'>Help with testing and improve:</p><p style='margin: 0'><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
+      "height": "200px",
+      "width": "200px"
     },
     {
       "image": {

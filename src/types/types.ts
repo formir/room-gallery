@@ -76,8 +76,12 @@ export type RoomGallerySettingsType = {
   swipeToZoom?: boolean;
   keypressToNav?: boolean;
   keypressToZoom?: boolean;
+  callback?: {
+    getValue?: () => { }
+  }
   event?: {
     onInit?: (value?: object) => void
+    onRender?: (value?: object) => void
     onShowNext?: (value?: object) => void
     onShowPrev?: (value?: object) => void
     onZoomIn?: (value?: object) => void

@@ -22,6 +22,7 @@ export interface IroomGallery {
 
 export function RoomGallery({ element, fetchMethod, items, elements, styles, settings } : IroomGallery ) {
   const container = typeof element === 'string' ? document.querySelectorAll(element)[0] : element
+  if (!container) return console.error("Specify container element, provide query string or HTML Element in 'element' prop.")
   let dataItems
   let props = {} as RoomGalleryProps
 

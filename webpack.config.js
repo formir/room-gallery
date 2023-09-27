@@ -7,7 +7,6 @@ const path = require("path");
 
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
-  const isIndex = process.env.ENTRY === 'index';
   return {
     entry: {
       index: "./src/index.tsx",
