@@ -9,7 +9,7 @@
     },
     {
       "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Help with testing and improve:</p><p style='margin: 0'><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
+      "descriptionHtml": "<p style='margin: 0 0 30px'>Help testing and improve:</p><p style='margin: 0'><a href='https://github.com/formir/room-react'><img style='height: 35px; width: auto;' src='https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png'/></a></p>",
       "height": "200px",
       "width": "200px"
     },
