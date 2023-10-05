@@ -9,13 +9,35 @@ module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development';
   return {
     entry: {
-      index: "./src/index.tsx",
-      roomGallery: "./src/function.tsx",
-      jQueryRoomGallery: "./src/jquery.tsx",
+      index: {
+        filename: "index.js",
+        import: "./src/index.tsx"
+      },
+      jquery: {
+        filename: "jQueryRoomGallery.js",
+        import: "./src/jquery.tsx",
+        library: {
+          type: "umd",
+          name: "RoomGallery",
+          export: 'default'
+        }
+      },
+      class: {
+        import: "./src/class.tsx",
+        filename: "RoomGallery.js",
+        library: {
+          type: "umd",
+          name: "RoomGallery",
+          export: 'default'
+        }
+      }
+      // index: "./src/index.tsx",
+      // roomGalleryFunction: "./src/function.tsx",
+      // roomGalleryClass: "./src/class.tsx",
+      // roomGalleryjQuery: "./src/jquery.tsx",
     },
     output: {
       path: path.join(__dirname, "docs"),
-      filename: "[name].js",
       clean: true
     },
     module: {

@@ -1,5 +1,6 @@
 import { ItemType, Position } from './../components/Item'
 import { RoomType } from './../components/Room'
+import { Ref } from 'react'
 
 export enum ArrowNav {
   number = 'number',
@@ -77,7 +78,7 @@ export type RoomGallerySettingsType = {
   keypressToNav?: boolean;
   keypressToZoom?: boolean;
   callback?: {
-    getValue?: () => { }
+    next?: () => { }
   }
   event?: {
     onInit?: (value?: object) => void
@@ -99,6 +100,7 @@ export interface RoomGalleryProps {
   styles?: object;
   children?: JSX.Element[] | JSX.Element;
   settings?: RoomGallerySettingsType;
+  ref: Ref<HTMLDivElement>
 }
 
 export interface parseItemsI {

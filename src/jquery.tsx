@@ -9,9 +9,12 @@ declare global {
 if (typeof jQuery !== 'undefined') {
   (function ($) {
     $.fn.RoomGallery = function (options: IroomGallery): JQuery {
-      return this.map(function () {
-        return RoomGallery({ ...options, ...{ element: this } })
-      })
+      if (this.length > 1) {
+        RoomGallery({ ...options, ...{ elements: this } })
+      } else if (this.length === 1) {
+        RoomGallery({ ...options, ...{ element: this } })
+      }
+      return this
     }
   })(jQuery)
 }

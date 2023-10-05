@@ -33,7 +33,7 @@ export function RoomGallery({ element, fetchMethod, items, elements, styles, set
     if (items.length > 0) {
       dataItems = [...items].map((item) =>
       item.tagName === 'IMG' && typeof item.tagName === 'string' ?
-        { image: item.src.toString(), description: item.title.toString() } as ItemType : item as ItemType
+          { image: item.src.toString(), title: item.title.toString(), description: item.alt.toString() } as ItemType : {} as ItemType
       )
     }
     props.dataItems = dataItems
