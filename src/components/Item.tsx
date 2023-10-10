@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect, useContext } from 'react'
-import { GalleryContext } from './../RoomGallery'
+import React, { useRef, useState, useEffect, useContext, forwardRef, Ref } from 'react'
+import { GalleryContext } from './RoomGallery'
 import DOMPurify from "dompurify";
 
 export type Position = {x: number, y: number}
@@ -20,19 +20,23 @@ export type ItemType = {
   HtmlElement?: HTMLElement;
 }
 
-const Image = (props: React.ComponentPropsWithRef<"img">) => {
-  return <img {...props} loading="lazy" decoding="async"/>
-}
+const Image = forwardRef(
+  (
+    props: React.ComponentPropsWithRef<"img">,
+    ref: Ref<HTMLImageElement>
+  ) => {
+    return <img ref={ref} {...props} loading="lazy" decoding="async"/>
+})
 
 export const Item = ({ image, title, description, descriptionHtml, html, vimeo, youtube, element, HtmlElement, position, height, width } : ItemType) => {
   const {zoom, position: currentPosition} = useContext(GalleryContext);
   const [originLoaded, setOriginLoaded] = useState(false)
-  const refOriginImage = useRef<HTMLImageElement>(null)
+  const refOriginImage = React.createRef<HTMLImageElement>()
 
   const [zoomLoaded, setZoomLoaded] = useState(false)
-  const refZoomImage = useRef<HTMLImageElement>(null)
+  const refZoomImage = React.createRef<HTMLImageElement>()
 
-  const refPromptImage = useRef<HTMLImageElement>(null)
+  const refPromptImage = React.createRef<HTMLImageElement>()
 
   const originOnLoad = () => {
     setOriginLoaded(true)

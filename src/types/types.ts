@@ -77,9 +77,6 @@ export type RoomGallerySettingsType = {
   swipeToZoom?: boolean;
   keypressToNav?: boolean;
   keypressToZoom?: boolean;
-  callback?: {
-    next?: () => { }
-  }
   event?: {
     onInit?: (value?: object) => void
     onRender?: (value?: object) => void
@@ -93,14 +90,12 @@ export type RoomGallerySettingsType = {
 }
 
 export interface RoomGalleryProps {
-  fetchHandler?: (fetchUrl:string) => Promise<Array<ItemType>>;
-  dataItems?: Array<ItemType>;
-  elementItems?: HTMLElement[];
-  fetchUrl?: string;
+  fetch?: () => Promise<Array<ItemType>> | any;
+  items?: (ItemType[] | HTMLElement[]);
   styles?: object;
   children?: JSX.Element[] | JSX.Element;
   settings?: RoomGallerySettingsType;
-  ref: Ref<HTMLDivElement>
+  ref?: Ref<HTMLDivElement>
 }
 
 export interface parseItemsI {

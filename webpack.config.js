@@ -1,43 +1,42 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 
 module.exports = (env, argv) => {
-  const isDevelopment = argv.mode === 'development';
+  const isDevelopment = argv.mode === "development";
   return {
     entry: {
+      demo: {
+        filename: "demo.js",
+        import: "./src/demo.tsx"
+      },
       index: {
-        filename: "index.js",
-        import: "./src/index.tsx"
+        import: "./src/index.tsx",
+        filename: "index.js"
       },
       jquery: {
-        filename: "jQueryRoomGallery.js",
         import: "./src/jquery.tsx",
+        filename: "jQueryRoomGallery.js",
         library: {
           type: "umd",
           name: "RoomGallery",
-          export: 'default'
+          export: "default"
         }
       },
-      class: {
-        import: "./src/class.tsx",
+      RoomGallery: {
+        import: "./src/RoomGallery.tsx",
         filename: "RoomGallery.js",
         library: {
           type: "umd",
           name: "RoomGallery",
-          export: 'default'
+          export: "default"
         }
       }
-      // index: "./src/index.tsx",
-      // roomGalleryFunction: "./src/function.tsx",
-      // roomGalleryClass: "./src/class.tsx",
-      // roomGalleryjQuery: "./src/jquery.tsx",
     },
     output: {
-      path: path.join(__dirname, "docs"),
+      path: path.join(__dirname, "dist"),
       clean: true
     },
     module: {
@@ -45,35 +44,35 @@ module.exports = (env, argv) => {
         {
           test: /\.(png|jp(e*)g|gif)$/,
           type: "asset/resource",
-          generator : {
-            filename : 'img/[name][ext][query]',
+          generator: {
+            filename : "img/[name][ext][query]",
           }
         },
         {
           test: /\.svg$/i,
           issuer: /\.[jt]sx?$/,
-          use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+          use: [{ loader: "@svgr/webpack", options: { icon: true } }],
         },
         {
           test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader'],
+          use: ["babel-loader"],
         },
         {
           test: /\.s(a|c)ss$/,
           use: [
-            isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+            isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: '[local]',
+                  localIdentName: "[local]",
                 },
                 sourceMap: isDevelopment,
               },
             },
             {
-              loader: 'sass-loader',
+              loader: "sass-loader",
               options: {
                 sourceMap: isDevelopment,
               },
@@ -83,7 +82,7 @@ module.exports = (env, argv) => {
       ],
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss'],
+      extensions: [".tsx", ".ts", ".js", ".jsx", ".scss"],
     },
     externals: {
       "jQuery": "jQuery"
@@ -96,30 +95,18 @@ module.exports = (env, argv) => {
       warnings: false,
     },
     devServer: {
-      static: path.join(__dirname, 'public'),
+      static: path.join(__dirname, "public"),
       compress: true,
       port: 3011,
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: "./src/index.html",
       }),
       new MiniCssExtractPlugin({
-        filename: isDevelopment ? '[name].css' : '[name].css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].css',
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, 'public'),
-            to: path.resolve(__dirname, 'docs'),
-            globOptions: {
-              ignore: ['*.html'],
-            },
-          },
-        ],
-      }),
-    ],
+        filename: "RoomGallery.css"
+      })
+    ]
   }
 };
