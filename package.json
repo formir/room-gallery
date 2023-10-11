@@ -2,9 +2,11 @@
   "name": "room-gallery",
   "version": "1.0.0-beta",
   "description": "Virtual gallery",
-  "main": "src/index.js",
+  "main": "./dist/RoomGallery.js",
+  "style": "./dist/RoomGallery.css",
   "repository": "https://github.com/formir/room-gallery.git",
   "author": "Konrad Kubrak",
+  "email": "support@formir.io",
   "license": "MIT",
   "private": false,
   "scripts": {
