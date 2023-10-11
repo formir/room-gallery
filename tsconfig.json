@@ -7,6 +7,10 @@
     "module": "ES2015",
     "target": "ES5",
     "jsx": "react",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist",
+    "rootDir": "src",
     "lib": [
       "esnext",
       "dom"

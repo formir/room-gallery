@@ -54,7 +54,11 @@ module.exports = (env, argv) => {
           use: [{ loader: "@svgr/webpack", options: { icon: true } }],
         },
         {
-          test: /\.(js|jsx|ts|tsx)$/,
+          test: /\.([cm]?ts|tsx)$/,
+          use: ["ts-loader"]
+        },
+        {
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: ["babel-loader"],
         },
