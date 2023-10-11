@@ -1,5 +1,2 @@
-import { RoomGallery as ReactRoomGallery } from './components/RoomGallery';
-import RoomGallery from './RoomGallery';
-export default RoomGallery;
-export { ReactRoomGallery };
+export { RoomGallery } from './components/RoomGallery';
 //# sourceMappingURL=index.d.ts.map
