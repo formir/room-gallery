@@ -1,4 +1,2 @@
-import { RoomGallery as ReactRoomGallery } from './components/RoomGallery'
-import RoomGallery from './RoomGallery'
+import { RoomGallery } from './components/RoomGallery'
 export default RoomGallery
-export { ReactRoomGallery }
