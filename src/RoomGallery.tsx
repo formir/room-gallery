@@ -57,7 +57,7 @@ class RoomGallery implements IroomGallery {
     } else if (typeof this.items === 'object') {
       this.props.items = this.items
     } else if (typeof this.fetch === 'string' || typeof this.fetch === 'function') {
-      this.props.fetch = this.fetch
+      this.props.fetch = this.fetch.toString()
     }
   }
 

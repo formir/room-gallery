@@ -41,6 +41,32 @@ const root = createRoot(container);
 root.render(<RoomGallery fetch={dataFetch} styles={{}} settings={{}} />);
 ```
 
+## Interface: RoomGalleryProps
+
+### `fetch?: () => Promise<Array<ItemType>> | any | string`
+
+This optional property defines a function for fetching data, which is expected to return a promise that resolves to an array of `ItemType`, or it can return any other data type, such as a string. Use this function to load items dynamically. It can be used to populate the gallery with data. If not provided, the gallery may rely on the `items` property for static content.
+
+### `items?: (ItemType[] | HTMLElement[])`
+
+An array of `ItemType` objects or HTMLElements representing the items in the room gallery. These items can be static content or can be preloaded for display within the gallery. If the `fetch` function is provided, it may override this static data.
+
+### `styles?: object`
+
+An optional object that allows you to define custom styles for the room gallery. You can provide CSS styles using this property to customize the appearance of the gallery.
+
+### `children?: JSX.Element[] | JSX.Element`
+
+This property allows you to pass JSX elements as children to the room gallery. It can be used to add additional content or components within the gallery.
+
+### `settings?: RoomGallerySettingsType`
+
+An object that holds various settings for configuring the behavior and appearance of the room gallery. This can include options such as enabling/disabling features, adjusting layout, and more.
+
+### `ref?: Ref<HTMLDivElement>`
+
+An optional reference to the HTML `<div>` element that represents the room gallery. This can be used to access and manipulate the gallery's DOM element directly. This reference can be passed to other parts of your application as needed.
+
 ### you can also use children as node:
 
 ```javascript
@@ -72,7 +98,7 @@ root.render(<RoomGallery fetch={dataFetch} styles={{}} settings={{}} />);
 import RoomGallery  from 'room-gallery'
 
 const options = {
-  element: document.getElementById('root'),
+  element: document.getElementById('root'), // element in DOM to render gallery
   items: [{image: 'url', title: 'title', description: 'description'}], // optional items
   fetch: '//fetch-url' // optional fetch url or promise method
   styles: {},

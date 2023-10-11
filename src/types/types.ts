@@ -90,7 +90,7 @@ export type RoomGallerySettingsType = {
 }
 
 export interface RoomGalleryProps {
-  fetch?: () => Promise<Array<ItemType>> | any;
+  fetch?: (() => Promise<Array<ItemType>>) | string;
   items?: (ItemType[] | HTMLElement[]);
   styles?: object;
   children?: JSX.Element[] | JSX.Element;
