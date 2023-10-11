@@ -1,5 +1,5 @@
 {
-  "name": "react-room-gallery",
+  "name": "room-gallery",
   "version": "1.0.0-beta",
   "description": "Virtual gallery",
   "main": "src/index.js",
