@@ -1,2 +1,2 @@
-export { RoomGallery } from './components/RoomGallery';
+export { RoomGallery } from './../src/components/RoomGallery';
 //# sourceMappingURL=index.d.ts.map
