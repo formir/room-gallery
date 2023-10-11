@@ -1,5 +1,5 @@
-import { ItemType } from './../src/components/Item';
-import { RoomGallerySettingsType, RoomGalleryProps } from './../src/types/types';
+import { ItemType } from './components/Item';
+import { RoomGallerySettingsType, RoomGalleryProps } from './types/types';
 export interface IroomGallery {
     element: string | HTMLElement;
     fetch?: () => Promise<Array<object>> | string;

@@ -14,7 +14,12 @@ module.exports = (env, argv) => {
       },
       index: {
         import: "./src/index.tsx",
-        filename: "index.js"
+        filename: "index.js",
+        library: {
+          type: "umd",
+          name: "RoomGallery",
+          export: "default"
+        }
       },
       jquery: {
         import: "./src/jquery.tsx",

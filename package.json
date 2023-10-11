@@ -2,8 +2,8 @@
   "name": "room-gallery",
   "version": "1.0.0-beta",
   "description": "Virtual gallery",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/RoomGallery.js",
+  "types": "./dist/RoomGallery.d.ts",
   "style": "./dist/RoomGallery.css",
   "repository": "https://github.com/formir/room-gallery.git",
   "author": "Konrad Kubrak",
@@ -12,7 +12,7 @@
   "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo* && rm -rf dist/index.html && rm -rf dist/components && rm -rf dist/helpers  && rm -rf dist/types",
+    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo* && rm -rf dist/index* && rm -rf dist/components && rm -rf dist/helpers  && rm -rf dist/types",
     "build": "webpack --mode production"
   },
   "dependencies": {
