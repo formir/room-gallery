@@ -8,18 +8,13 @@ module.exports = (env, argv) => {
   const isDevelopment = argv.mode === "development";
   return {
     entry: {
+      dist: {
+        filename: "dist.js",
+        import: "./src/dist.tsx"
+      },
       demo: {
         filename: "demo.js",
         import: "./src/demo.tsx"
-      },
-      index: {
-        import: "./src/index.tsx",
-        filename: "index.js",
-        library: {
-          type: "umd",
-          name: "RoomGallery",
-          export: "default"
-        }
       },
       jquery: {
         import: "./src/jquery.tsx",
@@ -59,8 +54,9 @@ module.exports = (env, argv) => {
           use: [{ loader: "@svgr/webpack", options: { icon: true } }],
         },
         {
-          test: /\.([cm]?ts|tsx)$/,
-          use: ["ts-loader"]
+          test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
+          use: ["ts-loader"],
         },
         {
           test: /\.(js|jsx)$/,

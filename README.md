@@ -29,7 +29,7 @@ npm install room-gallery
 ```javascript
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ReactRoomGallery as RoomGallery } from "room-gallery";
+import RoomGallery from "room-gallery";
 
 const dataFetch = async () => {
   const data = await (await fetch("./data.json")).json();
@@ -95,7 +95,7 @@ An optional reference to the HTML `<div>` element that represents the room galle
 ## Usage Vanilla JavaScript
 
 ```javascript
-import RoomGallery  from 'room-gallery'
+import RoomGallery from 'room-gallery/dist'
 
 const options = {
   element: document.getElementById('root'), // element in DOM to render gallery
@@ -106,7 +106,7 @@ const options = {
 
 }
 const room = new RoomGallery(options) // gallery will init by default
-room.gotoNextItem()
+room.gotoNextItem() // use method to go to next
 
 ```
 

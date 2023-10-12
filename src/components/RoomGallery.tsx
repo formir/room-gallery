@@ -21,11 +21,7 @@ import { ItemType } from './Item'
 import { RoomType } from './Room'
 import { parseRooms, parseWalls, kebabize } from '../helpers/parse'
 
-import NextIcon from '../img/icons/next.svg'
-import PrevIcon from '../img/icons/prev.svg'
-import LightOffIcon from '../img/icons/light-off.svg'
-import ZoomInIcon from '../img/icons/zoom-in.svg'
-import ZoomOutIcon from '../img/icons/zoom-out.svg'
+import { NextIcon, PrevIcon, LightOffIcon, ZoomInIcon, ZoomOutIcon } from '../helpers/icons';
 
 export const roomGalleryDefaultSettings = {
   arrowNav: ArrowNav.number,
