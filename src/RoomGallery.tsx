@@ -31,6 +31,7 @@ class RoomGallery implements IroomGallery {
     this.settings = options?.settings
     this.roomGalleryRef = React.createRef()
     this.props = {}
+    this.container = null
     this.findContainer()
     this.prepareProps()
     this.init()
@@ -48,10 +49,16 @@ class RoomGallery implements IroomGallery {
     
     if (typeof this.items === 'object' && this.items[0] instanceof HTMLImageElement) {
       if (this.items.length > 0) {
-        dataItems = [...this.items].map((item: HTMLImageElement) =>
-        item.tagName === 'IMG' && typeof item.tagName === 'string' ?
-          { image: item.src.toString(), title: item.title.toString(), description: item.alt.toString() } as ItemType : {} as ItemType
-        )
+        dataItems = [...this.items].map((item) => {
+          let img = item as HTMLImageElement
+          let newItem = {} as ItemType
+          if (img.tagName === 'IMG' && typeof img.tagName === 'string') {
+            newItem.image = img.src.toString()
+            newItem.title = img.title.toString()
+            newItem.description = img.alt.toString()
+          }
+          return newItem
+        })
       }
       this.props.items = dataItems
     } else if (typeof this.items === 'object') {
@@ -62,9 +69,11 @@ class RoomGallery implements IroomGallery {
   }
 
   init(): {} | void {
-    const root = ReactDOM.createRoot(this.container),
-    room = <ReactRoomGallery {...this.props} ref={this.roomGalleryRef} />
-    root.render(room)
+    if (this.container) {
+      const root = ReactDOM.createRoot(this.container),
+      room = <ReactRoomGallery {...this.props} ref={this.roomGalleryRef} />
+      root.render(room)
+    }
   }
 
   gotoNextItem(): void {

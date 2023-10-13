@@ -47,11 +47,11 @@ export const Item = ({ image, title, description, descriptionHtml, html, vimeo, 
   }
 
   const atCurrentPosition = () => {
-    return currentPosition.x - position.x < 1 && currentPosition.x - position.x > -1 && currentPosition.y === position.y
+    if (position && currentPosition) return currentPosition.x - position.x < 1 && currentPosition.x - position.x > -1 && currentPosition.y === position.y
   }
 
   const atPosition = () => {
-    return currentPosition.x == position.x && currentPosition.y === position.y
+    if (position && currentPosition) return currentPosition.x == position.x && currentPosition.y === position.y
   }
 
   function dimentions() {

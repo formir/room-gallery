@@ -17,7 +17,7 @@ import {
   StylesVariables
 } from '../types/types'
 import { Room } from './Room'
-import { ItemType } from './Item'
+import { ItemType, Position } from './Item'
 import { RoomType } from './Room'
 import { parseRooms, parseWalls, kebabize } from '../helpers/parse'
 
@@ -40,7 +40,7 @@ export const roomGalleryDefaultSettings = {
   keypressToZoom: true
 } as RoomGallerySettingsType;
 
-export const GalleryContext = createContext(null);
+export const GalleryContext = createContext({position: roomGalleryDefaultSettings.defaultPosition, zoom: roomGalleryDefaultSettings.zoomMode === 'in'});
 
 export const RoomGallery = forwardRef(
   (
@@ -49,11 +49,11 @@ export const RoomGallery = forwardRef(
       items: dataItems,
       styles,
       children,
-      settings,
+      settings: dataSettings,
     }: RoomGalleryProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    settings = { ...roomGalleryDefaultSettings, ...settings }
+    const settings = { ...roomGalleryDefaultSettings, ...dataSettings }
 
     const [currentState, setCurrentState] = useState({
       items: [] as Array<ItemType>,
@@ -79,7 +79,7 @@ export const RoomGallery = forwardRef(
         itemsToParse = [...elementItems]
         const newItems = [] as Array<ItemType>
         itemsToParse.forEach((element) => {
-          newItems.push({HtmlElement: element})
+          newItems.push({ HtmlElement: element})
         })
         itemsToParse = newItems
       } else {
@@ -87,7 +87,7 @@ export const RoomGallery = forwardRef(
       }
       parseRooms(itemsToParse, preRooms)
       const activeItem = parseWalls(itemsToParse, preItems, preRooms, position)
-      setCurrentState({
+      if (activeItem) setCurrentState({
         rooms: preRooms,
         items: preItems,
         activeItem
@@ -96,38 +96,42 @@ export const RoomGallery = forwardRef(
     }
 
     const gotoNextItem = () => {
-      if (getNextItem()) {
-        setCurrent(getNextItem())
+      const nextItem = getNextItem()
+      if (nextItem) {
+        setCurrent(nextItem)
         if (typeof settings?.event?.onShowNext === 'function') settings?.event?.onShowNext(value)
       }
     }
 
     const getNextItem = () => {
+      if (currentState.activeItem.index)
       return currentState.activeItem.index < currentState.items.length ? 
         currentState.items[currentState.activeItem.index + 1] :
         currentState.items[currentState.items.length]
     }
 
     const gotoPrevItem = () => {
-      if (getPrevItem()) {
-        setCurrent(getPrevItem())
+      const prevItem = getPrevItem()
+      if (prevItem) {
+        setCurrent(prevItem)
         if (typeof settings?.event?.onShowPrev === 'function') settings?.event?.onShowPrev(value)
       }
     }
 
     const getPrevItem = () => {
+      if (currentState.activeItem.index)
       return currentState.activeItem.index > 0 ?
       currentState.items[currentState.activeItem.index - 1] :
       currentState.items[0]
     }
 
     const getCurrentItem = () => {
-      return currentState.activeItem
+      return {index: 0} || currentState.activeItem
     }
 
     const setCurrent = (item: ItemType) => {
       setCurrentState({ ...currentState, activeItem: item })
-      setPosition({ y: item.position.y, x: item.position.x })
+      if (item.position) setPosition({ y: item.position.y, x: item.position.x }) 
     }
 
     const toggleDarkMode = () => {
@@ -136,7 +140,7 @@ export const RoomGallery = forwardRef(
       if (typeof settings?.event?.onDarkModeOff === 'function' && dark) settings?.event?.onDarkModeOff(value)
     }
     
-    const setDarkMode = (mode : boolean) => {
+    const setDarkMode = (mode: boolean) => {
       setDark(mode)
       if (typeof settings?.event?.onDarkModeOn === 'function' && !dark) settings?.event?.onDarkModeOn(value)
       if (typeof settings?.event?.onDarkModeOff === 'function' && dark) settings?.event?.onDarkModeOff(value)
@@ -194,7 +198,7 @@ export const RoomGallery = forwardRef(
 
       if (children) {
         parseItems({ childrenItems: children, preItems, preRooms })
-      } else if (dataItems?.length > 0 && typeof dataItems === 'object') {
+      } else if (dataItems && dataItems?.length > 0 && typeof dataItems === 'object') {
         if (dataItems[0] instanceof HTMLElement) {
           parseItems({ elementItems: dataItems as Array<HTMLElement>, preItems, preRooms })
         } else {
@@ -280,7 +284,7 @@ export const RoomGallery = forwardRef(
       <GalleryContext.Provider value={value}>
         <Suspense fallback={<Loading />}>
           {
-            currentState.rooms.length > 0 &&
+            currentState && currentState.rooms.length > 0 &&
             <div className={`room-gallery${isDarkMode() ? ' room-dark' : ''}${isZoomed() ? ' room-zoom' : ''}`} {...swipeHandlers}>
               <div className="room-body">
                 <div className="room-arena">
@@ -296,12 +300,12 @@ export const RoomGallery = forwardRef(
                     )
                   }
                 </div>
-                { settings.arrowNav !== ArrowNav.disabled && 
+                { currentState.activeItem.index && settings.arrowNav !== ArrowNav.disabled && 
                   <div className="room-navigations">
                     { 
                       currentState.activeItem.index > 0 && getPrevItem() &&
                       ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) &&
-                      <>
+                      settings.arrowNav && <>
                         {
                           ['number', 'blank'].includes(settings.arrowNav) ?
                           <button className="room-prev" onClick={() => gotoPrevItem()}>
@@ -316,7 +320,7 @@ export const RoomGallery = forwardRef(
                     {
                       currentState.items.length > currentState.activeItem.index + 1 && getNextItem() && 
                       ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) && 
-                      <>
+                      settings.arrowNav && <>
                         {
                           ['number', 'blank'].includes(settings.arrowNav) ?
                           <button className="room-next" onClick={() => gotoNextItem()}>

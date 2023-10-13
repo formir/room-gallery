@@ -4,7 +4,7 @@ import { Wall, WallType, Direction } from './Wall'
 export interface RoomI {
   room: RoomType;
   rooms: Array<RoomType>;
-  position: {x: number, y: number};
+  position?: {x: number, y: number};
   index: number;
 }
 
@@ -15,7 +15,7 @@ export type RoomType = {
 }
 
 export const Room = ({ room, rooms, position, index }: RoomI) => {
-  return room.walls && <div
+  return room.walls && position && <div
     className={`walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
     style={
       {

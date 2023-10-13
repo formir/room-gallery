@@ -18,7 +18,7 @@ function insertItem (item: ItemType | null, roomIndex = 0, direction: Direction,
 }
 
 export const findItemByPosition = (position: Position, items: Array<ItemType>) => {
-  return items.find((item) => (item.position.x === position.x && position.y === position.y ? item : null ))
+  return items.find((item) => (item.position && item.position.x === position.x && position.y === position.y ? item : null ))
 }
 
 export function parseRooms (items: Array<ItemType>, preRooms: Array<RoomType>) {

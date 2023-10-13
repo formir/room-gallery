@@ -174,7 +174,7 @@ $('img').RoomGallery({element: $('#room-gallery').get(0), styles:{} settings:{}}
 
 ```javascript
 $('#room-gallery').RoomGallery({items: $('img'), styles:{} settings:{}})
-$('#room-gallery').initRoomGallery // will give you access for control method and state
+$('#room-gallery').data('RommGallery') // will give you access for control method and state
 ```
 
 ## RoomGallery Settings

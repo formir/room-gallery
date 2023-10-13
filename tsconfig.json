@@ -11,6 +11,7 @@
     "declarationMap": true,
     "declarationDir": "dist",
     "rootDir": "src",
+    "strict": true,
     "lib": [
       "esnext",
       "dom"
