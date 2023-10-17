@@ -3,7 +3,7 @@ import { WallType } from './Wall';
 export interface RoomI {
     room: RoomType;
     rooms: Array<RoomType>;
-    position: {
+    position?: {
         x: number;
         y: number;
     };
@@ -17,5 +17,5 @@ export type RoomType = {
     };
     index: number;
 };
-export declare const Room: ({ room, rooms, position, index }: RoomI) => React.JSX.Element;
+export declare const Room: ({ room, rooms, position, index }: RoomI) => React.JSX.Element | undefined;
 //# sourceMappingURL=Room.d.ts.map

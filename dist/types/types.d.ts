@@ -91,8 +91,8 @@ export interface parseItemsI {
     elementItems?: HTMLElement[];
     childrenItems?: JSX.Element[] | JSX.Element;
     nodeItems?: Element | NodeListOf<Element>;
-    preItems?: Array<ItemType>;
-    preRooms?: Array<RoomType>;
+    preItems: Array<ItemType>;
+    preRooms: Array<RoomType>;
 }
 export declare enum StylesVariables {
     'lightRoomBackgroundBlendMode' = 0,

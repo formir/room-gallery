@@ -104,7 +104,7 @@ export const RoomGallery = forwardRef(
     }
 
     const getNextItem = () => {
-      if (currentState.activeItem.index)
+      if (typeof currentState.activeItem.index === 'number')
       return currentState.activeItem.index < currentState.items.length ? 
         currentState.items[currentState.activeItem.index + 1] :
         currentState.items[currentState.items.length]
@@ -119,14 +119,14 @@ export const RoomGallery = forwardRef(
     }
 
     const getPrevItem = () => {
-      if (currentState.activeItem.index)
+      if (typeof currentState.activeItem.index === 'number')
       return currentState.activeItem.index > 0 ?
       currentState.items[currentState.activeItem.index - 1] :
       currentState.items[0]
     }
 
     const getCurrentItem = () => {
-      return {index: 0} || currentState.activeItem
+      return currentState.activeItem
     }
 
     const setCurrent = (item: ItemType) => {
@@ -300,7 +300,7 @@ export const RoomGallery = forwardRef(
                     )
                   }
                 </div>
-                { currentState.activeItem.index && settings.arrowNav !== ArrowNav.disabled && 
+                { typeof currentState.activeItem.index === 'number' && settings.arrowNav !== ArrowNav.disabled && 
                   <div className="room-navigations">
                     { 
                       currentState.activeItem.index > 0 && getPrevItem() &&
@@ -309,7 +309,7 @@ export const RoomGallery = forwardRef(
                         {
                           ['number', 'blank'].includes(settings.arrowNav) ?
                           <button className="room-prev" onClick={() => gotoPrevItem()}>
-                            { settings.arrowNav === ArrowNav.number && <span>{getCurrentItem().index}</span> }
+                            { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index}</span> }
                           </button> :
                           <button className="room-prev room-icon" onClick={() => gotoPrevItem()}>
                             { settings?.icons?.prev ?? <PrevIcon/> }
@@ -324,7 +324,7 @@ export const RoomGallery = forwardRef(
                         {
                           ['number', 'blank'].includes(settings.arrowNav) ?
                           <button className="room-next" onClick={() => gotoNextItem()}>
-                            { settings.arrowNav === ArrowNav.number && <span>{getCurrentItem().index + 2.0}</span> }
+                            { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index + 2.0}</span> }
                           </button> :
                           <button className="room-next room-icon" onClick={() => gotoNextItem()}>
                             { settings?.icons?.next ?? <NextIcon/> }
