@@ -4,7 +4,7 @@ RoomGallery is a powerful and versatile 3D image gallery slider for your web app
 
 - Library is free to use as Open Beta
 
-![RoomGallery Example](https://formir.io/room-gallery/)
+Demo: https://formir.io/room-gallery/
 
 ## Features
 
