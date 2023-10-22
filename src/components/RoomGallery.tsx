@@ -17,7 +17,7 @@ import {
   StylesVariables
 } from '../types/types'
 import { Room } from './Room'
-import { ItemType, Position } from './Item'
+import { ItemType } from './Item'
 import { RoomType } from './Room'
 import { parseRooms, parseWalls, kebabize } from '../helpers/parse'
 
@@ -340,10 +340,11 @@ export const RoomGallery = forwardRef(
                   <div className="room-paginations">
                     { currentState.items.map((item, index) => (
                       item && <button
-                        className={`${index === currentState.activeItem.index ? 'active' : ''} ${settings.paginationsNav === PaginationsNav.text ? 'room-icon' : ''}`}
+                        className={`${index === currentState.activeItem.index ? 'active' : ''}${settings.paginationsNav === PaginationsNav.text ? ' room-icon' : ''}`}
                         key={index}
                         onClick={() => setCurrent(item) }>
-                          { settings.paginations === Paginations.number && <span>{index + 1}</span> }
+                        { settings.paginations === Paginations.number && <span>{index + 1}</span> }
+                        { settings.paginations === Paginations.title && <span>{item?.title}</span> }
                         </button>
                     ))}
                   </div>

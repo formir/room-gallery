@@ -25,7 +25,7 @@ export type WallType = {
 }
 
 export const Wall = ({ direction, items, active }: WallI) => {
-  return <div className={`wall wall-${direction}${active ? ' wall-active' : ''}`}>
+  return <div className={`room-wall wall-${direction}${active ? ' wall-active' : ''}`}>
     { items.map(item => (
       <Item
         key={item.index}

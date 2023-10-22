@@ -76,7 +76,7 @@ export const Item = ({ image, title, description, descriptionHtml, html, vimeo, 
   }
 
   function itemClass() {
-    return `item${atPosition() ? ' item-active' : ''}`
+    return `room-item${atPosition() ? ' item-active' : ''}`
   }
 
   if (element) {

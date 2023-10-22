@@ -13,12 +13,12 @@ $room-dark: room-dark;
 $room-dark-auto: room-dark-auto;
 $room-body: room-body;  // body of room
 $room-arena: room-arena;  // next wrapper coled arena
-$room-walls: walls; // walls in 3d
-$room-wall: wall;
+$room-walls: room-walls; // walls in 3d
+$room-wall: room-wall;
 $room-wall-active: wall-active;
-$room-ceil: ceil;
-$room-floor: floor;
-$room-item: item; // item to display on the wall
+$room-ceil: room-ceil;
+$room-floor: room-floor;
+$room-item: room-item; // item to display on the wall
 $room-item-active: item-active;
 $room-item-image: item-image; // image container
 $room-item-desc: item-desc; // image drescription
@@ -205,8 +205,8 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 
 @mixin room-button($size: $room-button-size) {
   height: $size;
-  min-width: $size - calc($size / 3);
-  padding: 0 calc( $size / 3 / 2);
+  min-width: $size - calc($size / 1.5);
+  padding: 0 calc( $size / 1.5 / 2);
   color: $room-button-color;
   line-height: $size;
   font-size: calc($size / 2.5);
@@ -461,7 +461,9 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   }
   .#{$room-paginations}  {
     bottom: $room-pagination-position;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     button {
       @include room-button($room-pagination-button-size);
       display: inline-block;
@@ -501,6 +503,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     pointer-events: none;
     &.#{$room-wall-active} {
       pointer-events: auto;
+      z-index: 10;
     }
   }
   .#{$room-ceil} {
@@ -682,6 +685,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   width: $room-size-width;
   position: absolute;
   margin: 0 auto;
+  pointer-events: none;
   @media (max-width: $room-mobile-media-width) {
     width: $room-mobile-size-width;
     height: $room-mobile-size-height;

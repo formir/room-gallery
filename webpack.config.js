@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
+          exclude: ["/node_modules/","/src/index"],
           use: ["babel-loader"],
         },
         {

@@ -34,7 +34,8 @@ export declare enum PaginationsNav {
 export declare enum Paginations {
     disabled = "disabled",
     number = "number",
-    blank = "blank"
+    blank = "blank",
+    title = "title"
 }
 export declare enum PaginationsOnZoom {
     hide = "hide",

@@ -16,7 +16,7 @@ export type RoomType = {
 
 export const Room = ({ room, rooms, position, index }: RoomI) => {
   return room.walls && position && <div
-    className={`walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
+    className={`room-walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
     style={
       {
         transform: 'rotateY(' + (position.y * 90) + 'deg) translateX(' + ((index - position.x) * 100) + '%)',
@@ -34,7 +34,7 @@ export const Room = ({ room, rooms, position, index }: RoomI) => {
         active={position.x === index && position.y === indexOfDirection}
       />
 }) }
-    <div className="ceil"></div>
-    <div className="floor"></div>
+    <div className="room-ceil"></div>
+    <div className="room-floor"></div>
   </div>
 }
