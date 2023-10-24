@@ -41,6 +41,63 @@ const root = createRoot(container);
 root.render(<RoomGallery fetch={dataFetch} styles={{}} settings={{}} />);
 ```
 
+## ItemType
+
+The `ItemType` is a TypeScript type that defines the structure of the primary data element in your `data.json` file, which is processed by your gallery. It provides a way to specify the properties and their types for individual items in your gallery.
+
+### Properties
+
+- `title` (optional): A string representing the title of the item.
+- `description` (optional): A string for a description of the item.
+- `descriptionHtml` (optional): A string containing HTML for the item's description.
+- `image` (optional): A string or an object representing the image associated with the item. It can include properties like `prompt`, `original`, and `zoom`.
+- `html` (optional): A string containing HTML content for the item.
+- `video` (optional): A string representing the URL of a video.
+- `vimeo` (optional): A string representing the URL of a Vimeo video.
+- `youtube` (optional): A string representing the URL of a YouTube video.
+- `width` (optional): A string with the item's width in the format of a number followed by a unit (e.g., "200px").
+- `height` (optional): A string with the item's height in the format of a number followed by a unit (e.g., "150px").
+
+This type provides the structure for defining various properties for each item within your gallery's data. You can customize the properties based on the specific data you want to associate with each item.
+
+## Sample of josn data
+
+```json
+{
+  "items": [
+    {
+      "image": "formir-room-thumb.png",
+      "title": "The Room Gallery - React & jQuery plugin",
+      "description": "Provided to you in Open Beta during testing and development process.",
+      "height": "280px",
+      "width": "280px"
+    },
+    {
+      "image": "formir-500.png",
+      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-react/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
+      "height": "200px",
+      "width": "200px"
+    },
+    {
+      "image": {
+        "prompt": "https://picsum.photos/id/239/600/400",
+        "original": "https://picsum.photos/id/239/1200/800",
+        "zoom": "https://picsum.photos/id/239/2400/1600"
+      },
+      "description": "Nullam placerat odio eget purus rhoncus, eget eleifend augue congue."
+    },
+    {
+      "image": {
+        "prompt": "https://picsum.photos/id/240/600/400",
+        "original": "https://picsum.photos/id/240/1200/800",
+        "zoom": "https://picsum.photos/id/240/2400/1600"
+      },
+      "description": "Nam vitae sem a arcu sodales rhoncus quis vel mi."
+    }
+  ]
+}
+```
+
 ## Interface: RoomGalleryProps
 
 ### `fetch?: () => Promise<Array<ItemType>> | any | string`

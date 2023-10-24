@@ -36,6 +36,7 @@ export const Wall = ({ direction, items, active }: WallI) => {
         image={item?.image}
         element={item?.element}
         html={item?.html}
+        video={item?.video}
         vimeo={item?.vimeo}
         youtube={item?.youtube}
         HtmlElement={item?.HtmlElement}

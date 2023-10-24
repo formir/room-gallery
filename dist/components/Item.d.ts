@@ -14,6 +14,7 @@ export type ItemType = {
         zoom?: string;
     };
     html?: string;
+    video?: string;
     vimeo?: string;
     youtube?: string;
     width?: `${number}${string}`;
@@ -23,5 +24,5 @@ export type ItemType = {
     element?: JSX.Element;
     HtmlElement?: HTMLElement;
 };
-export declare const Item: ({ image, title, description, descriptionHtml, html, vimeo, youtube, element, HtmlElement, position, height, width }: ItemType) => React.JSX.Element;
+export declare const Item: ({ image, title, description, descriptionHtml, html, video, vimeo, youtube, element, HtmlElement, position, height, width }: ItemType) => React.JSX.Element;
 //# sourceMappingURL=Item.d.ts.map

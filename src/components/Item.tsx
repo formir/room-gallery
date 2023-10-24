@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext, forwardRef, Ref } from 'react'
+import React, { useState, useEffect, useContext, forwardRef, Ref } from 'react'
 import { GalleryContext } from './RoomGallery'
 import DOMPurify from "dompurify";
 
@@ -10,6 +10,7 @@ export type ItemType = {
   descriptionHtml?: string;
   image?: string | { thumb?: string, prompt: string, original: string, zoom?: string };
   html?: string;
+  video?: string;
   vimeo?: string;
   youtube?: string;
   width?: `${number}${string}`;
@@ -28,7 +29,7 @@ const Image = forwardRef(
     return <img ref={ref} {...props} loading="lazy" decoding="async"/>
 })
 
-export const Item = ({ image, title, description, descriptionHtml, html, vimeo, youtube, element, HtmlElement, position, height, width } : ItemType) => {
+export const Item = ({ image, title, description, descriptionHtml, html, video, vimeo, youtube, element, HtmlElement, position, height, width } : ItemType) => {
   const {zoom, position: currentPosition} = useContext(GalleryContext);
   const [originLoaded, setOriginLoaded] = useState(false)
   const refOriginImage = React.createRef<HTMLImageElement>()
@@ -85,6 +86,12 @@ export const Item = ({ image, title, description, descriptionHtml, html, vimeo, 
     return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(HtmlElement.innerHTML) }}></div>
   } else if (html) {
     return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }}></div>
+  } else if (video) {
+    return <div className={itemClass()}>
+      <video width={"640" || width} height={"360" || height} controls>
+        <source src={video}/>
+      </video>
+    </div>
   } else if (vimeo) {
     return <div className={itemClass()}>
       <iframe title="vimeo-player" src={vimeo} width={"640" || width} height={"360" || height} frameBorder="0" allowFullScreen></iframe>

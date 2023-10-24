@@ -58,7 +58,8 @@ export const RoomGallery = forwardRef(
     const [currentState, setCurrentState] = useState({
       items: [] as Array<ItemType>,
       rooms: [] as Array<RoomType>,
-      activeItem: {index: 0} as ItemType
+      activeItem: { index: 0 } as ItemType,
+      prevItem: { index: 0 } as ItemType
     })
     const [position, setPosition] = useState(settings.defaultPosition)
     const [dark, setDark] = useState(settings.darkMode === DarkMode.dark)
@@ -90,7 +91,8 @@ export const RoomGallery = forwardRef(
       if (activeItem) setCurrentState({
         rooms: preRooms,
         items: preItems,
-        activeItem
+        activeItem,
+        prevItem: currentState.activeItem
       })
       if (typeof settings?.event?.onRender === 'function') settings?.event?.onRender(value)
     }
@@ -130,7 +132,7 @@ export const RoomGallery = forwardRef(
     }
 
     const setCurrent = (item: ItemType) => {
-      setCurrentState({ ...currentState, activeItem: item })
+      setCurrentState({ ...currentState, activeItem: item, prevItem: currentState.activeItem })
       if (item.position) setPosition({ y: item.position.y, x: item.position.x }) 
     }
 
@@ -295,6 +297,8 @@ export const RoomGallery = forwardRef(
                         index={index}
                         room={room}
                         rooms={currentState.rooms}
+                        activeItem={currentState.activeItem}
+                        prevItem={currentState.prevItem}
                         position={position}/>
                       )
                     )

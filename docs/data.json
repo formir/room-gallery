@@ -9,7 +9,7 @@
     },
     {
       "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Help with testing and improve:</p><p style='margin: 0'><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
+      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-react/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
       "height": "200px",
       "width": "200px"
     },
@@ -59,13 +59,7 @@
       "description": "Aliquam pretium nulla et lorem viverra venenatis."
     },
     {
-      "image": {
-        "thumb": "https://picsum.photos/id/243/150/100",
-        "prompt": "https://picsum.photos/id/243/600/400",
-        "original": "https://picsum.photos/id/243/1200/800",
-        "zoom": "https://picsum.photos/id/243/2400/1600"
-      },
-      "description": "Phasellus sed sapien eget elit tincidunt euismod."
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4"
     },
     {
       "image": {
