@@ -8,9 +8,14 @@ module.exports = (env, argv) => {
   const isDevelopment = argv.mode === "development";
   return {
     entry: {
-      dist: {
-        filename: "dist.js",
-        import: "./src/dist.tsx"
+      index: {
+        filename: "index.js",
+        import: "./src/index.tsx",
+        library: {
+          type: "commonjs2",
+          name: "room-gallery",
+          export: "default"
+        }
       },
       demo: {
         filename: "demo.js",

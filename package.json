@@ -1,19 +1,41 @@
 {
   "name": "room-gallery",
   "version": "1.0.0-beta",
-  "description": "Virtual gallery",
-  "main": "./src",
-  "types": "./src",
+  "description": "Room Gallery: A 3D Exhibit - A Responsive 3D Image Slider Implemented in TypeScript as a React Component, Utilizing Vanilla JavaScript and jQuery",
+  "keywords": [
+    "slider",
+    "image",
+    "javascript slider",
+    "react slider",
+    "jquery slider",
+    "image slider",
+    "picture carousel",
+    "3d exhibit",
+    "3d gallery",
+    "zoom",
+    "transitions",
+    "shifts",
+    "animation",
+    "room gallery"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "style": "./dist/RoomGallery.css",
-  "repository": "https://github.com/formir/room-gallery.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formir/room-gallery.git"
+  },
   "author": "Konrad Kubrak",
   "email": "support@formir.io",
   "license": "MIT",
   "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.html && rm -rf dist/index.** && mv dist/dist.js dist/index.js && mv dist/dist.d.ts dist/index.d.ts && mv dist/dist.d.ts.map dist/index.d.ts.map && rm dist/dist.js.LICENSE.txt",
-    "build": "webpack --mode production",
+    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.html",
+    "build": "webpack --mode production && yarn docs",
     "test": "jest"
   },
   "dependencies": {
