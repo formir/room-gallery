@@ -8,15 +8,6 @@ module.exports = (env, argv) => {
   const isDevelopment = argv.mode === "development";
   return {
     entry: {
-      index: {
-        filename: "index.js",
-        import: "./src/index.tsx",
-        library: {
-          type: "commonjs2",
-          name: "room-gallery",
-          export: "default"
-        }
-      },
       demo: {
         filename: "demo.js",
         import: "./src/demo.tsx"
@@ -65,7 +56,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(js|jsx)$/,
-          exclude: ["/node_modules/","/src/index"],
+          exclude: /node_modules/,
           use: ["babel-loader"],
         },
         {

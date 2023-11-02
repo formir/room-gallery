@@ -22,7 +22,7 @@
       "@components/*": ["src/components/*"],
     },
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/index.tsx"],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",

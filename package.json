@@ -18,8 +18,8 @@
     "animation",
     "room gallery"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./src/index",
+  "types": "./src/index.tsx",
   "files": [
     "dist"
   ],
@@ -34,7 +34,7 @@
   "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.html",
+    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.* && rm -rf docs/*.d.**",
     "build": "webpack --mode production && yarn docs",
     "test": "jest"
   },
