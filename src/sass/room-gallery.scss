@@ -34,19 +34,21 @@ $room-exit-button: room-exit-btn;  // button to live zoom
 $room-canvas: room-canvas; // class for border/canvas style
 
 
-/// VARIABLES
-$room-rotate-speed: var(--room-rotate-speed, 2);
+/// SASS CORE VARIABLES - editable in SASS
+$room-size-width: 100vmax;
+$room-size-height: 100vmin;
+
+$room-mobile-media-width: 945px; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc
+$room-mobile-size-width: 100vw; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
+$room-mobile-size-height: 100vh; // recomment 100vh
+
+// CSS VAR VARIABLES - editable in JS
+$room-rotate-speed: var(--room-rotate-speed, 2s);
 $room-rotate-timing: var(--room-rotate-timing, ease-in-out);
 
 $room-font-family: var(--room-font-family, Arial);
-$room-mobile-media-width: 945px; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc
 
-$room-size-width: 100vmax;
-$room-size-height: 100vmin;
 $room-perspective: $room-size-width;
-
-$room-mobile-size-width: 100vw; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
-$room-mobile-size-height: 100vh; // recomment 100vh
 $room-mobile-perspective: $room-mobile-size-width;
 
 
@@ -144,7 +146,7 @@ $dark-room-button-current-shadow: var(--room-dark-room-button-current-shadow, 0 
 $dark-room-canvas-border: var(--room-dark-room-canvas-border, 10px solid $room-button-background);
 $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255, 255, 255, 0.1));
 
-// ROOM
+// ROOM GALLERY
 
 /// MIXING that you can modify - buttons, but be careful
 
