@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, Suspense, forwardRef, Ref, useImperativeHandle } from 'react'
 import { useSwipeable } from "react-swipeable"
-import '../sass/formir-room.scss'
+import '../sass/room-gallery.scss'
 import { 
   RoomGallerySettingsType,
   ArrowNav,
@@ -37,7 +37,8 @@ export const roomGalleryDefaultSettings = {
   swipeToNav: true,
   swipeToZoom: true,
   keypressToNav: true,
-  keypressToZoom: true
+  keypressToZoom: true,
+  animationSpeed: { min: 2, ratio: 1 }
 } as RoomGallerySettingsType;
 
 export const GalleryContext = createContext({position: roomGalleryDefaultSettings.defaultPosition, zoom: roomGalleryDefaultSettings.zoomMode === 'in'});
@@ -53,7 +54,7 @@ export const RoomGallery = forwardRef(
     }: RoomGalleryProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const settings = { ...roomGalleryDefaultSettings, ...dataSettings }
+    const settings = { ...roomGalleryDefaultSettings, ...dataSettings } as RoomGallerySettingsType
 
     const [currentState, setCurrentState] = useState({
       items: [] as Array<ItemType>,
@@ -250,7 +251,7 @@ export const RoomGallery = forwardRef(
         const rootStyle = root.style
         styles && Object.keys(styles).forEach((key: string) => {
           if (key && key in StylesVariables) {
-            rootStyle.setProperty('--' + kebabize(key), styles[key as keyof typeof styles])
+            rootStyle.setProperty('--room-' + kebabize(key), styles[key as keyof typeof styles])
           }
         })
       }
@@ -299,7 +300,9 @@ export const RoomGallery = forwardRef(
                         rooms={currentState.rooms}
                         activeItem={currentState.activeItem}
                         prevItem={currentState.prevItem}
-                        position={position}/>
+                        position={position}
+                        settings={settings}
+                      />
                       )
                     )
                   }

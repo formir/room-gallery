@@ -26,7 +26,7 @@ const Image = forwardRef(
     props: React.ComponentPropsWithRef<"img">,
     ref: Ref<HTMLImageElement>
   ) => {
-    return <img ref={ref} {...props} loading="lazy" decoding="async"/>
+    return <img ref={ref} {...props}/>
 })
 
 export const Item = ({ image, title, description, descriptionHtml, html, video, vimeo, youtube, element, HtmlElement, position, height, width } : ItemType) => {

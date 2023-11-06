@@ -302,6 +302,11 @@ The `settings` type allows you to configure various aspects of your RoomGallery.
 
 - `keypressToZoom`: Allows arrow key presses for zooming.
 
+- `animationSpeed`: Specifies the animation speed (in seconds)
+
+  - `'min'`: Represents the time it takes to animate between switched walls. Default 2s.
+  - `'ratio'`: Is the distance multiplier between the walls being switched. Default 1.
+
 - `event`: Configures event callbacks for various gallery actions, such as initialization, rendering, showing next/previous items, toggling dark mode, zooming, and more.
 
 ### Event Callbacks
@@ -327,6 +332,44 @@ The `event` property within the `settings` type allows you to define various eve
 ### StylesVariables Enum
 
 The `styles` provides a set of predefined CSS variables used to style your RoomGallery. These variables can be customized to control the visual appearance of your gallery. Here are the available variables:
+
+#### Core Room Styles:
+
+- `rotateSpeed`: Rotation speed in degrees per second.
+- `rotateTiming`: Timing function for rotation animation.
+- `fontFamily`: Font family for text content.
+- `perspective`: Perspective value for 3D transformation.
+- `mobileSizeWidth`: Width of the mobile viewport.
+- `mobileSizeHeight`: Height of the mobile viewport.
+- `mobilePerspective`: Perspective value for mobile view.
+- `scale`: Scaling factor for elements.
+- `scaleZoom`: Scaling factor for zoomed elements.
+- `offsetY`: Vertical offset for elements in percentage.
+- `itemHeight`: Height of items in the room.
+- `itemWidth`: Width of items in the room.
+- `zIndex`: Z-index for elements in the room.
+- `textFontSize`: Font size for text content.
+- `textFontSizeMobile`: Font size for text content on mobile devices.
+- `fontLineHeight`: Line height for text content.
+- `textMarginTop`: Margin top for text content.
+- `textMaxHeight`: Maximum height for text content.
+- `textMinHeight`: Minimum height for text content.
+- `textMaxWidth`: Maximum width for text content.
+- `textPadding`: Padding for text content.
+- `navigationsMargin`: Margin for navigational elements.
+- `buttonSize`: Size of buttons.
+- `paginationButtonSize`: Size of pagination buttons.
+- `paginationButtonsSpace`: Space between pagination buttons.
+- `navButtonSize`: Size of navigation buttons.
+- `buttonsPosition`: Position of buttons.
+- `buttonZoomPosition`: Position of zoom button.
+- `buttonDarkPosition`: Position of dark button.
+- `buttonZoomWidth`: Width of zoom button.
+- `buttonExitWidth`: Width of exit button.
+- `buttonDarkWidth`: Width of dark button.
+- `paginationPosition`: Position of pagination elements.
+- `buttonTransition`: Transition effect for buttons.
+- `buttonOpacity`: Opacity value for buttons.
 
 #### Light Room Styles:
 
@@ -373,3 +416,11 @@ The `styles` provides a set of predefined CSS variables used to style your RoomG
 - `darkRoomCanvasShadow`
 
 These CSS variables allow you to control the styling of various components and elements within your RoomGallery. You can override these variables to create a custom look and feel for your gallery.
+
+### Core Setup in Sass (src/sass/room-gallery.scss)
+
+- `$room-size-width`: Default width of room gallery - 100vmax
+- `$room-size-height`: Default height of gallery - 100vmin
+- `$room-mobile-media-width`: Mobile breakpoint - 945px (Do not use % unit or calc(). You can use px, rem, cm, vh, vw, etc.)
+- `$room-mobile-size-width`: Mobile width of gallery after mobile breakpoint - 100vw (Do not use % unit or calc(). Recommended 100vw)
+- `$room-mobile-size-height`: Mobile height of gallery after mobile breakpoint - 100vh (Recommended 100vh)

@@ -1,5 +1,5 @@
 /*!
- *  Formir - Room Gallery v1.0.0-beta by @konrad-k - https://formir.io/room-react/
+ *  Formir - Room Gallery v1.0.0-beta by @konrad-k - https://formir.io/room-gallery/
  *  All rights reserved - Copyright © 2023
  */
 // FONTS
@@ -34,17 +34,11 @@ $room-exit-button: room-exit-btn;  // button to live zoom
 $room-canvas: room-canvas; // class for border/canvas style
 
 
-/// CORE
-$room-max-walls: 30;  // number of max count of walls / items
-$room-colors: true; // enable color of button dots/arrow
-$room-desc-pre: false; // enable of room-desc as pre text
-
-
 /// VARIABLES
-$room-rotate-speed: 2s;
-$room-rotate-timing: ease-in-out;
+$room-rotate-speed: var(--room-rotate-speed, 2);
+$room-rotate-timing: var(--room-rotate-timing, ease-in-out);
 
-$room-font-family: Arial, Helvetica, sans-serif;
+$room-font-family: var(--room-font-family, Arial);
 $room-mobile-media-width: 945px; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc
 
 $room-size-width: 100vmax;
@@ -56,42 +50,37 @@ $room-mobile-size-height: 100vh; // recomment 100vh
 $room-mobile-perspective: $room-mobile-size-width;
 
 
-$room-scale: 1.1;
-$room-scale-zoom: 1.5;
-$room-offset-y: 0; // use %
+$room-scale: var(--room-scale, 1.1);
+$room-scale-zoom: var(--room-scale-zoom, 1.5);
+$room-offset-y: var(--room-offset, 0); // use %
 
-$room-item-height: 90%;
-$room-item-width: 90%;
+$room-item-height: var(--room-item-height, 90%);
+$room-item-width: var(--room-item-width, 90%);
 
-$room-zindex: 1000;
+$room-zindex: var(--room-zindex, 1000);
 
-$room-text-font-size: 14px;
-$room-text-font-size-mobile: 2vmin;
-$room-font-line-height: 1.3em;
-$room-text-margin-top: 1.5rem;
-$room-text-max-height: 20%;
-$room-text-min-height: 15%;
-$room-text-max-width: 70%;
-$room-text-padding: 20px 0;
-
-
-$room-navigations-margin: 20px;
-$room-button-size: 35px;
-$room-pagination-button-size: 25px;
-$room-pagination-buttons-space: 7px;
-$room-nav-button-size: 35px;
-
-
-$room-buttons-position: 5%;  // horizontally (y)
-$room-button-zoom-position: 10%;
-$room-button-dark-position: 10%;
-$room-button-zoom-width: $room-button-size;
-$room-button-exit-width: $room-button-size;
-$room-button-dark-width: $room-button-size;
-$room-pagination-position: 5%;
-$room-button-transition: opacity 0.5s linear;
-
-$room-button-opacity: 1;
+$room-text-font-size: var(--room-text-font-size, 14px);
+$room-text-font-size-mobile: var(--room-text-font-size-mobile, 2vmin);
+$room-font-line-height: var(--room-font-line-height, 1.3em);
+$room-text-margin-top: var(--room-text-margin-top, 1.5rem);
+$room-text-max-height: var(--room-text-max-height, 20%);
+$room-text-min-height: var(--room-text-min-height, 15%);
+$room-text-max-width: var(--room-text-max-width, 70%);
+$room-text-padding: var(--room-text-padding, 20px 0);
+$room-navigations-margin: var(--room-navigations-margin, 20px);
+$room-button-size: var(--room-button-size, 35px);
+$room-pagination-button-size: var(--room-pagination-button-size, 25px);
+$room-pagination-buttons-space: var(--room-pagination-buttons-space, 7px);
+$room-nav-button-size: var(--room-nav-button-size, 35px);
+$room-buttons-position: var(--room-buttons-position, 5%);
+$room-button-zoom-position: var(--room-button-zoom-position, 10%);
+$room-button-dark-position: var(--room-button-dark-position, 10%);
+$room-button-zoom-width: var(--room-button-zoom-width, 35px);
+$room-button-exit-width: var(--room-button-exit-width, 35px);
+$room-button-dark-width: var(--room-button-dark-width, 35px);
+$room-pagination-position: var(--room-pagination-position, 5%);
+$room-button-transition: var(--room-button-transition, opacity 0.5s linear);
+$room-button-opacity: var(--room-button-opacity, 1);
 
 $room-background-blend-mode: var(--room-background-blend-mode);
 $room-body-background: var(--room-body-background);
@@ -114,46 +103,46 @@ $room-canvas-border: var(--room-canvas-border);
 $room-canvas-shadow: var(--room-canvas-shadow);
 
 // Light theme:
-$light-room-background-blend-mode: var(--light-room-background-blend-mode, multiply);
-$light-room-body-background: var(--light-room-body-background, #fff);
-$light-room-text-color: var(--light-room-text-color, #2d2d2d);
-$light-room-floor-background: var(--light-room-floor-background, #21262c url('./../img/floor.png') repeat 400px 600px);
-$light-room-floor-shadow: var(--light-room-floor-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
-$light-room-wall-background: var(--light-room-wall-background, #fff url('./../img/wall.png') repeat 30px 30px);
-$light-room-wall-shadow: var(--light-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.1), 0 0 100px rgba(0, 0, 0, 0.2) inset);
-$light-room-ceil-background: var(--light-room-ceil-background, #fff url('./../img/wall.png') repeat 30px 30px);
-$light-room-ceil-shadow: var(--light-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
-$light-room-button-background: var(--light-room-button-background, #3c3642);
-$light-room-button-color: var(--light-room-button-color, #fff);
-$light-room-button-border: var(--light-room-button-border, 0 none);
-$light-room-button-shadow: var(--light-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
-$light-room-button-current-background: var(--light-room-button-current-background, #fff);
-$light-room-button-current-border: var(--light-room-button-current-border, 0 none);
-$light-room-button-current-color: var(--light-room-button-current-color, #3c3642);
-$light-room-button-current-shadow: var(--light-room-button-current-shadow, none);
-$light-room-canvas-border: var(--light-room-canvas-border, 10px solid #3c3642);
-$light-room-canvas-shadow: var(--light-room-canvas-shadow, 1px 1px 3px rgba(0, 0, 0, 0.5));
+$light-room-background-blend-mode: var(--room-light-room-background-blend-mode, multiply);
+$light-room-body-background: var(--room-light-room-body-background, #fff);
+$light-room-text-color: var(--room-light-room-text-color, #2d2d2d);
+$light-room-floor-background: var(--room-light-room-floor-background, #21262c url('./../img/floor.png') repeat 400px 600px);
+$light-room-floor-shadow: var(--room-light-room-floor-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
+$light-room-wall-background: var(--room-light-room-wall-background, #fff url('./../img/wall.png') repeat 30px 30px);
+$light-room-wall-shadow: var(--room-light-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.1), 0 0 100px rgba(0, 0, 0, 0.2) inset);
+$light-room-ceil-background: var(--room-light-room-ceil-background, #fff url('./../img/wall.png') repeat 30px 30px);
+$light-room-ceil-shadow: var(--room-light-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
+$light-room-button-background: var(--room-light-room-button-background, #3c3642);
+$light-room-button-color: var(--room-light-room-button-color, #fff);
+$light-room-button-border: var(--room-light-room-button-border, 0 none);
+$light-room-button-shadow: var(--room-light-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
+$light-room-button-current-background: var(--room-light-room-button-current-background, #fff);
+$light-room-button-current-border: var(--room-light-room-button-current-border, 0 none);
+$light-room-button-current-color: var(--room-light-room-button-current-color, #3c3642);
+$light-room-button-current-shadow: var(--room-light-room-button-current-shadow, none);
+$light-room-canvas-border: var(--room-light-room-canvas-border, 10px solid #3c3642);
+$light-room-canvas-shadow: var(--room-light-room-canvas-shadow, 1px 1px 3px rgba(0, 0, 0, 0.5));
 
 // Dark theme:
-$dark-room-background-blend-mode: var(--dark-room-background-blend-mode, screen);
-$dark-room-body-background: var(--dark-room-body-background, #1c1e24);
-$dark-room-text-color: var(--dark-room-text-color, #fff);
-$dark-room-floor-background: var(--dark-room-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
-$dark-room-floor-shadow: var(--dark-room-floor-shadow, none);
-$dark-room-wall-background: var(--dark-room-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-wall-shadow: var(--dark-room-wall-shadow, 0 0 50px rgba(0,0,0,0.7),0 0 100px rgba(0,0,0,0.7) inset);
-$dark-room-ceil-background: var(--dark-room-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-ceil-shadow: var(--dark-room-ceil-shadow, 0 0 100px rgba(0,0,0,0.7),0 0 150px rgba(0,0,0,0.7) inset);
-$dark-room-button-background: var(--dark-room-button-background, #fff);
-$dark-room-button-color: var(--dark-room-button-color, #000);
-$dark-room-button-border: var(--dark-room-button-border, 0 none);
-$dark-room-button-shadow: var(--dark-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
-$dark-room-button-current-background: var(--dark-room-button-current-background, #000);
-$dark-room-button-current-border: var(--dark-room-button-current-border, 0 none);
-$dark-room-button-current-color: var(--dark-room-button-current-color, #fff);
-$dark-room-button-current-shadow: var(--dark-room-button-current-shadow, 0 0 5px 5px rgba(255, 255, 255, 0.3));
-$dark-room-canvas-border: var(--dark-room-canvas-border, 10px solid $room-button-background);
-$dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255, 255, 0.1));
+$dark-room-background-blend-mode: var(--room-dark-room-background-blend-mode, screen);
+$dark-room-body-background: var(--room-dark-room-body-background, #1c1e24);
+$dark-room-text-color: var(--room-dark-room-text-color, #fff);
+$dark-room-floor-background: var(--room-dark-room-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
+$dark-room-floor-shadow: var(--room-dark-room-floor-shadow, none);
+$dark-room-wall-background: var(--room-dark-room-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
+$dark-room-wall-shadow: var(--room-dark-room-wall-shadow, 0 0 50px rgba(0,0,0,0.7),0 0 100px rgba(0,0,0,0.7) inset);
+$dark-room-ceil-background: var(--room-dark-room-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
+$dark-room-ceil-shadow: var(--room-dark-room-ceil-shadow, 0 0 100px rgba(0,0,0,0.7),0 0 150px rgba(0,0,0,0.7) inset);
+$dark-room-button-background: var(--room-dark-room-button-background, #fff);
+$dark-room-button-color: var(--room-dark-room-button-color, #000);
+$dark-room-button-border: var(--room-dark-room-button-border, 0 none);
+$dark-room-button-shadow: var(--room-dark-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
+$dark-room-button-current-background: var(--room-dark-room-button-current-background, #000);
+$dark-room-button-current-border: var(--room-dark-room-button-current-border, 0 none);
+$dark-room-button-current-color: var(--room-dark-room-button-current-color, #fff);
+$dark-room-button-current-shadow: var(--room-dark-room-button-current-shadow, 0 0 5px 5px rgba(255, 255, 255, 0.3));
+$dark-room-canvas-border: var(--room-dark-room-canvas-border, 10px solid $room-button-background);
+$dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255, 255, 255, 0.1));
 
 // ROOM
 
@@ -205,7 +194,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 
 @mixin room-button($size: $room-button-size) {
   height: $size;
-  min-width: $size - calc($size / 1.5);
+  min-width: calc($size - ($size / 1.5));
   padding: 0 calc( $size / 1.5 / 2);
   color: $room-button-color;
   line-height: $size;
@@ -414,7 +403,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     left: 0;
     margin: auto;
     position: absolute;
-    z-index: $room-zindex + 100;
+    z-index: calc($room-zindex + 100);
     @include room-exit-button;
   }
   
@@ -476,7 +465,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
       border: $room-canvas-border;
       box-shadow: $room-canvas-shadow;
     }
-    img {
+    img, picture {
       + * {
         font-size: $room-text-font-size;
         color: $room-text-color;
@@ -485,9 +474,6 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
         margin-top: $room-text-margin-top;
         @media (max-width: $room-mobile-media-width) {
           font-size: $room-text-font-size-mobile;
-        }
-        @if ($room-desc-pre) {
-          white-space: pre;
         }
       }
     }
@@ -525,13 +511,13 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     align-items: flex-end;
     box-sizing: border-box;
     .#{$room-zoom-button} {
-      z-index: $room-zindex + 1000;
+      z-index: calc($room-zindex + 1000);
       margin: auto;
       position: absolute;
       @include room-zoom-button;
     }
     .#{$room-dark-button} {
-      z-index: $room-zindex + 1000;
+      z-index: calc($room-zindex + 1000);
       margin: auto;
       position: absolute;
       @include room-dark-button;
@@ -545,9 +531,9 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
   -o-perspective: $room-perspective;
   -ms-perspective: $room-perspective;
   perspective: $room-perspective;
-  -webkit-transform: translateY($room-offset-y) scale($room-scale);
-  -ms-transform: translateY($room-offset-y) scale($room-scale);
-  transform: translateY($room-offset-y) scale($room-scale);
+  -webkit-transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
+  -ms-transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
+  transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
   transform-origin: center center;
   position: absolute;
   z-index: 1;
@@ -583,7 +569,11 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     bottom: 0;
     left: 0;
     right: 0;
-    > img {
+    video {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    > img, > picture {
       max-width: 100%;
       max-height: 100%;
       height: auto;
@@ -598,7 +588,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
     min-height: 0;
     position: relative;
     width: 100%;
-    > img {
+    > img, > picture {
       height: 100%;
       max-width: 100%;
       object-fit: contain;
@@ -634,6 +624,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
 @mixin walls-3d($room-s-w, $room-s-h) {
   transition: transform $room-rotate-speed $room-rotate-timing;
   transform-style: preserve-3d;
+  will-change: transform;
   > div {
     position: absolute;
     height: inherit;
@@ -647,19 +638,19 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
       width: $room-s-w;
     }
     &.wall-n {
-      transform: translateZ(calc(-1 * $room-s-w / 2));
+      transform: translate3d(0, 0, calc(-1 * $room-s-w / 2));
     }
     &.wall-w {
-      transform: rotateY(90deg) translateZ(calc(-1 * $room-s-w / 2));
+      transform: rotateY(90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
     }
     &.wall-s {
-      transform: rotateY(180deg) translateZ(calc(-1 * $room-s-w / 2));
+      transform: rotateY(180deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
     }
     &.wall-e {
-      transform: rotateY(-90deg) translateZ(calc(-1 * $room-s-w / 2));
+      transform: rotateY(-90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
     }
     &.#{$room-ceil} {
-      transform: rotateX(-90deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
+      transform: rotateX(-90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2)) rotate(180deg);
     }
     &.#{$room-floor}  {
       $room-s-w-2: calc($room-s-w / 2);
@@ -669,7 +660,7 @@ $dark-room-canvas-shadow: var(--dark-room-canvas-shadow, 0 0 10px rgba(255, 255,
       }
       $room-s-w-2-set: $room-s-w-2;
       $room-s-h-set: $room-s-h;
-      transform: #{rotateX(-90deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
+      transform: #{rotateX(-90deg) translate3d(0, 0, -$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translate3d(0, 0, -$room-s-h-set)};
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../sass/formir-room.scss';
+import '../sass/room-gallery.scss';
 import { RoomGallerySettingsType, RoomGalleryProps } from '../types/types';
 export declare const roomGalleryDefaultSettings: RoomGallerySettingsType;
 export declare const GalleryContext: React.Context<{

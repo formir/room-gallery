@@ -87,7 +87,8 @@ export type RoomGallerySettingsType = {
     onZoomOut?: (value?: object) => void
     onDarkModeOn?: (value?: object) => void
     onDarkModeOff?: (value?: object) => void
-  }
+  },
+  animationSpeed?: { min: number, ratio: number} | number
 }
 
 export interface RoomGalleryProps {
@@ -109,6 +110,10 @@ export interface parseItemsI {
 }
 
 export enum StylesVariables {
+  'rotateSpeed', 'rotateTiming', 'fontFamily', 'perspective', 'mobileSizeWidth', 'mobileSizeHeight', 'mobilePerspective', 'scale', 'scaleZoom', 'offsetY',
+  'itemHeight', 'itemWidth', 'zIndex', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
+  'textMaxWidth', 'textPadding', 'navigationsMargin', 'buttonSize', 'paginationButtonSize', 'paginationButtonsSpace', 'navButtonSize', 'buttonsPosition',
+  'buttonZoomPosition', 'buttonDarkPosition', 'buttonZoomWidth', 'buttonExitWidth', 'buttonDarkWidth', 'paginationPosition', 'buttonTransition', 'buttonOpacity',
   'lightRoomBackgroundBlendMode', 'lightRoomBodyBackground', 'lightRoomTypeextColor', 'lightRoomFloorBackground', 'lightRoomFloorShadow',
   'lightRoomWallBackground', 'lightRoomWallShadow', 'lightRoomCeilBackground', 'lightRoomCeilShadow', 'lightRoomButtonBackground', 'lightRoomButtonColor',
   'lightRoomButtonBorder', 'lightRoomButtonShadow', 'lightRoomButtonCurrentBackground', 'lightRoomButtonCurrentBorder', 'lightRoomButtonCurrentColor',

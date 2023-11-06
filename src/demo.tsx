@@ -11,4 +11,4 @@ const dataFetch = async () => {
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
-root.render(<RoomGallery fetch={dataFetch} styles={{}} settings={{}} />)
+root.render(<RoomGallery fetch={dataFetch} styles={{fontFamily: 'Roboto'}} settings={{}} />)
