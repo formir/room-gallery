@@ -453,6 +453,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   .#{$room-paginations}  {
     bottom: $room-pagination-position;
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     button {
