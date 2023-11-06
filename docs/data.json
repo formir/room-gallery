@@ -35,7 +35,7 @@
       "image": {
         "thumb": "https://picsum.photos/id/237/150/100",
         "prompt": "https://picsum.photos/id/237/600/400",
-        "original": "https://picsum.photos/id/237/300/200",
+        "original": "https://picsum.photos/id/237/1200/800",
         "zoom": "https://picsum.photos/id/237/2400/1600"
       },
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."

@@ -57,7 +57,7 @@ module.exports = (env, argv) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ["babel-loader"],
+          use: ["babel-loader", "astroturf/loader"],
         },
         {
           test: /\.s(a|c)ss$/,
@@ -70,6 +70,21 @@ module.exports = (env, argv) => {
                   localIdentName: "[local]",
                 },
                 sourceMap: isDevelopment,
+              },
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    [
+                      "postcss-preset-env",
+                      {
+                        // Options
+                      },
+                    ],
+                  ],
+                },
               },
             },
             {

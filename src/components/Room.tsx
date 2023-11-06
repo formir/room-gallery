@@ -54,7 +54,7 @@ export const Room = ({ room, rooms, position, index, activeItem, prevItem, setti
     className={`room-walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
     style={
       {
-        transform: 'rotateY(' + rotation() + 'deg) translate3d(' + ((index - position.x) * 100) + '%, 0, 0)',
+        transform: 'rotateY(' + rotation() + 'deg) translateX(' + ((index - position.x) * 100) + '%)',
         transition: delay()
       }
     }>

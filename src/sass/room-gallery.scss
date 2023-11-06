@@ -529,14 +529,8 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 }
 
 .#{$room-arena} {
-  -webkit-perspective : $room-perspective;
-  -moz-perspective: $room-perspective;
-  -o-perspective: $room-perspective;
-  -ms-perspective: $room-perspective;
   perspective: $room-perspective;
-  -webkit-transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
-  -ms-transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
-  transform: translate3d(0, $room-offset-y, 0) scale($room-scale);
+  transform: translateY($room-offset-y) scale($room-scale);
   transform-origin: center center;
   position: absolute;
   z-index: 1;
@@ -548,10 +542,6 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   will-change: transform;
   transition: transform $room-rotate-speed $room-rotate-timing;
   @media (max-width: $room-mobile-media-width) {
-    -webkit-perspective: $room-mobile-perspective;
-    -moz-perspective: $room-mobile-perspective;
-    -o-perspective: $room-mobile-perspective;
-    -ms-perspective: $room-mobile-perspective;
     perspective: $room-mobile-perspective;
   }
 }
@@ -632,8 +622,6 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     position: absolute;
     height: inherit;
     width: inherit;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
     backface-visibility: hidden;
 
     &.#{$room-ceil}, &.#{$room-floor} {
@@ -641,19 +629,19 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       width: $room-s-w;
     }
     &.wall-n {
-      transform: translate3d(0, 0, calc(-1 * $room-s-w / 2));
+      transform: translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-w {
-      transform: rotateY(90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
+      transform: rotateY(90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-s {
-      transform: rotateY(180deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
+      transform: rotateY(180deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.wall-e {
-      transform: rotateY(-90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2));
+      transform: rotateY(-90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
     &.#{$room-ceil} {
-      transform: rotateX(-90deg) translate3d(0, 0, calc(-1 * $room-s-w / 2)) rotate(180deg);
+      transform: rotateX(-90deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
     }
     &.#{$room-floor}  {
       $room-s-w-2: calc($room-s-w / 2);
@@ -663,7 +651,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       }
       $room-s-w-2-set: $room-s-w-2;
       $room-s-h-set: $room-s-h;
-      transform: #{rotateX(-90deg) translate3d(0, 0, -$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translate3d(0, 0, -$room-s-h-set)};
+      transform: #{rotateX(-90deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
     }
   }
 }
@@ -854,8 +842,6 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     .#{$room-body} {
       .#{$room-arena} {
         transition: transform $room-rotate-speed $room-rotate-timing;
-        -webkit-transform: scale($room-scale-zoom);
-        -ms-transform: scale($room-scale-zoom);
         transform: scale($room-scale-zoom);
         will-change: transform;
       }

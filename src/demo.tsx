@@ -10,6 +10,6 @@ const dataFetch = async () => {
 const container = document.getElementById('root');
 
 ReactDOM.render(
-  <RoomGallery fetch={dataFetch} styles={{ fontFamily: 'Roboto' }} settings={{}} />,
+  <RoomGallery fetch={dataFetch} styles={{}} settings={{}} />,
   container
 );
