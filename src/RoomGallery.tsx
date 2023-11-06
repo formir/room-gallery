@@ -1,6 +1,6 @@
 
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import { RoomGallery as ReactRoomGallery } from './components/RoomGallery'
 import { ItemType } from './components/Item'
 import { RoomGallerySettingsType, RoomGalleryProps } from './types/types'
@@ -64,9 +64,7 @@ class RoomGallery implements IroomGallery {
 
   init(): {} | void {
     if (this.container && this.props) {
-      const root = ReactDOM.createRoot(this.container),
-      room = <ReactRoomGallery {...this.props} ref={this.roomGalleryRef} />
-      root.render(room)
+      ReactDOM.render(<ReactRoomGallery {...this.props} ref={this.roomGalleryRef} />, this.container)
     }
   }
 

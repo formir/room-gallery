@@ -50,7 +50,7 @@ export const Room = ({ room, rooms, position, index, activeItem, prevItem, setti
     }
     return `transform ${ Math.abs(distance) > min ? ( Math.abs(distance) * ratio ) : min }s ease-in-out`;
   }
-  return room.walls && position && <div
+  return room.walls && position ? <div
     className={`room-walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
     style={
       {
@@ -61,16 +61,17 @@ export const Room = ({ room, rooms, position, index, activeItem, prevItem, setti
     {room.walls.map((wall, wallIndex) => {
       const indexOfDirection = Object.values(Direction).indexOf(wall.direction as unknown as Direction);
       return wall.visible &&
-      <Wall
-        room={room}
-        key={wallIndex}
-        direction={wall.direction}
-        items={wall.items}
-        visible={wall.visible}
-        active={position.x === index && position.y === indexOfDirection}
-      />
-}) }
+        <Wall
+          room={room}
+          key={wallIndex}
+          direction={wall.direction}
+          items={wall.items}
+          visible={wall.visible}
+          active={position.x === index && position.y === indexOfDirection}
+        />
+      })
+    }
     <div className="room-ceil"></div>
     <div className="room-floor"></div>
-  </div>
+  </div> : <></>
 }

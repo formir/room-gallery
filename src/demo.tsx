@@ -1,14 +1,15 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import { RoomGallery } from './components/RoomGallery'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { RoomGallery } from './components/RoomGallery';
 
 const dataFetch = async () => {
-  const data = await (
-    await fetch('./data.json')
-  ).json()
-  return data.items
+  const data = await (await fetch('./data.json')).json();
+  return data.items;
 }
 
-const container = document.getElementById('root')
-const root = createRoot(container!)
-root.render(<RoomGallery fetch={dataFetch} styles={{fontFamily: 'Roboto'}} settings={{}} />)
+const container = document.getElementById('root');
+
+ReactDOM.render(
+  <RoomGallery fetch={dataFetch} styles={{ fontFamily: 'Roboto' }} settings={{}} />,
+  container
+);
