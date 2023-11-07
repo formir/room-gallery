@@ -1,0 +1,1 @@
+web: webpack serve --mode development $PORT
