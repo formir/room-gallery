@@ -1,1 +1,1 @@
-web: webpack serve --mode development $PORT
+web: yarn start
