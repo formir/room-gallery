@@ -34,13 +34,14 @@
   "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf docs/*.d.**",
+    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.* && rm -rf docs/*.d.**",
     "build": "webpack --mode production && yarn docs",
     "test": "jest"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
     "dompurify": "^3.0.5",
+    "express": "^4.18.2",
     "jest": "^29.7.0",
     "jquery": "^3.7.1",
     "react": "^16.8.0",
