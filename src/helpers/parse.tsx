@@ -91,6 +91,6 @@ export function parseWalls(items: Array<ItemType>, preItems: Array<ItemType>, pr
 }
 
 export const kebabize = (string: string) => {
-  const upper = /(?<!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
+  const upper = /(?:!\p{Uppercase_Letter})\p{Uppercase_Letter}|\p{Uppercase_Letter}(?!\p{Uppercase_Letter})/gu
   return string.replace(upper, '-$&').replace(/^-/, '').toLowerCase()
 }
