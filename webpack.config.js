@@ -45,11 +45,6 @@ module.exports = (env, argv) => {
           }
         },
         {
-          test: /\.svg$/i,
-          issuer: /\.[jt]sx?$/,
-          use: [{ loader: "@svgr/webpack", options: { icon: true } }],
-        },
-        {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: ["ts-loader"],

@@ -6,5 +6,5 @@ export declare const GalleryContext: React.Context<{
     position: import("./Item").Position | undefined;
     zoom: boolean;
 }>;
-export declare const RoomGallery: React.ForwardRefExoticComponent<Pick<RoomGalleryProps, "fetch" | "items" | "styles" | "children" | "settings"> & React.RefAttributes<HTMLDivElement>>;
+export declare const RoomGallery: React.ForwardRefExoticComponent<Pick<RoomGalleryProps, "items" | "fetch" | "styles" | "children" | "settings"> & React.RefAttributes<HTMLDivElement>>;
 //# sourceMappingURL=RoomGallery.d.ts.map

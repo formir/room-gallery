@@ -1,6 +1,6 @@
 {
   "name": "room-gallery",
-  "version": "1.0.3-beta",
+  "version": "1.0.4-beta",
   "description": "Room Gallery: A 3D Exhibit - A Responsive 3D Image Slider Implemented in TypeScript as a React Component, Utilizing Vanilla JavaScript and jQuery",
   "keywords": [
     "slider",
@@ -39,12 +39,18 @@
     "build": "webpack --mode production && yarn docs",
     "test": "jest"
   },
+  "dependencies": {
+    "react-swipeable": "^7.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^17 || ^18",
+    "typescript": "^5"
+  },
   "devDependencies": {
     "@babel/core": "^7.22.11",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
-    "@svgr/webpack": "^8.1.0",
     "@types/dompurify": "^3.0.2",
     "@types/jest": "^29.5.6",
     "@types/jquery": "^3.5.19",
@@ -67,7 +73,6 @@
     "prettier": "3.0.3",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-swipeable": "^7.0.1",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
