@@ -41,7 +41,7 @@ module.exports = (env, argv) => {
           test: /\.(png|jp(e*)g|gif)$/,
           type: "asset/resource",
           generator: {
-            filename : "img/[name][ext][query]",
+            filename: "img/[name][ext][query]",
           }
         },
         {
@@ -73,10 +73,7 @@ module.exports = (env, argv) => {
                 postcssOptions: {
                   plugins: [
                     [
-                      "postcss-preset-env",
-                      {
-                        // Options
-                      },
+                      "postcss-preset-env"
                     ],
                   ],
                 },

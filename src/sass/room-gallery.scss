@@ -1,5 +1,5 @@
 /*!
- *  Formir - Room Gallery v1.0.1-beta by @konrad-k - https://formir.io/room-gallery/
+ *  Formir - Room Gallery v1.0.5-beta by @konrad-k - https://formir.io/room-gallery/
  *  All rights reserved - Copyright © 2023
  */
 // FONTS
@@ -8,11 +8,11 @@
 // SETUP
 
 /// CLASSES
-$room: room-gallery;  // main wrapper
+$room: room-gallery; // main wrapper
 $room-dark: room-dark;
 $room-dark-auto: room-dark-auto;
-$room-body: room-body;  // body of room
-$room-arena: room-arena;  // next wrapper coled arena
+$room-body: room-body; // body of room
+$room-arena: room-arena; // next wrapper coled arena
 $room-walls: room-walls; // walls in 3d
 $room-wall: room-wall;
 $room-wall-active: wall-active;
@@ -28,9 +28,9 @@ $room-navigations: room-navigations;
 $room-prev-button: room-prev;
 $room-next-button: room-next;
 $room-icon: room-icon;
-$room-zoom-button: room-zoom-btn;  // button to zoom in
+$room-zoom-button: room-zoom-btn; // button to zoom in
 $room-dark-button: room-dark-btn;
-$room-exit-button: room-exit-btn;  // button to live zoom
+$room-exit-button: room-exit-btn; // button to live zoom
 $room-canvas: room-canvas; // class for border/canvas style
 
 
@@ -132,9 +132,9 @@ $dark-room-text-color: var(--room-dark-room-text-color, #fff);
 $dark-room-floor-background: var(--room-dark-room-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
 $dark-room-floor-shadow: var(--room-dark-room-floor-shadow, none);
 $dark-room-wall-background: var(--room-dark-room-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-wall-shadow: var(--room-dark-room-wall-shadow, 0 0 50px rgba(0,0,0,0.7),0 0 100px rgba(0,0,0,0.7) inset);
+$dark-room-wall-shadow: var(--room-dark-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.7), 0 0 100px rgba(0, 0, 0, 0.7) inset);
 $dark-room-ceil-background: var(--room-dark-room-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-ceil-shadow: var(--room-dark-room-ceil-shadow, 0 0 100px rgba(0,0,0,0.7),0 0 150px rgba(0,0,0,0.7) inset);
+$dark-room-ceil-shadow: var(--room-dark-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.7), 0 0 150px rgba(0, 0, 0, 0.7) inset);
 $dark-room-button-background: var(--room-dark-room-button-background, #fff);
 $dark-room-button-color: var(--room-dark-room-button-color, #000);
 $dark-room-button-border: var(--room-dark-room-button-border, 0 none);
@@ -155,21 +155,25 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   background-blend-mode: $room-background-blend-mode;
   background-repeat: repeat;
 }
+
 @mixin room-wall() {
   background: $room-wall-background;
   background-blend-mode: $room-background-blend-mode;
 }
+
 @mixin room-ceil() {
   background: $room-ceil-background;
   background-blend-mode: $room-background-blend-mode;
 }
 
-@mixin  room-item-desc() {
+@mixin room-item-desc() {
   font-size: 1.3rem;
+
   p {
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
+
   span {
     font-size: 1.1rem;
   }
@@ -197,7 +201,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 @mixin room-button($size: $room-button-size) {
   height: $size;
   min-width: calc($size - ($size / 1.5));
-  padding: 0 calc( $size / 1.5 / 2);
+  padding: 0 calc($size / 1.5 / 2);
   color: $room-button-color;
   line-height: $size;
   font-size: calc($size / 2.5);
@@ -207,21 +211,26 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   cursor: pointer;
   text-decoration: none;
   box-sizing: content-box;
+
   &:not(.#{room-icon}) {
     background: $room-button-background;
     border-radius: $size;
+
     &.active {
       color: $room-button-background;
       background-color: $room-button-color;
     }
   }
+
   &.#{room-icon} {
     background: none;
-    font-size: calc( $size / 1.8 );
+    font-size: calc($size / 1.8);
+
     &:not(.active) {
       filter: invert(100%);
     }
   }
+
   &:hover {
     text-decoration: none;
   }
@@ -242,10 +251,12 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:not(.#{room-icon}) {
     height: $room-nav-button-size;
     transform: rotate(-45deg);
     border-radius: 0 $size $size $size;
+
     span {
       transform: rotate(45deg);
       display: inline-block;
@@ -268,10 +279,12 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:not(.#{room-icon}) {
     height: $room-nav-button-size;
     border-radius: $size 0 $size $size;
     transform: rotate(45deg);
+
     span {
       transform: rotate(-45deg);
       display: inline-block;
@@ -292,18 +305,23 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   opacity: $room-button-opacity;
   will-change: opacity;
   border: 0 none;
+
   &:not(.#{room-icon}) {
     background-color: $room-button-background;
     border-radius: $room-button-size;
     box-shadow: $room-button-shadow;
-    svg, img {
+
+    svg,
+    img {
       @include room-button-icon;
     }
   }
+
   &.#{room-icon} {
     background: none;
     filter: invert(100%);
   }
+
   &:hover {
     opacity: 1;
     transition: $room-button-transition;
@@ -325,18 +343,23 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   cursor: pointer;
   will-change: opacity;
   transition: $room-button-transition;
+
   &:not(.#{room-icon}) {
     background-color: $room-button-background;
     border-radius: $room-button-size;
     box-shadow: $room-button-shadow;
-    svg, img {
+
+    svg,
+    img {
       @include room-button-icon;
     }
   }
+
   &.#{room-icon} {
     background: none;
     filter: invert(100%);
   }
+
   &:hover {
     opacity: 1;
     transition: $room-button-transition;
@@ -357,18 +380,23 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   cursor: pointer;
   will-change: opacity;
   transition: $room-button-transition;
+
   &:not(.#{room-icon}) {
     background-color: $room-button-background;
     border-radius: $room-button-size;
     box-shadow: $room-button-shadow;
-    svg, img {
+
+    svg,
+    img {
       @include room-button-icon;
     }
   }
+
   &.#{room-icon} {
     background: none;
     filter: invert(100%);
   }
+
   &:hover {
     opacity: 1;
     transition: $room-button-transition;
@@ -394,11 +422,13 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   max-height: 100%;
   overflow: hidden;
   z-index: $room-zindex;
+
   @media (max-width: $room-mobile-media-width) {
     width: $room-mobile-size-width;
     height: $room-mobile-size-height;
     padding-bottom: $room-mobile-size-height;
   }
+
   .#{$room-exit-button} {
     transition: $room-button-transition;
     right: 0;
@@ -408,39 +438,51 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     z-index: calc($room-zindex + 100);
     @include room-exit-button;
   }
-  
-  .#{$room-navigations}, .#{$room-paginations} {
+
+  .#{$room-navigations},
+  .#{$room-paginations} {
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
     z-index: 4;
+
     button {
-      margin: calc( $room-pagination-buttons-space / 2 );
+      margin: calc($room-pagination-buttons-space / 2);
     }
+
     button {
       @include room-button;
     }
   }
+
   .#{$room-navigations} {
     bottom: 50%;
+
     .#{$room-prev-button} {
       @include room-prev-button;
     }
+
     .#{$room-next-button} {
       @include room-next-button;
     }
+
     .#{room-icon} {
       background: none;
       filter: invert(100%);
-      svg, img {
+
+      svg,
+      img {
         width: auto;
         height: 100%;
       }
     }
   }
+
   button.#{room-icon} {
-    svg, img {
+
+    svg,
+    img {
       width: 100%;
       height: auto;
       position: absolute;
@@ -450,12 +492,14 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       left: 0;
     }
   }
-  .#{$room-paginations}  {
+
+  .#{$room-paginations} {
     bottom: $room-pagination-position;
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
     button {
       @include room-button($room-pagination-button-size);
       display: inline-block;
@@ -464,17 +508,21 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 
   .#{$room-item} {
     z-index: 1000;
+
     .#{$room-canvas} {
       border: $room-canvas-border;
       box-shadow: $room-canvas-shadow;
     }
-    img, picture {
-      + * {
+
+    img,
+    picture {
+      +* {
         font-size: $room-text-font-size;
         color: $room-text-color;
         text-align: center;
         line-height: $room-font-line-height;
         margin-top: $room-text-margin-top;
+
         @media (max-width: $room-mobile-media-width) {
           font-size: $room-text-font-size-mobile;
         }
@@ -486,15 +534,18 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     z-index: 0;
     @include room-floor;
   }
+
   .#{$room-wall} {
     @include room-wall;
     z-index: 1;
     pointer-events: none;
+
     &.#{$room-wall-active} {
       pointer-events: auto;
       z-index: 10;
     }
   }
+
   .#{$room-ceil} {
     @include room-ceil;
   }
@@ -513,12 +564,14 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     justify-content: center;
     align-items: flex-end;
     box-sizing: border-box;
+
     .#{$room-zoom-button} {
       z-index: calc($room-zindex + 1000);
       margin: auto;
       position: absolute;
       @include room-zoom-button;
     }
+
     .#{$room-dark-button} {
       z-index: calc($room-zindex + 1000);
       margin: auto;
@@ -541,6 +594,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   top: 0;
   will-change: transform;
   transition: transform $room-rotate-speed $room-rotate-timing;
+
   @media (max-width: $room-mobile-media-width) {
     perspective: $room-mobile-perspective;
   }
@@ -548,7 +602,8 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 
 .#{$room} .#{$room-wall} {
   position: relative;
-  > * {
+
+  >* {
     width: $room-item-width;
     height: $room-item-height;
     justify-content: center;
@@ -562,11 +617,14 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     bottom: 0;
     left: 0;
     right: 0;
+
     video {
       max-width: 100%;
       max-height: 100%;
     }
-    > img, > picture {
+
+    >img,
+    >picture {
       max-width: 100%;
       max-height: 100%;
       height: auto;
@@ -574,6 +632,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       object-fit: contain;
     }
   }
+
   .#{$room-item-image} {
     object-fit: contain;
     flex: 1 0 auto;
@@ -581,7 +640,9 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     min-height: 0;
     position: relative;
     width: 100%;
-    > img, > picture {
+
+    >img,
+    >picture {
       height: 100%;
       max-width: 100%;
       object-fit: contain;
@@ -618,37 +679,47 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   transition: transform $room-rotate-speed $room-rotate-timing;
   transform-style: preserve-3d;
   will-change: transform;
-  > div {
+
+  >div {
     position: absolute;
     height: inherit;
     width: inherit;
     backface-visibility: hidden;
 
-    &.#{$room-ceil}, &.#{$room-floor} {
+    &.#{$room-ceil},
+    &.#{$room-floor} {
       height: $room-s-w;
       width: $room-s-w;
     }
+
     &.wall-n {
       transform: translateZ(calc(-1 * $room-s-w / 2));
     }
+
     &.wall-w {
       transform: rotateY(90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
+
     &.wall-s {
       transform: rotateY(180deg) translateZ(calc(-1 * $room-s-w / 2));
     }
+
     &.wall-e {
       transform: rotateY(-90deg) translateZ(calc(-1 * $room-s-w / 2));
     }
+
     &.#{$room-ceil} {
       transform: rotateX(-90deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
     }
-    &.#{$room-floor}  {
+
+    &.#{$room-floor} {
       $room-s-w-2: calc($room-s-w / 2);
-      @if not (unit($room-s-w) == px) {
+
+      @if not (unit($room-s-w)==px) {
         $room-s-w-2-set: strip-unit($room-s-w-2) + vw;
         $room-s-h-set: strip-unit($room-s-h) + vh;
       }
+
       $room-s-w-2-set: $room-s-w-2;
       $room-s-h-set: $room-s-h;
       transform: #{rotateX(-90deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
@@ -658,32 +729,45 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 
 .#{$room} .#{$room-body} .#{$room-walls} {
   @include walls-3d($room-size-width, $room-size-height);
+
   @media (max-width: $room-mobile-media-width) {
     @include walls-3d($room-mobile-size-width, $room-mobile-size-height);
   }
 }
+
 .#{$room} .#{$room-walls} {
   height: $room-size-height;
   width: $room-size-width;
   position: absolute;
   margin: 0 auto;
   pointer-events: none;
+
   @media (max-width: $room-mobile-media-width) {
     width: $room-mobile-size-width;
     height: $room-mobile-size-height;
   }
-  .#{$room-wall}, .#{$room-ceil}, .#{$room-floor} {
+
+  .#{$room-wall},
+  .#{$room-ceil},
+  .#{$room-floor} {
     overflow: hidden;
   }
-  &.first, &.last {
+
+  &.first,
+  &.last {
     .#{$room-wall} {
-      &.wall-e, &.wall-w {
+
+      &.wall-e,
+      &.wall-w {
         box-shadow: $room-wall-shadow;
       }
     }
   }
+
   &.first:not(.last) {
-    .#{$room-ceil}, .#{$room-floor} {
+
+    .#{$room-ceil},
+    .#{$room-floor} {
       &:before {
         content: '';
         position: absolute;
@@ -692,6 +776,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         pointer-events: none;
       }
     }
+
     .#{$room-floor} {
       &:before {
         box-shadow: $room-floor-shadow;
@@ -699,6 +784,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         right: -50%;
       }
     }
+
     .#{$room-ceil} {
       &:before {
         right: 0;
@@ -706,8 +792,11 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         box-shadow: $room-ceil-shadow;
       }
     }
+
     .#{$room-wall} {
-      &.wall-n, &.wall-s {
+
+      &.wall-n,
+      &.wall-s {
         &:before {
           box-shadow: $room-wall-shadow;
           content: '';
@@ -717,12 +806,14 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
           pointer-events: none;
         }
       }
+
       &.wall-n {
         &:before {
           left: 0;
           right: -50%;
         }
       }
+
       &.wall-s {
         &:before {
           right: 0;
@@ -731,8 +822,11 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       }
     }
   }
+
   &:not(.first):not(.last) {
-    .#{$room-ceil}, .#{$room-floor} {
+
+    .#{$room-ceil},
+    .#{$room-floor} {
       &:before {
         content: '';
         position: absolute;
@@ -743,18 +837,23 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         left: -50%;
       }
     }
+
     .#{$room-floor} {
       &:before {
         box-shadow: $room-floor-shadow;
       }
     }
+
     .#{$room-ceil} {
       &:before {
         box-shadow: $room-ceil-shadow;
       }
     }
+
     .#{$room-wall} {
-      &.wall-n, &.wall-s {
+
+      &.wall-n,
+      &.wall-s {
         &:before {
           box-shadow: $room-wall-shadow;
           content: '';
@@ -768,17 +867,21 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       }
     }
   }
+
   &.last:not(.first) {
-    .#{$room-ceil}, .#{$room-floor} {
+
+    .#{$room-ceil},
+    .#{$room-floor} {
       &:before {
         content: '';
         position: absolute;
         top: 0;
         bottom: 0;
         pointer-events: none;
-        
+
       }
     }
+
     .#{$room-floor} {
       &:before {
         box-shadow: $room-floor-shadow;
@@ -786,6 +889,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         right: 0;
       }
     }
+
     .#{$room-ceil} {
       &:before {
         right: -50%;
@@ -793,8 +897,11 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
         box-shadow: $room-ceil-shadow;
       }
     }
+
     .#{$room-wall} {
-      &.wall-n, &.wall-s {
+
+      &.wall-n,
+      &.wall-s {
         &:before {
           box-shadow: $room-wall-shadow;
           content: '';
@@ -804,12 +911,14 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
           pointer-events: none;
         }
       }
+
       &.wall-n {
         &:before {
           left: -50%;
           right: 0;
         }
       }
+
       &.wall-s {
         &:before {
           left: 0;
@@ -818,20 +927,26 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
       }
     }
   }
+
   &.first.last {
     .#{$room-floor} {
       box-shadow: $room-floor-shadow;
     }
+
     .#{$room-ceil} {
       box-shadow: $room-ceil-shadow;
     }
+
     .#{$room-wall} {
-      &.wall-n, &.wall-s {
+
+      &.wall-n,
+      &.wall-s {
         box-shadow: $room-wall-shadow;
       }
     }
   }
-  > div {
+
+  >div {
     position: absolute;
     backface-visibility: hidden;
   }
@@ -916,6 +1031,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     --room-button-current-shadow: #{$dark-room-button-current-shadow};
     --room-canvas-border: #{$dark-room-canvas-border};
     --room-canvas-shadow: #{$dark-room-canvas-shadow};
+
     .#{$room-dark-button} {
       @include room-dark-button-active;
     }

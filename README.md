@@ -60,7 +60,7 @@ The `ItemType` is a TypeScript type that defines the structure of the primary da
 
 This type provides the structure for defining various properties for each item within your gallery's data. You can customize the properties based on the specific data you want to associate with each item.
 
-## Sample of josn data
+## Sample of json data
 
 ```json
 {
