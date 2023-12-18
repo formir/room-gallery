@@ -697,7 +697,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     }
 
     &.wall-w {
-      transform: rotateY(90deg) translateZ(calc(-1 * $room-s-w / 2));
+      transform: rotateY(89.99999999deg) translateZ(calc(-1 * $room-s-w / 2));
     }
 
     &.wall-s {
@@ -705,11 +705,11 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     }
 
     &.wall-e {
-      transform: rotateY(-90deg) translateZ(calc(-1 * $room-s-w / 2));
+      transform: rotateY(-89.99999999deg) translateZ(calc(-1 * $room-s-w / 2));
     }
 
     &.#{$room-ceil} {
-      transform: rotateX(-90deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
+      transform: rotateX(-89.99999999deg) translateZ(calc(-1 * $room-s-w / 2)) rotate(180deg);
     }
 
     &.#{$room-floor} {
@@ -722,7 +722,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 
       $room-s-w-2-set: $room-s-w-2;
       $room-s-h-set: $room-s-h;
-      transform: #{rotateX(-90deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
+      transform: #{rotateX(-89.99999999deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
     }
   }
 }

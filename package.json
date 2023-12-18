@@ -1,6 +1,6 @@
 {
   "name": "room-gallery",
-  "version": "1.0.5-beta",
+  "version": "1.0.6-beta",
   "description": "Room Gallery: A 3D Exhibit - A Responsive 3D Image Slider Implemented in TypeScript as a React Component, Utilizing Vanilla JavaScript and jQuery",
   "keywords": [
     "slider",
