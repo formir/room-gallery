@@ -1,5 +1,5 @@
 /*!
- *  Formir - Room Gallery v1.0.6-beta by @konrad-k - https://formir.io/room-gallery/
+ *  Formir - Room Gallery v1.1.0-beta by @konrad-k - https://formir.io/room-gallery/
  *  All rights reserved - Copyright © 2023
  */
 // FONTS
@@ -87,6 +87,7 @@ $room-button-opacity: var(--room-button-opacity, 1);
 $room-background-blend-mode: var(--room-background-blend-mode);
 $room-body-background: var(--room-body-background);
 $room-text-color: var(--room-text-color);
+$room-link-color: var(--room-link-color);
 $room-floor-background: var(--room-floor-background);
 $room-floor-shadow: var(--room-floor-shadow);
 $room-wall-background: var(--room-wall-background);
@@ -105,46 +106,48 @@ $room-canvas-border: var(--room-canvas-border);
 $room-canvas-shadow: var(--room-canvas-shadow);
 
 // Light theme:
-$light-room-background-blend-mode: var(--room-light-room-background-blend-mode, multiply);
-$light-room-body-background: var(--room-light-room-body-background, #fff);
-$light-room-text-color: var(--room-light-room-text-color, #2d2d2d);
-$light-room-floor-background: var(--room-light-room-floor-background, #21262c url('./../img/floor.png') repeat 400px 600px);
-$light-room-floor-shadow: var(--room-light-room-floor-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
-$light-room-wall-background: var(--room-light-room-wall-background, #fff url('./../img/wall.png') repeat 30px 30px);
-$light-room-wall-shadow: var(--room-light-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.1), 0 0 100px rgba(0, 0, 0, 0.2) inset);
-$light-room-ceil-background: var(--room-light-room-ceil-background, #fff url('./../img/wall.png') repeat 30px 30px);
-$light-room-ceil-shadow: var(--room-light-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
-$light-room-button-background: var(--room-light-room-button-background, #3c3642);
-$light-room-button-color: var(--room-light-room-button-color, #fff);
-$light-room-button-border: var(--room-light-room-button-border, 0 none);
-$light-room-button-shadow: var(--room-light-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
-$light-room-button-current-background: var(--room-light-room-button-current-background, #fff);
-$light-room-button-current-border: var(--room-light-room-button-current-border, 0 none);
-$light-room-button-current-color: var(--room-light-room-button-current-color, #3c3642);
-$light-room-button-current-shadow: var(--room-light-room-button-current-shadow, none);
-$light-room-canvas-border: var(--room-light-room-canvas-border, 10px solid #3c3642);
-$light-room-canvas-shadow: var(--room-light-room-canvas-shadow, 1px 1px 3px rgba(0, 0, 0, 0.5));
+$room-light-background-blend-mode: var(--room-light-background-blend-mode, multiply);
+$room-light-body-background: var(--room-light-body-background, #fff);
+$room-light-text-color: var(--room-light-text-color, #2d2d2d);
+$room-light-link-color: var(--room-light-link-color, #2d2d2d);
+$room-light-floor-background: var(--room-light-floor-background, #21262c url('./../img/floor.png') repeat 400px 600px);
+$room-light-floor-shadow: var(--room-light-floor-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
+$room-light-wall-background: var(--room-light-wall-background, #fff url('./../img/wall.png') repeat 30px 30px);
+$room-light-wall-shadow: var(--room-light-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.1), 0 0 100px rgba(0, 0, 0, 0.2) inset);
+$room-light-ceil-background: var(--room-light-ceil-background, #fff url('./../img/wall.png') repeat 30px 30px);
+$room-light-ceil-shadow: var(--room-light-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.1), 0 0 150px rgba(0, 0, 0, 0.2) inset);
+$room-light-button-background: var(--room-light-button-background, #3c3642);
+$room-light-button-color: var(--room-light-button-color, #fff);
+$room-light-button-border: var(--room-light-button-border, 0 none);
+$room-light-button-shadow: var(--room-light-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
+$room-light-button-current-background: var(--room-light-button-current-background, #fff);
+$room-light-button-current-border: var(--room-light-button-current-border, 0 none);
+$room-light-button-current-color: var(--room-light-button-current-color, #3c3642);
+$room-light-button-current-shadow: var(--room-light-button-current-shadow, none);
+$room-light-canvas-border: var(--room-light-canvas-border, 10px solid #3c3642);
+$room-light-canvas-shadow: var(--room-light-canvas-shadow, 1px 1px 3px rgba(0, 0, 0, 0.5));
 
 // Dark theme:
-$dark-room-background-blend-mode: var(--room-dark-room-background-blend-mode, screen);
-$dark-room-body-background: var(--room-dark-room-body-background, #1c1e24);
-$dark-room-text-color: var(--room-dark-room-text-color, #fff);
-$dark-room-floor-background: var(--room-dark-room-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
-$dark-room-floor-shadow: var(--room-dark-room-floor-shadow, none);
-$dark-room-wall-background: var(--room-dark-room-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-wall-shadow: var(--room-dark-room-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.7), 0 0 100px rgba(0, 0, 0, 0.7) inset);
-$dark-room-ceil-background: var(--room-dark-room-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
-$dark-room-ceil-shadow: var(--room-dark-room-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.7), 0 0 150px rgba(0, 0, 0, 0.7) inset);
-$dark-room-button-background: var(--room-dark-room-button-background, #fff);
-$dark-room-button-color: var(--room-dark-room-button-color, #000);
-$dark-room-button-border: var(--room-dark-room-button-border, 0 none);
-$dark-room-button-shadow: var(--room-dark-room-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
-$dark-room-button-current-background: var(--room-dark-room-button-current-background, #000);
-$dark-room-button-current-border: var(--room-dark-room-button-current-border, 0 none);
-$dark-room-button-current-color: var(--room-dark-room-button-current-color, #fff);
-$dark-room-button-current-shadow: var(--room-dark-room-button-current-shadow, 0 0 5px 5px rgba(255, 255, 255, 0.3));
-$dark-room-canvas-border: var(--room-dark-room-canvas-border, 10px solid $room-button-background);
-$dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255, 255, 255, 0.1));
+$room-dark-background-blend-mode: var(--room-dark-background-blend-mode, screen);
+$room-dark-body-background: var(--room-dark-body-background, #1c1e24);
+$room-dark-text-color: var(--room-dark-text-color, #fff);
+$room-dark-link-color: var(--room-dark-link-color, #fff);
+$room-dark-floor-background: var(--room-dark-floor-background, #241c11 url('./../img/dark-floor.jpg') repeat 150px 150px);
+$room-dark-floor-shadow: var(--room-dark-floor-shadow, none);
+$room-dark-wall-background: var(--room-dark-wall-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
+$room-dark-wall-shadow: var(--room-dark-wall-shadow, 0 0 50px rgba(0, 0, 0, 0.7), 0 0 100px rgba(0, 0, 0, 0.7) inset);
+$room-dark-ceil-background: var(--room-dark-ceil-background, #1c1e24 url('./../img/dark-wall.jpg') repeat 150px 150px);
+$room-dark-ceil-shadow: var(--room-dark-ceil-shadow, 0 0 100px rgba(0, 0, 0, 0.7), 0 0 150px rgba(0, 0, 0, 0.7) inset);
+$room-dark-button-background: var(--room-dark-button-background, #fff);
+$room-dark-button-color: var(--room-dark-button-color, #000);
+$room-dark-button-border: var(--room-dark-button-border, 0 none);
+$room-dark-button-shadow: var(--room-dark-button-shadow, 0 0 2px rgba(0, 0, 0, 0.5));
+$room-dark-button-current-background: var(--room-dark-button-current-background, #000);
+$room-dark-button-current-border: var(--room-dark-button-current-border, 0 none);
+$room-dark-button-current-color: var(--room-dark-button-current-color, #fff);
+$room-dark-button-current-shadow: var(--room-dark-button-current-shadow, 0 0 5px 5px rgba(255, 255, 255, 0.3));
+$room-dark-canvas-border: var(--room-dark-canvas-border, 10px solid $room-button-background);
+$room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255, 255, 0.1));
 
 // ROOM GALLERY
 
@@ -172,6 +175,11 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
   p {
     font-weight: bold;
     margin-bottom: 0.5rem;
+  }
+
+  :any-link {
+    color: $room-text-color;
+    text-decoration: underline;
   }
 
   span {
@@ -404,7 +412,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 }
 
 @mixin room-dark-button-active() {
-  box-shadow: $dark-room-button-current-shadow;
+  box-shadow: $room-dark-button-current-shadow;
 }
 
 
@@ -503,6 +511,9 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
     button {
       @include room-button($room-pagination-button-size);
       display: inline-block;
+      &.active {
+        @include room-pagination-current;
+      }
     }
   }
 
@@ -516,7 +527,7 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 
     img,
     picture {
-      +* {
+      + * {
         font-size: $room-text-font-size;
         color: $room-text-color;
         text-align: center;
@@ -967,70 +978,73 @@ $dark-room-canvas-shadow: var(--room-dark-room-canvas-shadow, 0 0 10px rgba(255,
 /// Variables eject
 
 .#{$room} {
-  --room-body-background-blend-mode: #{$light-room-background-blend-mode};
-  --room-body-background: #{$light-room-body-background};
-  --room-text-color: #{$light-room-text-color};
-  --room-floor-background: #{$light-room-floor-background};
-  --room-floor-shadow: #{$light-room-floor-shadow};
-  --room-wall-background: #{$light-room-wall-background};
-  --room-wall-shadow: #{$light-room-wall-shadow};
-  --room-ceil-background: #{$light-room-ceil-background};
-  --room-ceil-shadow: #{$light-room-ceil-shadow};
-  --room-button-background: #{$light-room-button-background};
-  --room-button-color: #{$light-room-button-color};
-  --room-button-border: #{$light-room-button-border};
-  --room-button-shadow: #{$light-room-button-shadow};
-  --room-button-current-background: #{$light-room-button-current-background};
-  --room-button-current-border: #{$light-room-button-current-border};
-  --room-button-current-color: #{$light-room-button-current-color};
-  --room-button-current-shadow: #{$light-room-button-current-shadow};
-  --room-canvas-border: #{$light-room-canvas-border};
-  --room-canvas-shadow: #{$light-room-canvas-shadow};
+  --room-body-background-blend-mode: #{$room-light-background-blend-mode};
+  --room-body-background: #{$room-light-body-background};
+  --room-text-color: #{$room-light-text-color};
+  --room-link-color: #{$room-light-link-color};
+  --room-floor-background: #{$room-light-floor-background};
+  --room-floor-shadow: #{$room-light-floor-shadow};
+  --room-wall-background: #{$room-light-wall-background};
+  --room-wall-shadow: #{$room-light-wall-shadow};
+  --room-ceil-background: #{$room-light-ceil-background};
+  --room-ceil-shadow: #{$room-light-ceil-shadow};
+  --room-button-background: #{$room-light-button-background};
+  --room-button-color: #{$room-light-button-color};
+  --room-button-border: #{$room-light-button-border};
+  --room-button-shadow: #{$room-light-button-shadow};
+  --room-button-current-background: #{$room-light-button-current-background};
+  --room-button-current-border: #{$room-light-button-current-border};
+  --room-button-current-color: #{$room-light-button-current-color};
+  --room-button-current-shadow: #{$room-light-button-current-shadow};
+  --room-canvas-border: #{$room-light-canvas-border};
+  --room-canvas-shadow: #{$room-light-canvas-shadow};
 
   &.#{$room-dark} {
-    --room-body-background-blend-mode: #{$dark-room-background-blend-mode};
-    --room-body-background: #{$dark-room-body-background};
-    --room-text-color: #{$dark-room-text-color};
-    --room-floor-background: #{$dark-room-floor-background};
-    --room-floor-shadow: #{$dark-room-floor-shadow};
-    --room-wall-background: #{$dark-room-wall-background};
-    --room-wall-shadow: #{$dark-room-wall-shadow};
-    --room-ceil-background: #{$dark-room-ceil-background};
-    --room-ceil-shadow: #{$dark-room-ceil-shadow};
-    --room-button-background: #{$dark-room-button-background};
-    --room-button-color: #{$dark-room-button-color};
-    --room-button-border: #{$dark-room-button-border};
-    --room-button-shadow: #{$dark-room-button-shadow};
-    --room-button-current-background: #{$dark-room-button-current-background};
-    --room-button-current-border: #{$dark-room-button-current-border};
-    --room-button-current-color: #{$dark-room-button-current-color};
-    --room-button-current-shadow: #{$dark-room-button-current-shadow};
-    --room-canvas-border: #{$dark-room-canvas-border};
-    --room-canvas-shadow: #{$dark-room-canvas-shadow};
+    --room-body-background-blend-mode: #{$room-dark-background-blend-mode};
+    --room-body-background: #{$room-dark-body-background};
+    --room-text-color: #{$room-dark-text-color};
+    --room-link-color: #{$room-dark-link-color};
+    --room-floor-background: #{$room-dark-floor-background};
+    --room-floor-shadow: #{$room-dark-floor-shadow};
+    --room-wall-background: #{$room-dark-wall-background};
+    --room-wall-shadow: #{$room-dark-wall-shadow};
+    --room-ceil-background: #{$room-dark-ceil-background};
+    --room-ceil-shadow: #{$room-dark-ceil-shadow};
+    --room-button-background: #{$room-dark-button-background};
+    --room-button-color: #{$room-dark-button-color};
+    --room-button-border: #{$room-dark-button-border};
+    --room-button-shadow: #{$room-dark-button-shadow};
+    --room-button-current-background: #{$room-dark-button-current-background};
+    --room-button-current-border: #{$room-dark-button-current-border};
+    --room-button-current-color: #{$room-dark-button-current-color};
+    --room-button-current-shadow: #{$room-dark-button-current-shadow};
+    --room-canvas-border: #{$room-dark-canvas-border};
+    --room-canvas-shadow: #{$room-dark-canvas-shadow};
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .#{$room}.#{$room-dark-auto} {
-    --room-body-background-blend-mode: #{$dark-room-background-blend-mode};
-    --room-body-background: #{$dark-room-body-background};
-    --room-text-color: #{$dark-room-text-color};
-    --room-floor-background: #{$dark-room-floor-background};
-    --room-floor-shadow: #{$dark-room-floor-shadow};
-    --room-wall-background: #{$dark-room-wall-background};
-    --room-wall-shadow: #{$dark-room-wall-shadow};
-    --room-ceil-background: #{$dark-room-ceil-background};
-    --room-ceil-shadow: #{$dark-room-ceil-shadow};
-    --room-button-background: #{$dark-room-button-background};
-    --room-button-color: #{$dark-room-button-color};
-    --room-button-border: #{$dark-room-button-border};
-    --room-button-shadow: #{$dark-room-button-shadow};
-    --room-button-current-background: #{$dark-room-button-current-background};
-    --room-button-current-border: #{$dark-room-button-current-border};
-    --room-button-current-color: #{$dark-room-button-current-color};
-    --room-button-current-shadow: #{$dark-room-button-current-shadow};
-    --room-canvas-border: #{$dark-room-canvas-border};
-    --room-canvas-shadow: #{$dark-room-canvas-shadow};
+    --room-body-background-blend-mode: #{$room-dark-background-blend-mode};
+    --room-body-background: #{$room-dark-body-background};
+    --room-text-color: #{$room-dark-text-color};
+    --room-link-color: #{$room-dark-link-color};
+    --room-floor-background: #{$room-dark-floor-background};
+    --room-floor-shadow: #{$room-dark-floor-shadow};
+    --room-wall-background: #{$room-dark-wall-background};
+    --room-wall-shadow: #{$room-dark-wall-shadow};
+    --room-ceil-background: #{$room-dark-ceil-background};
+    --room-ceil-shadow: #{$room-dark-ceil-shadow};
+    --room-button-background: #{$room-dark-button-background};
+    --room-button-color: #{$room-dark-button-color};
+    --room-button-border: #{$room-dark-button-border};
+    --room-button-shadow: #{$room-dark-button-shadow};
+    --room-button-current-background: #{$room-dark-button-current-background};
+    --room-button-current-border: #{$room-dark-button-current-border};
+    --room-button-current-color: #{$room-dark-button-current-color};
+    --room-button-current-shadow: #{$room-dark-button-current-shadow};
+    --room-canvas-border: #{$room-dark-canvas-border};
+    --room-canvas-shadow: #{$room-dark-canvas-shadow};
 
     .#{$room-dark-button} {
       @include room-dark-button-active;

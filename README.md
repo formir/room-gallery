@@ -314,19 +314,12 @@ The `settings` type allows you to configure various aspects of your RoomGallery.
 The `event` property within the `settings` type allows you to define various event callbacks that get triggered during different actions in your RoomGallery. These event callbacks can be used to add custom behavior or handle specific actions. Here are the available event callbacks:
 
 - `onInit(value?: object)`: This callback is invoked when the RoomGallery is initialized. You can perform any initialization tasks or setup actions here.
-
 - `onRender(value?: object)`: Triggered when the RoomGallery is rendered. You can use this callback to perform actions after the gallery is rendered.
-
 - `onShowNext(value?: object)`: Called when the user navigates to the next item. You can use this callback to add custom behavior when showing the next item.
-
 - `onShowPrev(value?: object)`: Invoked when the user navigates to the previous item. Use this callback to add custom behavior when showing the previous item.
-
 - `onZoomIn(value?: object)`: Triggered when the user zooms in. You can use this callback to perform actions when the gallery zooms in.
-
 - `onZoomOut(value?: object)`: Called when the user zooms out. You can use this callback to perform actions when the gallery zooms out.
-
 - `onDarkModeOn(value?: object)`: This callback is invoked when dark mode is turned on. You can use this callback to handle actions specific to enabling dark mode.
-
 - `onDarkModeOff(value?: object)`: Called when dark mode is turned off. You can use this callback to handle actions specific to disabling dark mode.
 
 ### StylesVariables Enum
@@ -373,47 +366,49 @@ The `styles` provides a set of predefined CSS variables used to style your RoomG
 
 #### Light Room Styles:
 
-- `lightRoomBackgroundBlendMode`
-- `lightRoomBodyBackground`
-- `lightRoomTypeextColor`
-- `lightRoomFloorBackground`
-- `lightRoomFloorShadow`
-- `lightRoomWallBackground`
-- `lightRoomWallShadow`
-- `lightRoomCeilBackground`
-- `lightRoomCeilShadow`
-- `lightRoomButtonBackground`
-- `lightRoomButtonColor`
-- `lightRoomButtonBorder`
-- `lightRoomButtonShadow`
-- `lightRoomButtonCurrentBackground`
-- `lightRoomButtonCurrentBorder`
-- `lightRoomButtonCurrentColor`
-- `lightRoomButtonCurrentShadow`
-- `lightRoomCanvasBorder`
-- `lightRoomCanvasShadow`
+- `lightBackgroundBlendMode`
+- `lightBodyBackground`
+- `lightTextColor`
+- `lightLinkColor`
+- `lightFloorBackground`
+- `lightFloorShadow`
+- `lightWallBackground`
+- `lightWallShadow`
+- `lightCeilBackground`
+- `lightCeilShadow`
+- `lightButtonBackground`
+- `lightButtonColor`
+- `lightButtonBorder`
+- `lightButtonShadow`
+- `lightButtonCurrentBackground`
+- `lightButtonCurrentBorder`
+- `lightButtonCurrentColor`
+- `lightButtonCurrentShadow`
+- `lightCanvasBorder`
+- `lightCanvasShadow`
 
 #### Dark Room Styles:
 
-- `darkRoomBackgroundBlendMode`
-- `darkRoomBodyBackground`
-- `darkRoomTypeextColor`
-- `darkRoomFloorBackground`
-- `darkRoomFloorShadow`
-- `darkRoomWallBackground`
-- `darkRoomWallShadow`
-- `darkRoomCeilBackground`
-- `darkRoomCeilShadow`
-- `darkRoomButtonBackground`
-- `darkRoomButtonColor`
-- `darkRoomButtonBorder`
-- `darkRoomButtonShadow`
-- `darkRoomButtonCurrentBackground`
-- `darkRoomButtonCurrentBorder`
-- `darkRoomButtonCurrentColor`
-- `darkRoomButtonCurrentShadow`
-- `darkRoomCanvasBorder`
-- `darkRoomCanvasShadow`
+- `darkBackgroundBlendMode`
+- `darkBodyBackground`
+- `darkTextColor`
+- `darkLinkColor`
+- `darkFloorBackground`
+- `darkFloorShadow`
+- `darkWallBackground`
+- `darkWallShadow`
+- `darkCeilBackground`
+- `darkCeilShadow`
+- `darkButtonBackground`
+- `darkButtonColor`
+- `darkButtonBorder`
+- `darkButtonShadow`
+- `darkButtonCurrentBackground`
+- `darkButtonCurrentBorder`
+- `darkButtonCurrentColor`
+- `darkButtonCurrentShadow`
+- `darkCanvasBorder`
+- `darkCanvasShadow`
 
 These CSS variables allow you to control the styling of various components and elements within your RoomGallery. You can override these variables to create a custom look and feel for your gallery.
 
@@ -424,3 +419,131 @@ These CSS variables allow you to control the styling of various components and e
 - `$room-mobile-media-width`: Mobile breakpoint - 945px (Do not use % unit or calc(). You can use px, rem, cm, vh, vw, etc.)
 - `$room-mobile-size-width`: Mobile width of gallery after mobile breakpoint - 100vw (Do not use % unit or calc(). Recommended 100vw)
 - `$room-mobile-size-height`: Mobile height of gallery after mobile breakpoint - 100vh (Recommended 100vh)
+
+### Sass variables for classes names setup:
+
+- `$room`: main wrapper
+- `$room-dark`: dark room wrapper
+- `$room-dark-auto`: automatic dark room wrapper
+- `$room-body`: body of the room
+- `$room-arena`: wrapper for the arena
+- `$room-walls`: walls in 3D
+- `$room-wall`: individual wall
+- `$room-wall-active`: active wall
+- `$room-ceil`: ceiling
+- `$room-floor`: floor
+- `$room-item`: item to display on the wall
+- `$room-item-active`: active item
+- `$room-item-image`: image container
+- `$room-item-desc`: image description
+- `$room-zoom`: zoom control input
+- `$room-paginations`: pagination wrapper
+- `$room-navigations`: navigation wrapper
+- `$room-prev-button`: previous button
+- `$room-next-button`: next button
+- `$room-icon`: icon
+- `$room-zoom-button`: zoom in button- `$room-dark-button`: dark mode button
+- `$room-exit-button`: exit zoom button
+- `$room-canvas`: border/canvas style
+
+## Sass variables editable in JS:
+
+- `$room-rotate-speed`: Specifies the rotation speed of the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `2s`.
+- `$room-rotate-timing`: Specifies the timing function for the room rotation animation. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `ease-in-out`.
+- `$room-font-family`: Specifies the font family for the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `Arial`.
+- `$room-perspective`: Specifies the perspective value for the room. It is a Sass variable that is set to the value of `$room-size-width`.
+- `$room-mobile-perspective`: Specifies the perspective value for the room on mobile devices. It is a Sass variable that is set to the value of `$room-mobile-size-width`.
+- `$room-scale`: Specifies the scale factor for the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1.1`.
+- `$room-scale-zoom`: Specifies the zoom scale factor for the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1.5`.
+- `$room-offset-y`: Specifies the vertical offset of the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0` and it is expressed as a percentage.
+- `$room-item-height`: Specifies the height of the room items. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `90%`.
+- `$room-item-width`: Specifies the width of the room items. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `90%`.
+- `$room-zindex`: Specifies the z-index value for the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1000`.
+- `$room-text-font-size`: Specifies the font size for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `14px`.
+- `$room-text-font-size-mobile`: Specifies the font size for the room text on mobile devices. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `2vmin`.
+- `$room-font-line-height`: Specifies the line height for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1.3em`.
+- `$room-text-margin-top`: Specifies the top margin for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1.5rem`.
+- `$room-text-max-height`: Specifies the maximum height for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `20%`.
+- `$room-text-min-height`: Specifies the minimum height for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `15%`.
+- `$room-text-max-width`: Specifies the maximum width for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `70%`.
+- `$room-text-padding`: Specifies the padding for the room text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `20px 0`.
+- `$room-navigations-margin`: Specifies the margin for the room navigations. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `20px`.
+- `$room-button-size`: Specifies the size of the room buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `35px`.
+- `$room-pagination-button-size`: Specifies the size of the room pagination buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `25px`.
+- `$room-pagination-buttons-space`: Specifies the space between room pagination buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `7px`.
+- `$room-nav-button-size`: Specifies the size of the room navigation buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `35px`.
+- `$room-buttons-position`: Specifies the position of the room buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `5%`.
+- `$room-button-zoom-position`: Specifies the position of the zoom button in the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `10%`.
+- `$room-button-dark-position`: Specifies the position of the dark mode button in the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `10%`.
+- `$room-button-zoom-width`: Specifies the width of the zoom button in the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `35px`.
+- `$room-button-exit-width`: Specifies the width of the exit button in the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `35px`.
+- `$room-button-dark-width`: Specifies the width of the dark mode button in the room. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `35px`.
+- `$room-pagination-position`: Specifies the position of the room pagination. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `5%`.
+- `$room-button-transition`: Specifies the transition property for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `opacity 0.5s linear`.
+- `$room-button-opacity`: Specifies the opacity value for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1`.
+- `$room-background-blend-mode`: Specifies the blend mode for the room background. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-body-background`: Specifies the background color for the room body. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-text-color`: Specifies the color for the room text. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-link-color`: Specifies the color for the room links. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-floor-background`: Specifies the background image and repeat pattern for the room floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-floor-shadow`: Specifies the shadow effect for the room floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-wall-background`: Specifies the background image and repeat pattern for the room walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-wall-shadow`: Specifies the shadow effect for the room walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-ceil-background`: Specifies the background image and repeat pattern for the room ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-ceil-shadow`: Specifies the shadow effect for the room ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-background`: Specifies the background color for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-color`: Specifies the color for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-border`: Specifies the border style for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-shadow`: Specifies the shadow effect for the room buttons. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-current-background`: Specifies the background color for the current room button. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-current-border`: Specifies the border style for the current room button. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-current-color`: Specifies the color for the current room button. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-button-current-shadow`: Specifies the shadow effect for the current room button. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-canvas-border`: Specifies the border style for the room canvas. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-canvas-shadow`: Specifies the shadow effect for the room canvas. It is a Sass variable that can be customized using the CSS `var()` function.
+
+### Light sass variables:
+
+- `$room-light-background-blend-mode`: Specifies the blend mode for the light theme background. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `multiply`.
+- `$room-light-body-background`: Specifies the background color for the light theme body. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-light-text-color`: Specifies the color for the light theme text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#2d2d2d`.
+- `$room-light-link-color`: Specifies the color for the light theme links. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#2d2d2d`.
+- `$room-light-floor-background`: Specifies the background image and repeat pattern for the light theme floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-floor-shadow`: Specifies the shadow effect for the light theme floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-wall-background`: Specifies the background image and repeat pattern for the light theme walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-wall-shadow`: Specifies the shadow effect for the light theme walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-ceil-background`: Specifies the background image and repeat pattern for the light theme ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-ceil-shadow`: Specifies the shadow effect for the light theme ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-light-button-background`: Specifies the background color for the light theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#3c3642`.
+- `$room-light-button-color`: Specifies the color for the light theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-light-button-border`: Specifies the border style for the light theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 none`.
+- `$room-light-button-shadow`: Specifies the shadow effect for the light theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 0 2px rgba(0, 0, 0, 0.5)`.
+- `$room-light-button-current-background`: Specifies the background color for the current light theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-light-button-current-border`: Specifies the border style for the current light theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 none`.
+- `$room-light-button-current-color`: Specifies the color for the current light theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#3c3642`.
+- `$room-light-button-current-shadow`: Specifies the shadow effect for the current light theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `none`.
+- `$room-light-canvas-border`: Specifies the border style for the light theme canvas. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `10px solid #3c3642`.
+- `$room-light-canvas-shadow`: Specifies the shadow effect for the light theme canvas. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `1px 1px 3px rgba(0, 0, 0, 0.5)`.
+
+### Dark sass variables:
+
+- `$room-dark-background-blend-mode`: Specifies the blend mode for the dark theme background. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `screen`.
+- `$room-dark-body-background`: Specifies the background color for the dark theme body. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#1c1e24`.
+- `$room-dark-text-color`: Specifies the color for the dark theme text. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-dark-link-color`: Specifies the color for the dark theme links. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-dark-floor-background`: Specifies the background image and repeat pattern for the dark theme floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-floor-shadow`: Specifies the shadow effect for the dark theme floor. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-wall-background`: Specifies the background image and repeat pattern for the dark theme walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-wall-shadow`: Specifies the shadow effect for the dark theme walls. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-ceil-background`: Specifies the background image and repeat pattern for the dark theme ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-ceil-shadow`: Specifies the shadow effect for the dark theme ceiling. It is a Sass variable that can be customized using the CSS `var()` function.
+- `$room-dark-button-background`: Specifies the background color for the dark theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-dark-button-color`: Specifies the color for the dark theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#000`.
+- `$room-dark-button-border`: Specifies the border style for the dark theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 none`.
+- `$room-dark-button-shadow`: Specifies the shadow effect for the dark theme buttons. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 0 2px rgba(0, 0, 0, 0.5)`.
+- `$room-dark-button-current-background`: Specifies the background color for the current dark theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#000`.
+- `$room-dark-button-current-border`: Specifies the border style for the current dark theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 none`.
+- `$room-dark-button-current-color`: Specifies the color for the current dark theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `#fff`.
+- `$room-dark-button-current-shadow`: Specifies the shadow effect for the current dark theme button. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 0 5px 5px rgba(255, 255, 255, 0.3)`.
+- `$room-dark-canvas-border`: Specifies the border style for the dark theme canvas. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `10px solid $room-button-background`.
+- `$room-dark-canvas-shadow`: Specifies the shadow effect for the dark theme canvas. It is a Sass variable that can be customized using the CSS `var()` function. The default value is `0 0 10px rgba(255, 255, 255, 0.1)`.

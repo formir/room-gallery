@@ -111,13 +111,13 @@ export interface parseItemsI {
 
 export enum StylesVariables {
   'rotateSpeed', 'rotateTiming', 'fontFamily', 'perspective', 'mobileSizeWidth', 'mobileSizeHeight', 'mobilePerspective', 'scale', 'scaleZoom', 'offsetY',
-  'itemHeight', 'itemWidth', 'zIndex', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
+  'itemHeight', 'itemWidth', 'zIndex', 'textColor', 'linkColor', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
   'textMaxWidth', 'textPadding', 'navigationsMargin', 'buttonSize', 'paginationButtonSize', 'paginationButtonsSpace', 'navButtonSize', 'buttonsPosition',
   'buttonZoomPosition', 'buttonDarkPosition', 'buttonZoomWidth', 'buttonExitWidth', 'buttonDarkWidth', 'paginationPosition', 'buttonTransition', 'buttonOpacity',
-  'lightRoomBackgroundBlendMode', 'lightRoomBodyBackground', 'lightRoomTypeextColor', 'lightRoomFloorBackground', 'lightRoomFloorShadow',
-  'lightRoomWallBackground', 'lightRoomWallShadow', 'lightRoomCeilBackground', 'lightRoomCeilShadow', 'lightRoomButtonBackground', 'lightRoomButtonColor',
-  'lightRoomButtonBorder', 'lightRoomButtonShadow', 'lightRoomButtonCurrentBackground', 'lightRoomButtonCurrentBorder', 'lightRoomButtonCurrentColor',
-  'lightRoomButtonCurrentShadow', 'lightRoomCanvasBorder', 'lightRoomCanvasShadow', 'darkRoomBackgroundBlendMode', 'darkRoomBodyBackground', 'darkRoomTypeextColor',
-  'darkRoomFloorBackground', 'darkRoomFloorShadow', 'darkRoomWallBackground', 'darkRoomWallShadow', 'darkRoomCeilBackground', 'darkRoomCeilShadow',
-  'darkRoomButtonBackground', 'darkRoomButtonColor', 'darkRoomButtonBorder', 'darkRoomButtonShadow', 'darkRoomButtonCurrentBackground',
-  'darkRoomButtonCurrentBorder', 'darkRoomButtonCurrentColor', 'darkRoomButtonCurrentShadow', 'darkRoomCanvasBorder', 'darkRoomCanvasShadow' }
+  'lightBackgroundBlendMode', 'lightBodyBackground', 'lightTextColor', 'lightLinkColor', 'lightFloorBackground', 'lightFloorShadow',
+  'lightWallBackground', 'lightWallShadow', 'lightCeilBackground', 'lightCeilShadow', 'lightButtonBackground', 'lightButtonColor',
+  'lightButtonBorder', 'lightButtonShadow', 'lightButtonCurrentBackground', 'lightButtonCurrentBorder', 'lightButtonCurrentColor',
+  'lightButtonCurrentShadow', 'lightCanvasBorder', 'lightCanvasShadow', 'darkBackgroundBlendMode', 'darkBodyBackground', 'darkTextColor', 'darkLinkColor',
+  'darkFloorBackground', 'darkFloorShadow', 'darkWallBackground', 'darkWallShadow', 'darkCeilBackground', 'darkCeilShadow',
+  'darkButtonBackground', 'darkButtonColor', 'darkButtonBorder', 'darkButtonShadow', 'darkButtonCurrentBackground',
+  'darkButtonCurrentBorder', 'darkButtonCurrentColor', 'darkButtonCurrentShadow', 'darkCanvasBorder', 'darkCanvasShadow' }
