@@ -3,13 +3,13 @@
     {
       "image": "formir-room-thumb.png",
       "title": "The Room Gallery - React & jQuery plugin",
-      "description": "Provided to you in Open Beta during testing and development process.",
+      "descriptionHtml": "<p>Provided to you in Open Beta during testing and development process.</p><p><a href='https://www.npmjs.com/package/room-gallery'>NPM</a> / <a href='https://github.com/formir/room-gallery/'>Github</a></p>",
       "height": "280px",
       "width": "280px"
     },
     {
       "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-react/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-react/issues'>Report issue</a></p>",
+      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-gallery/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-gallery/issues'>Report issue</a></p>",
       "height": "200px",
       "width": "200px"
     },
@@ -20,7 +20,7 @@
         "original": "https://picsum.photos/id/239/1200/800",
         "zoom": "https://picsum.photos/id/239/2400/1600"
       },
-      "description": "Nullam placerat odio eget purus rhoncus, eget eleifend augue congue."
+      "description": "This React component is a versatile slider, perfect for showcasing a series of images or content."
     },
     {
       "image": {
@@ -29,7 +29,7 @@
         "original": "https://picsum.photos/id/240/1200/800",
         "zoom": "https://picsum.photos/id/240/2400/1600"
       },
-      "description": "Nam vitae sem a arcu sodales rhoncus quis vel mi."
+      "description": "The carousel feature allows for a smooth transition between slides, creating a seamless user experience."
     },
     {
       "image": {
@@ -38,7 +38,7 @@
         "original": "https://picsum.photos/id/237/1200/800",
         "zoom": "https://picsum.photos/id/237/2400/1600"
       },
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "description": "It can be used as a dynamic gallery, displaying a collection of images or content in an engaging manner."
     },
     {
       "image": {
@@ -47,7 +47,7 @@
         "original": "https://picsum.photos/id/241/1200/800",
         "zoom": "https://picsum.photos/id/241/2400/1600"
       },
-      "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
+      "description": "The exhibit feature of this component allows for a unique presentation of images or content, similar to a museum exhibition."
     },
     {
       "image": {
@@ -56,7 +56,7 @@
         "original": "https://picsum.photos/id/242/1200/800",
         "zoom": "https://picsum.photos/id/242/2400/1600"
       },
-      "description": "Aliquam pretium nulla et lorem viverra venenatis."
+      "description": "Each image in the slider is displayed in high resolution, ensuring a visually appealing experience for the viewer."
     },
     {
       "video": "https://www.w3schools.com/html/mov_bbb.mp4"
@@ -68,7 +68,7 @@
         "original": "https://picsum.photos/id/244/1200/800",
         "zoom": "https://picsum.photos/id/244/2400/1600"
       },
-      "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+      "description": "The picture quality remains consistent across all slides, regardless of the number of images in the carousel."
     },
     {
       "image": {
@@ -77,7 +77,7 @@
         "original": "https://picsum.photos/id/250/1200/800",
         "zoom": "https://picsum.photos/id/250/2400/1600"
       },
-      "description": "Donec bibendum enim sed purus interdum, non mollis libero facilisis."
+      "description": "Despite being a React component, it offers similar functionality to a jQuery slider, making it a great alternative."
     },
     {
       "image": {
@@ -86,7 +86,7 @@
         "original": "https://picsum.photos/id/251/1200/800",
         "zoom": "https://picsum.photos/id/251/2400/1600"
       },
-      "description": "Morbi molestie est sed turpis tempus, id dictum magna faucibus."
+      "description": "Built with React, this component offers superior performance and a component-based structure."
     },
     {
       "image": {
@@ -95,7 +95,7 @@
         "original": "https://picsum.photos/id/247/1200/800",
         "zoom": "https://picsum.photos/id/247/2400/1600"
       },
-      "description": "Maecenas vel felis vitae augue maximus aliquam."
+      "description": "The 3D feature adds depth to the slider, making the images appear more lifelike and engaging."
     },
     {
       "image": {
@@ -104,7 +104,7 @@
         "original": "https://picsum.photos/id/248/1200/800",
         "zoom": "https://picsum.photos/id/248/2400/1600"
       },
-      "description": "Vivamus ullamcorper ipsum a odio commodo, eu facilisis tellus pulvinar."
+      "description": "This JavaScript-based component is easy to integrate into any web project and offers extensive customization options."
     },
     {
       "image": {
@@ -113,7 +113,7 @@
         "original": "https://picsum.photos/id/238/1200/800",
         "zoom": "https://picsum.photos/id/238/2400/1600"
       },
-      "description": "Suspendisse eu tortor non nibh fermentum cursus."
+      "description": "The room feature allows for a unique presentation of images, similar to a room in a museum."
     },
     {
       "image": {
@@ -122,7 +122,7 @@
         "original": "https://picsum.photos/id/239/1200/800",
         "zoom": "https://picsum.photos/id/239/2400/1600"
       },
-      "description": "Nullam placerat odio eget purus rhoncus, eget eleifend augue congue."
+      "description": "The museum feature presents the images in a manner reminiscent of a museum exhibition, adding a touch of sophistication to your website."
     },
     {
       "image": {
@@ -131,7 +131,7 @@
         "original": "https://picsum.photos/id/240/1200/800",
         "zoom": "https://picsum.photos/id/240/2400/1600"
       },
-      "description": "Nam vitae sem a arcu sodales rhoncus quis vel mi."
+      "description": "The exhibition mode allows for a unique showcase of images, making it perfect for art galleries and museums."
     },
     {
       "image": {
@@ -140,7 +140,7 @@
         "original": "https://picsum.photos/id/241/1200/800",
         "zoom": "https://picsum.photos/id/241/2400/1600"
       },
-      "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
+      "description": "The showcase feature presents your images in a stunning layout, ensuring they capture the viewer's attention."
     },
     {
       "image": {
@@ -149,7 +149,7 @@
         "original": "https://picsum.photos/id/241/1200/800",
         "zoom": "https://picsum.photos/id/241/2400/1600"
       },
-      "description": "Vestibulum in enim in tellus dapibus vehicula in eget erat."
+      "description": "The viewer can easily navigate through the slides using the intuitive controls, and can also zoom in for a closer look."
     }
   ]
 }
