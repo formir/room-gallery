@@ -35,12 +35,12 @@ $room-canvas: room-canvas; // class for border/canvas style
 
 
 /// SASS CORE VARIABLES - editable in SASS
-$room-size-width: 100vmax;
-$room-size-height: 100vmin;
+$room-size-width: 100dvmax;
+$room-size-height: 100dvmin;
 
 $room-mobile-media-width: 945px; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc
-$room-mobile-size-width: 100vw; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
-$room-mobile-size-height: 100vh; // recomment 100vh
+$room-mobile-size-width: 100dvw; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
+$room-mobile-size-height: 100dvh; // recomment 100vh
 
 // CSS VAR VARIABLES - editable in JS
 $room-rotate-speed: var(--room-rotate-speed, 2s);
