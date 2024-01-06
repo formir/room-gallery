@@ -68,6 +68,44 @@ export const RoomGallery = forwardRef(
 
     const value = { currentState, zoom, dark, position, settings }
 
+    const clear = () => {
+      setCurrentState({
+        items: [] as Array<ItemType>,
+        rooms: [] as Array<RoomType>,
+        activeItem: { index: 0 } as ItemType,
+        prevItem: { index: 0 } as ItemType
+      })
+      setPosition(settings.defaultPosition)
+      setDark(settings.darkMode === DarkMode.dark)
+      setZoom(settings.zoomMode === ZoomMode.in)
+    }
+
+    const build = () => {
+      const preItems = [] as Array<ItemType>
+      const preRooms = [] as Array<RoomType>
+      if (typeof settings?.event?.onInit === 'function') settings?.event?.onInit(value)
+
+      if (children) {
+        parseItems({ childrenItems: children, preItems, preRooms })
+      } else if (dataItems && dataItems?.length > 0 && typeof dataItems === 'object') {
+        if (dataItems[0] instanceof HTMLElement) {
+          parseItems({ elementItems: dataItems as Array<HTMLElement>, preItems, preRooms })
+        } else {
+          parseItems({ dataItems, preItems, preRooms })
+        }
+      } else if (fetchMethod && typeof fetchMethod === 'string') {
+        dataFetch(fetchMethod).then((fetchItems: Array<ItemType>) => {
+          parseItems({ dataItems: fetchItems, preItems, preRooms })
+        })
+      } else if (fetchMethod && typeof fetchMethod === 'function') {
+        fetchMethod().then(async (fetchItems: Array<ItemType>) => {
+          parseItems({ dataItems: fetchItems, preItems, preRooms })
+        })
+      } else {
+        console.error('No fetch methods or items provided. Use one of this props: fetch, items')
+      }
+    }
+
     const parseItems = ({dataItems, elementItems, childrenItems, preItems, preRooms}: parseItemsI) => {
       let itemsToParse = [];
       if (childrenItems) {
@@ -190,34 +228,105 @@ export const RoomGallery = forwardRef(
       trackMouse: true
     })
 
+    function renderRooms() {
+      return currentState.rooms.map((room, index) => (
+        <Room
+          key={index}
+          index={index}
+          room={room}
+          rooms={currentState.rooms}
+          activeItem={currentState.activeItem}
+          prevItem={currentState.prevItem}
+          position={position}
+          settings={settings}
+        />
+        )
+      )
+    }
+
+    function renderPagination() {
+      return settings.paginations !== Paginations.disabled &&
+      ((isZoomed() && settings.paginationsOnZoom !== PaginationsOnZoom.hide) || !isZoomed()) && 
+        <div className={`room-paginations ${settings.paginations === Paginations.thumb ? 'room-paginations-thumbs' : ''}`}>
+        { currentState.items.map((item, index) => (
+          item && <button
+            className={
+              `${index === currentState.activeItem.index ? 'active' : ''}
+              ${settings.paginationsNav === PaginationsNav.text && settings.paginations !== Paginations.thumb ? ' room-icon' : ''}`
+            }
+            key={index}
+            onClick={() => setCurrent(item) }>
+            { settings.paginations === Paginations.number && <span>{index + 1}</span> }
+            { settings.paginations === Paginations.title && <span>{item?.title}</span> }
+            { settings.paginations === Paginations.thumb && ( typeof item?.image === 'object' ? <img src={item?.image?.thumb} /> : typeof item?.image === 'string' && <img src={item?.image} /> ) }
+            </button>
+        ))}
+      </div>
+    }
+
+    function renderZoomNav() {
+      return settings.zoomMode === ZoomMode.manual && 
+      <>
+        {
+          isZoomed() ? <button className={`room-exit-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
+            { settings?.icons?.zoomOut ?? <ZoomOutIcon/> }
+          </button> :
+          <button className={`room-zoom-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
+            { settings?.icons?.zoomIn ?? <ZoomInIcon/> }
+          </button>
+        }
+      </>
+    }
+
+    function renderDarkNav() {
+      return settings.darkMode === DarkMode.manual && 
+      <button className={`room-dark-btn ${settings.darkNav === DarkNav.icon ? 'room-icon' : ''}`} onClick={() => toggleDarkMode()}>
+        { isDarkMode() ? settings?.icons?.lightOn ?? <LightOffIcon/> : settings?.icons?.lightOff ?? <LightOffIcon/> }
+      </button>
+    }
+
+    function renderArrowNav() {
+      return typeof currentState.activeItem.index === 'number' && settings.arrowNav !== ArrowNav.disabled && 
+      <div className="room-navigations">
+        { 
+          currentState.activeItem.index > 0 && getPrevItem() &&
+          ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) &&
+          settings.arrowNav && <>
+            {
+              ['number', 'blank'].includes(settings.arrowNav) ?
+              <button className="room-prev" onClick={() => gotoPrevItem()}>
+                { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index}</span> }
+              </button> :
+              <button className="room-prev room-icon" onClick={() => gotoPrevItem()}>
+                { settings?.icons?.prev ?? <PrevIcon/> }
+              </button>
+            }
+          </>
+        }
+        {
+          currentState.items.length > currentState.activeItem.index + 1 && getNextItem() && 
+          ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) && 
+          settings.arrowNav && <>
+            {
+              ['number', 'blank'].includes(settings.arrowNav) ?
+              <button className="room-next" onClick={() => gotoNextItem()}>
+                { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index + 2.0}</span> }
+              </button> :
+              <button className="room-next room-icon" onClick={() => gotoNextItem()}>
+                { settings?.icons?.next ?? <NextIcon/> }
+              </button>
+            }
+          </>
+        }
+    </div>
+    }
+
     function Loading() {
       return <h2>Loading...</h2>;
     }
 
     useEffect(() => {
-      const preItems = [] as Array<ItemType>
-      const preRooms = [] as Array<RoomType>
-      if (typeof settings?.event?.onInit === 'function') settings?.event?.onInit(value)
-
-      if (children) {
-        parseItems({ childrenItems: children, preItems, preRooms })
-      } else if (dataItems && dataItems?.length > 0 && typeof dataItems === 'object') {
-        if (dataItems[0] instanceof HTMLElement) {
-          parseItems({ elementItems: dataItems as Array<HTMLElement>, preItems, preRooms })
-        } else {
-          parseItems({ dataItems, preItems, preRooms })
-        }
-      } else if (fetchMethod && typeof fetchMethod === 'string') {
-        dataFetch(fetchMethod).then((fetchItems: Array<ItemType>) => {
-          parseItems({ dataItems: fetchItems, preItems, preRooms })
-        })
-      } else if (fetchMethod && typeof fetchMethod === 'function') {
-        fetchMethod().then(async (fetchItems: Array<ItemType>) => {
-          parseItems({ dataItems: fetchItems, preItems, preRooms })
-        })
-      } else {
-        console.error('No fetch methods or items provided. Use one of this props: fetch, items')
-      }
+      build();
     }, [])
 
     useEffect(() => {
@@ -268,17 +377,24 @@ export const RoomGallery = forwardRef(
         toggleDarkMode() {
           toggleDarkMode();
         },
-        setDarkMode(mode : boolean) {
+        setDarkMode(mode: boolean) {
           setDarkMode(mode);
         },
         toggleZoom() {
           toggleZoom();
         },
-        setZoom(zoom : boolean) {
+        setZoom(zoom: boolean) {
           setZoom(zoom);
         },
         getCurrentItem() {
-          return getCurrentItem()
+          return getCurrentItem();
+        },
+        refresh() {
+          clear();
+          build();
+        },
+        clear() {
+          clear();
         }
       };
     }, [currentState]);
@@ -290,89 +406,15 @@ export const RoomGallery = forwardRef(
             currentState && currentState.rooms.length > 0 &&
             <div className={`room-gallery${isDarkMode() ? ' room-dark' : ''}${isZoomed() ? ' room-zoom' : ''}`} {...swipeHandlers}>
               <div className="room-body">
-                <div className="room-arena">
-                  {
-                    currentState.rooms.map((room, index) => (
-                      <Room
-                        key={index}
-                        index={index}
-                        room={room}
-                        rooms={currentState.rooms}
-                        activeItem={currentState.activeItem}
-                        prevItem={currentState.prevItem}
-                        position={position}
-                        settings={settings}
-                      />
-                      )
-                    )
-                  }
-                </div>
-                { typeof currentState.activeItem.index === 'number' && settings.arrowNav !== ArrowNav.disabled && 
-                  <div className="room-navigations">
-                    { 
-                      currentState.activeItem.index > 0 && getPrevItem() &&
-                      ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) &&
-                      settings.arrowNav && <>
-                        {
-                          ['number', 'blank'].includes(settings.arrowNav) ?
-                          <button className="room-prev" onClick={() => gotoPrevItem()}>
-                            { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index}</span> }
-                          </button> :
-                          <button className="room-prev room-icon" onClick={() => gotoPrevItem()}>
-                            { settings?.icons?.prev ?? <PrevIcon/> }
-                          </button>
-                        }
-                      </>
-                    }
-                    {
-                      currentState.items.length > currentState.activeItem.index + 1 && getNextItem() && 
-                      ((isZoomed() && settings.arrowNavOnZoom !== ArrowNavOnZoom.hide) || !isZoomed()) && 
-                      settings.arrowNav && <>
-                        {
-                          ['number', 'blank'].includes(settings.arrowNav) ?
-                          <button className="room-next" onClick={() => gotoNextItem()}>
-                            { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index + 2.0}</span> }
-                          </button> :
-                          <button className="room-next room-icon" onClick={() => gotoNextItem()}>
-                            { settings?.icons?.next ?? <NextIcon/> }
-                          </button>
-                        }
-                      </>
-                    }
-                </div>
-                }
                 {
-                  settings.paginations !== Paginations.disabled &&
-                  ((isZoomed() && settings.paginationsOnZoom !== PaginationsOnZoom.hide) || !isZoomed()) && 
-                  <div className="room-paginations">
-                    { currentState.items.map((item, index) => (
-                      item && <button
-                        className={`${index === currentState.activeItem.index ? 'active' : ''}${settings.paginationsNav === PaginationsNav.text ? ' room-icon' : ''}`}
-                        key={index}
-                        onClick={() => setCurrent(item) }>
-                        { settings.paginations === Paginations.number && <span>{index + 1}</span> }
-                        { settings.paginations === Paginations.title && <span>{item?.title}</span> }
-                        </button>
-                    ))}
+                  <div className="room-arena">
+                    {renderRooms()}
                   </div>
                 }
-                { settings.zoomMode === ZoomMode.manual && 
-                  <>
-                    {
-                      isZoomed() ? <button className={`room-exit-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
-                        { settings?.icons?.zoomOut ?? <ZoomOutIcon/> }
-                      </button> :
-                      <button className={`room-zoom-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
-                        { settings?.icons?.zoomIn ?? <ZoomInIcon/> }
-                      </button>
-                    }
-                  </>
-                }
-                { settings.darkMode === DarkMode.manual && 
-                  <button className={`room-dark-btn ${settings.darkNav === DarkNav.icon ? 'room-icon' : ''}`} onClick={() => toggleDarkMode()}>
-                    { isDarkMode() ? settings?.icons?.lightOn ?? <LightOffIcon/> : settings?.icons?.lightOff ?? <LightOffIcon/> }
-                  </button>
-                }
+                { renderArrowNav() }
+                { renderPagination() }
+                { renderZoomNav() }
+                { renderDarkNav() }
               </div>
             </div>
           }

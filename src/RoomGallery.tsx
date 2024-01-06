@@ -109,6 +109,18 @@ class RoomGallery implements IroomGallery {
       return this.roomGalleryRef.current.getCurrentItem()
     }
   }
+
+  refresh(): void {
+    if (this.roomGalleryRef.current) {
+      this.roomGalleryRef.current.refresh()
+    }
+  }
+
+  clear(): void {
+    if (this.roomGalleryRef.current) {
+      this.roomGalleryRef.current.clear()
+    }
+  }
 }
 
 export default RoomGallery;

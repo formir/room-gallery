@@ -1,19 +1,6 @@
 {
   "items": [
     {
-      "image": "formir-room-thumb.png",
-      "title": "The Room Gallery - React & jQuery plugin",
-      "descriptionHtml": "<p>Provided to you in Open Beta during testing and development process.</p><p><a href='https://www.npmjs.com/package/room-gallery'>NPM</a> / <a href='https://github.com/formir/room-gallery/'>Github</a></p>",
-      "height": "280px",
-      "width": "280px"
-    },
-    {
-      "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-gallery/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-gallery/issues'>Report issue</a></p>",
-      "height": "200px",
-      "width": "200px"
-    },
-    {
       "image": {
         "thumb": "https://picsum.photos/id/239/150/100",
         "prompt": "https://picsum.photos/id/239/600/400",
@@ -141,15 +128,6 @@
         "zoom": "https://picsum.photos/id/241/2400/1600"
       },
       "description": "The showcase feature presents your images in a stunning layout, ensuring they capture the viewer's attention."
-    },
-    {
-      "image": {
-        "thumb": "https://picsum.photos/id/242/150/100",
-        "prompt": "https://picsum.photos/id/242/600/400",
-        "original": "https://picsum.photos/id/242/1200/800",
-        "zoom": "https://picsum.photos/id/242/2400/1600"
-      },
-      "description": "The viewer can easily navigate through the slides using the intuitive controls, and can also zoom in for a closer look."
     }
   ]
 }

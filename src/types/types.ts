@@ -42,7 +42,8 @@ export enum Paginations {
   disabled = 'disabled',
   number = 'number',
   blank = 'blank',
-  title = 'title'
+  title = 'title',
+  thumb = 'thumb'
 }
 
 export enum PaginationsOnZoom {
@@ -111,13 +112,13 @@ export interface parseItemsI {
 
 export enum StylesVariables {
   'rotateSpeed', 'rotateTiming', 'fontFamily', 'perspective', 'mobileSizeWidth', 'mobileSizeHeight', 'mobilePerspective', 'scale', 'scaleZoom', 'offsetY',
-  'itemHeight', 'itemWidth', 'zIndex', 'textColor', 'linkColor', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
-  'textMaxWidth', 'textPadding', 'navigationsMargin', 'buttonSize', 'paginationButtonSize', 'paginationButtonsSpace', 'navButtonSize', 'buttonsPosition',
+  'itemHeight', 'itemWidth', 'zIndex', 'iconBlendMode', 'textColor', 'linkColor', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
+  'textMaxWidth', 'textPadding', 'navigationsMargin', 'buttonSize', 'paginationButtonSize', 'paginationButtonsSpace', 'paginationButtonsBorderRadius', 'paginationThumbsMaxHeight', 'paginationThumbMaxWidth', 'navButtonSize', 'buttonsPosition',
   'buttonZoomPosition', 'buttonDarkPosition', 'buttonZoomWidth', 'buttonExitWidth', 'buttonDarkWidth', 'paginationPosition', 'buttonTransition', 'buttonOpacity',
   'lightBackgroundBlendMode', 'lightBodyBackground', 'lightTextColor', 'lightLinkColor', 'lightFloorBackground', 'lightFloorShadow',
   'lightWallBackground', 'lightWallShadow', 'lightCeilBackground', 'lightCeilShadow', 'lightButtonBackground', 'lightButtonColor',
   'lightButtonBorder', 'lightButtonShadow', 'lightButtonCurrentBackground', 'lightButtonCurrentBorder', 'lightButtonCurrentColor',
-  'lightButtonCurrentShadow', 'lightCanvasBorder', 'lightCanvasShadow', 'darkBackgroundBlendMode', 'darkBodyBackground', 'darkTextColor', 'darkLinkColor',
+  'lightButtonCurrentShadow', 'lightIconColor', 'lightCanvasBorder', 'lightCanvasShadow', 'darkBackgroundBlendMode', 'darkBodyBackground', 'darkTextColor', 'darkLinkColor',
   'darkFloorBackground', 'darkFloorShadow', 'darkWallBackground', 'darkWallShadow', 'darkCeilBackground', 'darkCeilShadow',
   'darkButtonBackground', 'darkButtonColor', 'darkButtonBorder', 'darkButtonShadow', 'darkButtonCurrentBackground',
-  'darkButtonCurrentBorder', 'darkButtonCurrentColor', 'darkButtonCurrentShadow', 'darkCanvasBorder', 'darkCanvasShadow' }
+  'darkButtonCurrentBorder', 'darkButtonCurrentColor', 'darkButtonCurrentShadow', 'darkIconColor', 'darkCanvasBorder', 'darkCanvasShadow' }

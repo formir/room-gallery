@@ -22,10 +22,11 @@
       "@components/*": ["src/components/*"],
     },
   },
-  "include": ["src/**/*", "src/index.tsx"],
+  "include": ["src/**/*", "src/index.tsx", "examples"],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",
     "dist",
+    "examples"
   ]
 }

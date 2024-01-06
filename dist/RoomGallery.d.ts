@@ -27,6 +27,8 @@ declare class RoomGallery implements IroomGallery {
     toggleZoom(): void;
     setZoom(zoom: boolean): void;
     getCurrentItem(): {} | void;
+    refresh(): void;
+    clear(): void;
 }
 export default RoomGallery;
 //# sourceMappingURL=RoomGallery.d.ts.map
