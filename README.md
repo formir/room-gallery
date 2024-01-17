@@ -128,38 +128,39 @@ An optional reference to the HTML `<div>` element that represents the room galle
 
 ```javascript
 <RoomGallery styles={{}} settings={{}}>
-  <div>
-    <div className="item-image">
-      <img src="url">
-    </div>
-    <div className="item-desc">
-      <p>Title</p>
-      <span>Description</span>
-    </div>
-  </div>
-  <div>
-    <div className="item-image">
-      <img src="url">
-    </div>
-    <div className="item-desc">
-      <p>Title</p>
-      <span>Description</span>
-    </div>
-  </div>
+	<div>
+		<div className="item-image">
+			<img src="url">
+		</div>
+		<div className="item-desc">
+			<p>Title</p>
+			<span>Description</span>
+		</div>
+	</div>
+	<div>
+		<div className="item-image">
+			<img src="url">
+		</div>
+		<div className="item-desc">
+			<p>Title</p>
+			<span>Description</span>
+		</div>
+	</div>
 </RoomGallery>
 ```
 
 ## Usage Vanilla JavaScript
 
 ```javascript
-import RoomGallery from 'room-gallery/dist'
+import RoomGallery from 'room-gallery/dist/RoomGallery'
+import 'room-gallery/dist/RoomGallery.css'
 
 const options = {
-  element: document.getElementById('root'), // element in DOM to render gallery
-  items: [{image: 'url', title: 'title', description: 'description'}], // optional items
-  fetch: '//fetch-url' // optional fetch url or promise method
-  styles: {},
-  setting: {}
+	element: document.getElementById('root'), // element in DOM to render gallery
+	items: [{image: 'url', title: 'title', description: 'description'}], // optional items
+	fetch: '//fetch-url' // optional fetch url or promise method
+	styles: {},
+	setting: {}
 
 }
 const room = new RoomGallery(options) // gallery will init by default
