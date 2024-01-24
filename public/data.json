@@ -3,13 +3,13 @@
     {
       "image": "formir-room-thumb.png",
       "title": "The Room Gallery - React & jQuery plugin",
-      "descriptionHtml": "<p>Provided to you in Open Beta during testing and development process.</p><p><a href='https://www.npmjs.com/package/room-gallery'>NPM</a> / <a href='https://github.com/formir/room-gallery/'>Github</a></p>",
+      "descriptionHtml": "<p><a href='https://codecanyon.net/item/js-jquery-react-3d-image-carousel-resposive-slider-room-gallery/50336453'>Buy full version</a></p><p>Test and start developing your app with: <a href='https://www.npmjs.com/package/room-gallery'>NPM</a> / <a href='https://github.com/formir/room-gallery/'>Github</a></p>",
       "height": "280px",
       "width": "280px"
     },
     {
       "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free: <a href='https://github.com/formir/room-gallery/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-gallery/issues'>Report issue</a></p>",
+      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free during development process: <a href='https://github.com/formir/room-gallery/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-gallery/issues'>Report issue</a></p>",
       "height": "200px",
       "width": "200px"
     },

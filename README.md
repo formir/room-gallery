@@ -4,7 +4,7 @@ RoomGallery is a powerful and versatile 3D image gallery slider for your web app
 
 ## Licensing Update
 
-RoomGallery has moved to a paid model (2024/01/24) for the stable version. This means that all public beta versions can be used free of charge, provided they are used exclusively for development or testing purposes. For production versions, you need to purchase the full version of the software. You can do this by following the link: [Purchase Full Version](https://codecanyon.net/item/js-jquery-react-3d-image-carousel-resposive-slider-room-gallery/50336453)
+RoomGallery has moved to a paid model (after 2024/01/24 - v1.2.0) for the stable version. This means that all public beta versions can be used free of charge, provided they are used exclusively for development or testing purposes. For production versions, you need to purchase the full version of the software. You can do this by following the link: [Purchase Full Version](https://codecanyon.net/item/js-jquery-react-3d-image-carousel-resposive-slider-room-gallery/50336453)
 
 Demo: https://formir.io/room-gallery/
 
