@@ -8,12 +8,6 @@
       "width": "280px"
     },
     {
-      "image": "formir-500.png",
-      "descriptionHtml": "<p style='margin: 0 0 10px'>Use for free during development process: <a href='https://github.com/formir/room-gallery/'>Documentation</a></p><p style='margin: 0'></p><p style='font-size: 0.9rem; margin: 30px 0 10px'>Help with testing and improve:<br/><a href='https://github.com/formir/room-gallery/issues'>Report issue</a></p>",
-      "height": "200px",
-      "width": "200px"
-    },
-    {
       "image": {
         "thumb": "https://picsum.photos/id/239/150/100",
         "prompt": "https://picsum.photos/id/239/600/400",
