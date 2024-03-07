@@ -57,6 +57,7 @@ export type RoomGallerySettingsType = {
     paginationsOnZoom?: keyof typeof PaginationsOnZoom;
     arrowNavOnZoom?: keyof typeof ArrowNavOnZoom;
     defaultPosition?: Position;
+    allOnOneWall?: boolean;
     icons?: {
         next?: JSX.Element;
         prev?: JSX.Element;

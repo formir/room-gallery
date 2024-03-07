@@ -38,7 +38,8 @@ export const roomGalleryDefaultSettings = {
   swipeToZoom: true,
   keypressToNav: true,
   keypressToZoom: true,
-  animationSpeed: { min: 2, ratio: 1 }
+  animationSpeed: { min: 2, ratio: 1 },
+  allOnOneWall: false
 } as RoomGallerySettingsType;
 
 export const GalleryContext = createContext({position: roomGalleryDefaultSettings.defaultPosition, zoom: roomGalleryDefaultSettings.zoomMode === 'in'});
@@ -125,8 +126,8 @@ export const RoomGallery = forwardRef(
       } else {
         itemsToParse = dataItems as Array<ItemType>
       }
-      parseRooms(itemsToParse, preRooms)
-      const activeItem = parseWalls(itemsToParse, preItems, preRooms, position)
+      parseRooms(itemsToParse, preRooms, settings.allOnOneWall)
+      const activeItem = parseWalls(itemsToParse, preItems, preRooms, position, settings.allOnOneWall)
       if (activeItem) setCurrentState({
         rooms: preRooms,
         items: preItems,

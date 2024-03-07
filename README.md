@@ -305,6 +305,8 @@ The `settings` type allows you to configure various aspects of your RoomGallery.
 
 - `defaultPosition`: Sets the default position for the gallery.
 
+- `allOnOneWall`: If set to `true`, images will be placed only on the front wall. By default, this is set to `false`, and images will propagate across all four walls.
+
 - `icons`: Allows you to customize the icons used for navigation.
 
 - `swipeToNav`: Enables or disables swipe gestures for item navigation.
