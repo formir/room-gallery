@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"  title="Room Gallery example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"  title="Room Gallery example" />
+    <meta name="theme-color" content="#000000"  title="Room Gallery example" />
+    <meta name="description" content="Room Gallery - react demo page"  title="Room Gallery example" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" href="./logo-64.png"  title="Room Gallery example" />
+    <link rel="manifest" href="./manifest.json"  title="Room Gallery example" />
+    <script src="../dist/jQueryRoomGallery.js"></script>
+    <link rel="stylesheet" href="../dist/roomGallery.css">
+    <title>React - Room Gallery</title>
+  </head>
+
+  <body>
+    <style>
+      body, html {
+        margin: 0;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $("body > img").RoomGallery({
+          element: $('#room-gallery').get(0),
+          settings: {
+            arrowNav: 'icons',
+            paginations: 'blank',
+            darkNav: 'icon',
+            zoomNav: 'icon',
+            event: {
+              onInit: function () {
+                $("body > img").remove();
+              },
+            }
+          },
+          styles: { 
+            lightButtonBackground: '#000',
+            paginationButtonSize: '15px',
+            buttonSize: '60px',
+            buttonDarkWidth: '30px',
+            buttonZoomWidth: '30px',
+            buttonExitWidth: '30px',
+            lightFloorBackground: '200% / auto repeat url(https://img.freepik.com/free-photo/grunge-wall-texture_1194-6108.jpg?w=2380&t=st=1704366106~exp=1704366706~hmac=e92d0c097a3824fd7cc300ed4e8854515a349301b4892b76dfe5ef398bb97848)',
+            lightWallBackground: 'left / contain url(https://img.freepik.com/free-photo/brick-wall-painted-white_1194-7526.jpg?w=2380&t=st=1704365970~exp=1704366570~hmac=bdb4aded7d7def3fb62c2db03fc55c251c7e3362ef0518bd179969ae49035c41)',
+            darkFloorBackground: 'linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 200% / auto repeat url(https://img.freepik.com/free-photo/grunge-wall-texture_1194-6108.jpg?w=2380&t=st=1704366106~exp=1704366706~hmac=e92d0c097a3824fd7cc300ed4e8854515a349301b4892b76dfe5ef398bb97848)',
+            darkWallBackground: 'linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), left / contain url(https://img.freepik.com/free-photo/brick-wall-painted-white_1194-7526.jpg?w=2380&t=st=1704365970~exp=1704366570~hmac=bdb4aded7d7def3fb62c2db03fc55c251c7e3362ef0518bd179969ae49035c41)'
+          }
+      });
+      });
+    </script>
+
+    <div id="room-gallery"></div>
+    
+    <img src="https://picsum.photos/id/239/1200/800" title="Some title" />
+    <img src="https://picsum.photos/id/240/1200/800" title="Room Gallery example" />
+    <img src="https://picsum.photos/id/237/1200/800" title="Room Gallery example" />
+    <img src="https://picsum.photos/id/241/1200/800" title="Room Gallery example" />
+    <img src="https://picsum.photos/id/242/1200/800" title="Room Gallery example" />
+    <img src="https://picsum.photos/id/244/1200/800" title="Room Gallery example" />
+    <img src="https://picsum.photos/id/250/1200/800" title="Room Gallery example" />
+  </body>
+
+</html>
