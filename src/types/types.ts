@@ -90,7 +90,12 @@ export type RoomGallerySettingsType = {
     onDarkModeOn?: (value?: object) => void
     onDarkModeOff?: (value?: object) => void
   },
-  animationSpeed?: { min: number, ratio: number} | number
+  animationSpeed?: { min: number, ratio: number } | number,
+  sanitizeHtml?: boolean;
+  sanitizeHtmlOptions?: {
+    allowedAttributes?: Array<keyof typeof sanitizeHtmlAllowedAttributes>;
+    allowedTags?: Array<keyof typeof sanitizeHtmlAllowedTags>;
+  }
 }
 
 export interface RoomGalleryProps {
@@ -122,4 +127,46 @@ export enum StylesVariables {
   'lightButtonCurrentShadow', 'lightIconColor', 'lightCanvasBorder', 'lightCanvasShadow', 'darkBackgroundBlendMode', 'darkBodyBackground', 'darkTextColor', 'darkLinkColor',
   'darkFloorBackground', 'darkFloorShadow', 'darkWallBackground', 'darkWallShadow', 'darkCeilBackground', 'darkCeilShadow',
   'darkButtonBackground', 'darkButtonColor', 'darkButtonBorder', 'darkButtonShadow', 'darkButtonCurrentBackground',
-  'darkButtonCurrentBorder', 'darkButtonCurrentColor', 'darkButtonCurrentShadow', 'darkIconColor', 'darkCanvasBorder', 'darkCanvasShadow' }
+  'darkButtonCurrentBorder', 'darkButtonCurrentColor', 'darkButtonCurrentShadow', 'darkIconColor', 'darkCanvasBorder', 'darkCanvasShadow'
+}
+
+export enum sanitizeHtmlAllowedTags {
+  'a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base',
+  'bdi', 'bdo', 'blockquote', 'br', 'button', 'canvas', 'caption',
+  'cite', 'code', 'col', 'colgroup', 'data', 'datalist', 'dd', 'del', 'details',
+  'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption',
+  'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head',
+  'header', 'hgroup', 'hr', 'i', 'iframe', 'img', 'input', 'ins',
+  'kbd', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'meta',
+  'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output',
+  'p', 'param', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's',
+  'samp', 'section', 'select', 'small', 'source', 'span', 'strong',
+  'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'template',
+  'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u',
+  'ul', 'var', 'video', 'wbr', 'menu', 'menuitem', 'command', 'keygen'
+}
+
+export enum sanitizeHtmlAllowedAttributes {
+  'href', 'action', 'src', 'value', 'name', 'id', 'target', 'style', 'class', 'controls', 'frameborder', 'allowfullscreen', 'allow',
+  'title', 'alt', 'width', 'height', 'autoplay', 'muted', 'loop', 'playsinline', 'poster', 'preload', 
+  'controlslist', 'crossorigin', 'referrerpolicy', 'sandbox', 'allowpaymentrequest', 'colspan', 'rowspan',
+  'scope', 'headers', 'colgroup', 'rowgroup', 'span', 'abbr', 'align', 'valign', 'nowrap', 'accept',
+  'accept-charset', 'accesskey', 'async', 'autocapitalize', 'autocomplete', 'autofocus', 'background',
+  'bgcolor', 'border', 'buffered', 'capture', 'challenge', 'charset', 'checked', 'code',
+  'color', 'cols', 'content', 'contenteditable', 'contextmenu', 'coords', 'csp', 'datetime', 'decoding',
+  'default', 'defer', 'dir', 'dirname', 'disabled', 'download', 'draggable', 'enctype', 'enterkeyhint',
+  'for', 'formmethod', 'formnovalidate', 'formtarget', 'hidden', 'high', 'hreflang', 'http-equiv',
+  'icon', 'importance', 'integrity', 'intrinsicsize', 'inputmode', 'is', 'ismap', 'itemprop', 'keytype',
+  'kind', 'label', 'lang', 'language', 'loading', 'list', 'low', 'manifest', 'max', 'maxlength',
+  'minlength', 'media', 'method', 'min', 'multiple', 'novalidate', 'open', 'optimum', 'pattern', 'ping',
+  'placeholder', 'radiogroup', 'readonly', 'rel', 'required', 'reversed', 'rows', 'scoped', 'selected',
+  'shape', 'size', 'sizes', 'slot', 'spellcheck', 'srclang', 'srcset', 'start', 'step', 'summary', 
+  'tabindex', 'translate', 'type', 'usemap', 'wrap', 'aria-activedescendant', 'aria-atomic', 'aria-autocomplete',
+  'aria-busy', 'aria-checked', 'aria-colcount', 'aria-colindex', 'aria-colspan', 'aria-controls', 'aria-current',
+  'aria-describedby', 'aria-details', 'aria-disabled', 'aria-dropeffect', 'aria-errormessage', 'aria-expanded',
+  'aria-flowto', 'aria-grabbed', 'aria-haspopup', 'aria-hidden', 'aria-invalid', 'aria-keyshortcuts', 'aria-label',
+  'aria-labelledby', 'aria-level', 'aria-live', 'aria-modal', 'aria-multiline', 'aria-multiselectable', 'aria-orientation',
+  'aria-owns', 'aria-placeholder', 'aria-posinset', 'aria-pressed', 'aria-readonly', 'aria-relevant', 'aria-required',
+  'aria-roledescription', 'aria-rowcount', 'aria-rowindex', 'aria-rowspan', 'aria-selected', 'aria-setsize', 'aria-sort',
+  'aria-valuemax', 'aria-valuemin', 'aria-valuenow', 'aria-valuetext'
+}

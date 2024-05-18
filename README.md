@@ -322,6 +322,15 @@ The `settings` type allows you to configure various aspects of your RoomGallery.
   - `'min'`: Represents the time it takes to animate between switched walls. Default 2s.
   - `'ratio'`: Is the distance multiplier between the walls being switched. Default 1.
 
+- `allOnOneWall`: By setting this `true`, all items will apply only front wall (all 3 other wall will not be used). Default disabled.
+
+- `sanitizeHtml`: Enable or disable sanitization of all data that will be present in HTML mode, for example descriptions, or Item as HTML. Default enabled.
+
+- `sanitizeHtmlOptions`:
+
+  - `allowedTags`: Array of string with tags that we will allow to display in case HTML.
+  - `allowedAttributes`: Array of string with attribute that we will allow to display in case HTML.
+
 - `event`: Configures event callbacks for various gallery actions, such as initialization, rendering, showing next/previous items, toggling dark mode, zooming, and more.
 
 ### Event Callbacks

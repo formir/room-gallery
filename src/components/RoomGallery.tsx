@@ -14,7 +14,9 @@ import {
   ArrowNavOnZoom,
   RoomGalleryProps,
   parseItemsI,
-  StylesVariables
+  StylesVariables,
+  sanitizeHtmlAllowedTags,
+  sanitizeHtmlAllowedAttributes
 } from '../types/types'
 import { Room } from './Room'
 import { ItemType } from './Item'
@@ -39,10 +41,15 @@ export const roomGalleryDefaultSettings = {
   keypressToNav: true,
   keypressToZoom: true,
   animationSpeed: { min: 2, ratio: 1 },
-  allOnOneWall: false
+  allOnOneWall: false,
+  sanitizeHtml: true,
+  sanitizeHtmlOptions: {
+    allowedTags: Object.values(sanitizeHtmlAllowedTags),
+    allowedAttributes: Object.values(sanitizeHtmlAllowedAttributes)
+  }
 } as RoomGallerySettingsType;
 
-export const GalleryContext = createContext({position: roomGalleryDefaultSettings.defaultPosition, zoom: roomGalleryDefaultSettings.zoomMode === 'in'});
+export const GalleryContext = createContext({position: roomGalleryDefaultSettings.defaultPosition, zoom: roomGalleryDefaultSettings.zoomMode === 'in', settings: roomGalleryDefaultSettings});
 
 export const RoomGallery = forwardRef(
   (

@@ -30,7 +30,7 @@ const Image = forwardRef(
 })
 
 export const Item = ({ image, title, description, descriptionHtml, html, video, vimeo, youtube, element, HtmlElement, position, height, width } : ItemType) => {
-  const {zoom, position: currentPosition} = useContext(GalleryContext);
+  const {zoom, position: currentPosition, settings} = useContext(GalleryContext);
   const [originLoaded, setOriginLoaded] = useState(false)
   const refOriginImage = React.createRef<HTMLImageElement>()
 
@@ -38,6 +38,12 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
   const refZoomImage = React.createRef<HTMLImageElement>()
 
   const refPromptImage = React.createRef<HTMLImageElement>()
+
+  const sanitizeConfig = {
+  ALLOWED_ATTR: settings?.sanitizeHtmlOptions?.allowedAttributes || [],
+  ALLOWED_TAGS: settings?.sanitizeHtmlOptions?.allowedTags || [],
+  KEEP_CONTENT: true 
+};
 
   const originOnLoad = () => {
     setOriginLoaded(true)
@@ -83,9 +89,9 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
   if (element) {
     return <div className={itemClass()}>{element}</div>;
   } else if (HtmlElement) {
-    return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(HtmlElement.innerHTML) }}></div>
+    return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(HtmlElement.innerHTML, sanitizeConfig) : HtmlElement.innerHTML }}></div>
   } else if (html) {
-    return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }}></div>
+    return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(html, sanitizeConfig) : html }}></div>
   } else if (video) {
     return <div className={itemClass()}>
       <video width={"640" || width} height={"360" || height} controls>
@@ -137,7 +143,7 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
     }
     {
       (descriptionHtml) &&
-      <div className="item-desc" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(descriptionHtml) }}/>
+      <div className="item-desc" dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(descriptionHtml, sanitizeConfig) : descriptionHtml }}/>
     }
   </div>
   }
