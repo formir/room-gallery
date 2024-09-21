@@ -32,6 +32,7 @@ npm install room-gallery
 import React from "react";
 import { createRoot } from "react-dom/client";
 import RoomGallery from "room-gallery";
+import "room-gallery/scss/room-gallery.scss";
 
 const dataFetch = async () => {
   const data = await (await fetch("./data.json")).json();
@@ -248,6 +249,8 @@ $('#room-gallery').data('RommGallery') // will give you access for control metho
 ## RoomGallery Settings
 
 The `settings` type allows you to configure various aspects of your RoomGallery. It includes the following configuration options:
+
+- `emptyMessage`: Specifies the message on the first wall if there are no items to display.
 
 - `arrowNav`: Defines how arrow navigation is displayed. Options are:
 

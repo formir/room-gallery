@@ -1,6 +1,6 @@
 {
   "name": "room-gallery",
-  "version": "1.3.1-dev",
+  "version": "1.4.0-dev",
   "description": "Room Gallery: A 3D carousel - A Responsive 3D Image Slider Implemented in TypeScript as a React Component, Utilizing Vanilla JavaScript and jQuery",
   "homepage": "https://formir.io/room-gallery/",
   "keywords": [
@@ -35,14 +35,17 @@
     "animation",
     "room gallery"
   ],
-  "main": "./src/index",
-  "types": "./src/index.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*",
-    "src/**/*"
+    "src/**/*",
+    "scss/**/*",
+    "examples/**/*",
+    "img/**/*"
   ],
   "style": "./dist/RoomGallery.css",
-  "sass": "./src/RoomGallery.scss",
+  "sass": "./scss/room-gallery.scss",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/formir/room-gallery.git"
@@ -54,7 +57,7 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.* && rm -rf docs/*.d.**",
-    "build": "webpack --mode production && yarn docs",
+    "build": "webpack --mode production && yarn docs && tsc && rm -rf dist/demo.**",
     "test": "jest"
   },
   "dependencies": {

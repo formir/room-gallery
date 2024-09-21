@@ -27,6 +27,9 @@
     "node_modules",
     "**/*.spec.ts",
     "dist",
-    "examples"
+    "examples",
+    "src/demo.tsx",
+    "src/jquery.tsx",
+    "src/RoomGallery.tsx"
   ]
 }

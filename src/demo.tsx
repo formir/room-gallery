@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RoomGallery } from './components/RoomGallery';
+import RoomGallery from './index';
+import './../scss/room-gallery.scss';
 
 const dataFetch = async () => {
   const data = await (await fetch('./data.json')).json();

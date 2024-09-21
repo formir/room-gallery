@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createContext, Suspense, forwardRef, Ref, useImperativeHandle } from 'react'
 import { useSwipeable } from "react-swipeable"
-import '../sass/room-gallery.scss'
 import { 
   RoomGallerySettingsType,
   ArrowNav,
@@ -110,6 +109,7 @@ export const RoomGallery = forwardRef(
           parseItems({ dataItems: fetchItems, preItems, preRooms })
         })
       } else {
+        parseItems({ dataItems: [{title: settings.emptyMessage || 'It looks like there\'s nothing here. Visit us in a moment' }] as ItemType[], preRooms: [], preItems: [] });
         console.error('No fetch methods or items provided. Use one of this props: fetch, items')
       }
     }

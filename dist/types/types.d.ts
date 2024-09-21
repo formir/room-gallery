@@ -58,6 +58,7 @@ export type RoomGallerySettingsType = {
     arrowNavOnZoom?: keyof typeof ArrowNavOnZoom;
     defaultPosition?: Position;
     allOnOneWall?: boolean;
+    emptyMessage?: string;
     icons?: {
         next?: JSX.Element;
         prev?: JSX.Element;
