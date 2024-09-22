@@ -44,6 +44,13 @@ const root = createRoot(container);
 root.render(<RoomGallery fetch={dataFetch} styles={{}} settings={{}} />);
 ```
 
+## Import room-gallery/src/index in case of TypeScript project
+
+```javascript
+import RoomGallery from "room-gallery/src/index";
+import "room-gallery/scss/room-gallery.scss";
+```
+
 ## ItemType
 
 The `ItemType` is a TypeScript type that defines the structure of the primary data element in your `data.json` file, which is processed by your gallery. It provides a way to specify the properties and their types for individual items in your gallery.
