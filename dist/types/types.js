@@ -1,58 +1,61 @@
-export var ArrowNav;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sanitizeHtmlAllowedAttributes = exports.sanitizeHtmlAllowedTags = exports.StylesVariables = exports.ArrowNavOnZoom = exports.PaginationsOnZoom = exports.Paginations = exports.PaginationsNav = exports.ZoomMode = exports.ZoomNav = exports.DarkMode = exports.DarkNav = exports.ArrowNav = void 0;
+var ArrowNav;
 (function (ArrowNav) {
     ArrowNav["number"] = "number";
     ArrowNav["icon"] = "icon";
     ArrowNav["blank"] = "blank";
     ArrowNav["disabled"] = "disabled";
-})(ArrowNav || (ArrowNav = {}));
-export var DarkNav;
+})(ArrowNav || (exports.ArrowNav = ArrowNav = {}));
+var DarkNav;
 (function (DarkNav) {
     DarkNav["button"] = "button";
     DarkNav["icon"] = "icon";
-})(DarkNav || (DarkNav = {}));
-export var DarkMode;
+})(DarkNav || (exports.DarkNav = DarkNav = {}));
+var DarkMode;
 (function (DarkMode) {
     DarkMode["dark"] = "dark";
     DarkMode["light"] = "light";
     DarkMode["manual"] = "manual";
     DarkMode["auto"] = "auto";
-})(DarkMode || (DarkMode = {}));
-export var ZoomNav;
+})(DarkMode || (exports.DarkMode = DarkMode = {}));
+var ZoomNav;
 (function (ZoomNav) {
     ZoomNav["button"] = "button";
     ZoomNav["icon"] = "icon";
-})(ZoomNav || (ZoomNav = {}));
-export var ZoomMode;
+})(ZoomNav || (exports.ZoomNav = ZoomNav = {}));
+var ZoomMode;
 (function (ZoomMode) {
     ZoomMode["in"] = "in";
     ZoomMode["out"] = "out";
     ZoomMode["manual"] = "manual";
     ZoomMode["disabled"] = "disabled";
-})(ZoomMode || (ZoomMode = {}));
-export var PaginationsNav;
+})(ZoomMode || (exports.ZoomMode = ZoomMode = {}));
+var PaginationsNav;
 (function (PaginationsNav) {
     PaginationsNav["button"] = "button";
     PaginationsNav["text"] = "text";
-})(PaginationsNav || (PaginationsNav = {}));
-export var Paginations;
+})(PaginationsNav || (exports.PaginationsNav = PaginationsNav = {}));
+var Paginations;
 (function (Paginations) {
     Paginations["disabled"] = "disabled";
     Paginations["number"] = "number";
     Paginations["blank"] = "blank";
     Paginations["title"] = "title";
     Paginations["thumb"] = "thumb";
-})(Paginations || (Paginations = {}));
-export var PaginationsOnZoom;
+})(Paginations || (exports.Paginations = Paginations = {}));
+var PaginationsOnZoom;
 (function (PaginationsOnZoom) {
     PaginationsOnZoom["hide"] = "hide";
     PaginationsOnZoom["show"] = "show";
-})(PaginationsOnZoom || (PaginationsOnZoom = {}));
-export var ArrowNavOnZoom;
+})(PaginationsOnZoom || (exports.PaginationsOnZoom = PaginationsOnZoom = {}));
+var ArrowNavOnZoom;
 (function (ArrowNavOnZoom) {
     ArrowNavOnZoom["hide"] = "hide";
     ArrowNavOnZoom["show"] = "show";
-})(ArrowNavOnZoom || (ArrowNavOnZoom = {}));
-export var StylesVariables;
+})(ArrowNavOnZoom || (exports.ArrowNavOnZoom = ArrowNavOnZoom = {}));
+var StylesVariables;
 (function (StylesVariables) {
     StylesVariables[StylesVariables["rotateSpeed"] = 0] = "rotateSpeed";
     StylesVariables[StylesVariables["rotateTiming"] = 1] = "rotateTiming";
@@ -137,8 +140,8 @@ export var StylesVariables;
     StylesVariables[StylesVariables["darkIconColor"] = 80] = "darkIconColor";
     StylesVariables[StylesVariables["darkCanvasBorder"] = 81] = "darkCanvasBorder";
     StylesVariables[StylesVariables["darkCanvasShadow"] = 82] = "darkCanvasShadow";
-})(StylesVariables || (StylesVariables = {}));
-export var sanitizeHtmlAllowedTags;
+})(StylesVariables || (exports.StylesVariables = StylesVariables = {}));
+var sanitizeHtmlAllowedTags;
 (function (sanitizeHtmlAllowedTags) {
     sanitizeHtmlAllowedTags[sanitizeHtmlAllowedTags["a"] = 0] = "a";
     sanitizeHtmlAllowedTags[sanitizeHtmlAllowedTags["abbr"] = 1] = "abbr";
@@ -251,8 +254,8 @@ export var sanitizeHtmlAllowedTags;
     sanitizeHtmlAllowedTags[sanitizeHtmlAllowedTags["menuitem"] = 108] = "menuitem";
     sanitizeHtmlAllowedTags[sanitizeHtmlAllowedTags["command"] = 109] = "command";
     sanitizeHtmlAllowedTags[sanitizeHtmlAllowedTags["keygen"] = 110] = "keygen";
-})(sanitizeHtmlAllowedTags || (sanitizeHtmlAllowedTags = {}));
-export var sanitizeHtmlAllowedAttributes;
+})(sanitizeHtmlAllowedTags || (exports.sanitizeHtmlAllowedTags = sanitizeHtmlAllowedTags = {}));
+var sanitizeHtmlAllowedAttributes;
 (function (sanitizeHtmlAllowedAttributes) {
     sanitizeHtmlAllowedAttributes[sanitizeHtmlAllowedAttributes["href"] = 0] = "href";
     sanitizeHtmlAllowedAttributes[sanitizeHtmlAllowedAttributes["action"] = 1] = "action";
@@ -436,4 +439,4 @@ export var sanitizeHtmlAllowedAttributes;
     sanitizeHtmlAllowedAttributes[sanitizeHtmlAllowedAttributes["aria-valuemin"] = 179] = "aria-valuemin";
     sanitizeHtmlAllowedAttributes[sanitizeHtmlAllowedAttributes["aria-valuenow"] = 180] = "aria-valuenow";
     sanitizeHtmlAllowedAttributes[sanitizeHtmlAllowedAttributes["aria-valuetext"] = 181] = "aria-valuetext";
-})(sanitizeHtmlAllowedAttributes || (sanitizeHtmlAllowedAttributes = {}));
+})(sanitizeHtmlAllowedAttributes || (exports.sanitizeHtmlAllowedAttributes = sanitizeHtmlAllowedAttributes = {}));

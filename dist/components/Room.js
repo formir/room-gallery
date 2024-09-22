@@ -1,8 +1,13 @@
-import React from 'react';
-import { Wall, Direction } from './Wall';
-export var Room = function (_a) {
-    var room = _a.room, rooms = _a.rooms, position = _a.position, index = _a.index, activeItem = _a.activeItem, prevItem = _a.prevItem, settings = _a.settings;
-    var rotation = function () {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Room = void 0;
+const react_1 = __importDefault(require("react"));
+const Wall_1 = require("./Wall");
+const Room = ({ room, rooms, position, index, activeItem, prevItem, settings }) => {
+    const rotation = () => {
         if (position)
             if (activeItem.position && prevItem.position && activeItem.position.y === 3 && prevItem.position.y === 0)
                 return -90;
@@ -11,11 +16,11 @@ export var Room = function (_a) {
         else
             return 0;
     };
-    var delay = function () {
+    const delay = () => {
         var _a, _b;
-        var distance = 2;
-        var min = 2;
-        var ratio = 1;
+        let distance = 2;
+        let min = 2;
+        let ratio = 1;
         if (typeof (settings === null || settings === void 0 ? void 0 : settings.animationSpeed) === 'number')
             min = settings.animationSpeed;
         else if (typeof ((_a = settings === null || settings === void 0 ? void 0 : settings.animationSpeed) === null || _a === void 0 ? void 0 : _a.min) === 'number')
@@ -26,17 +31,18 @@ export var Room = function (_a) {
             && prevItem && prevItem.position && typeof prevItem.position.x === 'number') {
             distance = prevItem.position.x - activeItem.position.x;
         }
-        return "transform ".concat(Math.abs(distance) > min ? (Math.abs(distance) * ratio) : min, "s ease-in-out");
+        return `transform ${Math.abs(distance) > min ? (Math.abs(distance) * ratio) : min}s ease-in-out`;
     };
-    return room.walls && position ? React.createElement("div", { className: "room-walls".concat(index === (rooms.length - 1) ? ' last' : '', " ").concat(index === 0 ? ' first' : ''), style: {
+    return room.walls && position ? react_1.default.createElement("div", { className: `room-walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`, style: {
             transform: 'rotateY(' + rotation() + 'deg) translateX(' + ((index - position.x) * 100) + '%)',
             transition: delay()
         } },
-        room.walls.map(function (wall, wallIndex) {
-            var indexOfDirection = Object.values(Direction).indexOf(wall.direction);
+        room.walls.map((wall, wallIndex) => {
+            const indexOfDirection = Object.values(Wall_1.Direction).indexOf(wall.direction);
             return wall.visible &&
-                React.createElement(Wall, { room: room, key: wallIndex, direction: wall.direction, items: wall.items, visible: wall.visible, active: position.x === index && position.y === indexOfDirection });
+                react_1.default.createElement(Wall_1.Wall, { room: room, key: wallIndex, direction: wall.direction, items: wall.items, visible: wall.visible, active: position.x === index && position.y === indexOfDirection });
         }),
-        React.createElement("div", { className: "room-ceil" }),
-        React.createElement("div", { className: "room-floor" })) : React.createElement(React.Fragment, null);
+        react_1.default.createElement("div", { className: "room-ceil" }),
+        react_1.default.createElement("div", { className: "room-floor" })) : react_1.default.createElement(react_1.default.Fragment, null);
 };
+exports.Room = Room;
