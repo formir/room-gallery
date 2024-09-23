@@ -35,16 +35,24 @@
     "animation",
     "room gallery"
   ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "files": [
-    "dist/**/*",
+    "build/**/*",
     "src/**/*",
     "scss/**/*",
     "examples/**/*",
-    "img/**/*"
+    "img/**/*",
+    "public/**/*",
+    "README.md",
+    "LICENSE",
+    "tsconfig.json",
+    "webpack.build.js",
+    "webpack.config.js",
+    "jest.config.js",
+    "package.json"
   ],
-  "style": "./dist/RoomGallery.css",
+  "style": "./build/RoomGallery.css",
   "sass": "./scss/room-gallery.scss",
   "repository": {
     "type": "git",
@@ -56,8 +64,9 @@
   "private": false,
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "docs": "rm -rf docs && mkdir docs && cp public/*.** docs && mkdir docs/img && cp dist/*.** docs/ && cp dist/img/*.** docs/img && rm -rf dist/demo.** && rm -rf dist/index.* && rm -rf docs/*.d.**",
-    "build": "webpack --mode production && yarn docs && tsc && rm -rf dist/demo.**",
+    "docs": "cp public/*.** docs && cp build/*.** docs/ && cp build/img/*.** docs/img && rm -rf build/demo.**  && rm -rf docs/*.d.**",
+    "clean": "rm build/main.js && rm -rf dist/jquery.** && rm -rf dist/RoomGallery.d.**",
+    "build": "rm -rf build && webpack --config webpack.build.js --mode production && yarn clean && yarn docs",
     "test": "jest"
   },
   "dependencies": {

@@ -12,24 +12,6 @@ module.exports = (env, argv) => {
         filename: "demo.js",
         import: "./src/demo.tsx"
       },
-      jquery: {
-        import: "./src/jquery.tsx",
-        filename: "jQueryRoomGallery.js",
-        library: {
-          type: "umd",
-          name: "RoomGallery",
-          export: "default"
-        }
-      },
-      RoomGallery: {
-        import: "./src/RoomGallery.tsx",
-        filename: "RoomGallery.js",
-        library: {
-          type: "umd",
-          name: "RoomGallery",
-          export: "default"
-        }
-      }
     },
     output: {
       path: path.join(__dirname, "dist"),
@@ -91,9 +73,6 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js", ".jsx", ".scss"],
-    },
-    externals: {
-      "jQuery": "jQuery"
     },
     target: "web",
     node: {
