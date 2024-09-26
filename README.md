@@ -162,8 +162,8 @@ An optional reference to the HTML `<div>` element that represents the room galle
 ## Usage Vanilla JavaScript
 
 ```javascript
-import RoomGallery from 'room-gallery/dist/RoomGallery'
-import 'room-gallery/dist/RoomGallery.css'
+import RoomGallery from 'room-gallery/build/RoomGallery'
+import 'room-gallery/build/RoomGallery.css'
 
 const options = {
 	element: document.getElementById('root'), // element in DOM to render gallery

@@ -1,6 +1,6 @@
 {
   "name": "room-gallery",
-  "version": "1.4.1-dev",
+  "version": "1.4.2-dev",
   "description": "Room Gallery: A 3D carousel - A Responsive 3D Image Slider Implemented in TypeScript as a React Component, Utilizing Vanilla JavaScript and jQuery",
   "homepage": "https://formir.io/room-gallery/",
   "keywords": [
@@ -65,7 +65,7 @@
   "scripts": {
     "start": "webpack serve --mode development --open",
     "docs": "cp public/*.** docs && cp build/*.** docs/ && cp build/img/*.** docs/img && rm -rf build/demo.**  && rm -rf docs/*.d.**",
-    "clean": "rm build/main.js && rm -rf dist/jquery.** && rm -rf dist/RoomGallery.d.**",
+    "clean": "rm build/main.js && rm -rf build/jquery.** && rm -rf build/RoomGallery.d.**",
     "build": "rm -rf build && webpack --config webpack.build.js --mode production && yarn clean && yarn docs",
     "test": "jest"
   },
