@@ -118,6 +118,7 @@ export interface parseItemsI {
 }
 
 export enum StylesVariables {
+  'width', 'height', 'mobileWidth', 'mobileHeight',
   'rotateSpeed', 'rotateTiming', 'fontFamily', 'perspective', 'mobileSizeWidth', 'mobileSizeHeight', 'mobilePerspective', 'scale', 'scaleZoom', 'offsetY',
   'itemHeight', 'itemWidth', 'zIndex', 'iconBlendMode', 'textColor', 'linkColor', 'textFontSize', 'textFontSizeMobile', 'fontLineHeight', 'textMarginTop', 'textMaxHeight', 'textMinHeight',
   'textMaxWidth', 'textPadding', 'navigationsMargin', 'buttonSize', 'paginationButtonSize', 'paginationButtonsSpace', 'paginationButtonsBorderRadius', 'paginationThumbsMaxHeight', 'paginationThumbMaxWidth', 'navButtonSize', 'buttonsPosition',

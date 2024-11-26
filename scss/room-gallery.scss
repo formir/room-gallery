@@ -1,4 +1,4 @@
-/*! Formir - Room Gallery v1.4.2-dev by @konrad-k - https://formir.io/room-gallery/ * All rights reserved - Copyright © 2024 */
+/*! Formir - Room Gallery v1.4.3-dev by @konrad-k - https://formir.io/room-gallery/ * All rights reserved - Copyright © 2024 */
 
 // SETUP
 
@@ -31,12 +31,12 @@ $room-canvas: room-canvas; // class for border/canvas style
 
 
 /// SASS CORE VARIABLES - editable in SASS
-$room-size-width: 100dvmax;
-$room-size-height: 100dvmin;
+$room-size-width: var(--room-width, 100dvmax);
+$room-size-height: var(--room-height, 100dvmin);
 
 $room-mobile-media-width: 945px; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc
-$room-mobile-size-width: 100dvw; // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
-$room-mobile-size-height: 100dvh; // recomment 100vh
+$room-mobile-size-width: var(--room-mobile-width, 100dvw); // not use % unit or calc(), you can use px, rem, cm, vh, vw etc - recommend 100vw
+$room-mobile-size-height: var(--room-mobile-height, 100dvh); // recomment 100vh
 
 // CSS VAR VARIABLES - editable in JS
 $room-rotate-speed: var(--room-rotate-speed, 2s);
@@ -444,6 +444,7 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
 /// DO NOT MODIFY ABOVE, TRY TO NOT MODIFY BELOW - in your own risk
 
 .#{$room} {
+  width: $room-size-width;
   padding-bottom: $room-size-height;
   font-family: $room-font-family;
   box-sizing: border-box;
@@ -784,14 +785,9 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
     &.#{$room-floor} {
       $room-s-w-2: calc($room-s-w / 2);
 
-      @if not (unit($room-s-w)==px) {
-        $room-s-w-2-set: strip-unit($room-s-w-2) + vw;
-        $room-s-h-set: strip-unit($room-s-h) + vh;
-      }
-
       $room-s-w-2-set: $room-s-w-2;
       $room-s-h-set: $room-s-h;
-      transform: #{rotateX(-89.99999999deg) translateZ(-$room-s-w-2-set) rotate(180deg) rotateY(-180deg) translateZ(-$room-s-h-set)};
+      transform: #{rotateX(-89.99999999deg) translateZ(calc($room-s-w-2-set * -1)) rotate(180deg) rotateY(-180deg) translateZ(calc($room-s-h-set * -1))};
     }
   }
 }

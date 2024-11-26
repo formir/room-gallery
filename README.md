@@ -361,7 +361,8 @@ The `event` property within the `settings` type allows you to define various eve
 The `styles` provides a set of predefined CSS variables used to style your RoomGallery. These variables can be customized to control the visual appearance of your gallery. Here are the available variables:
 
 #### Core Room Styles:
-
+- `roomWidth`: Width on room gallery (100dvmax default)
+- `roomHeight`: Width on room gallery (100dvmin default)
 - `rotateSpeed`: Rotation speed in degrees per second.
 - `rotateTiming`: Timing function for rotation animation.
 - `fontFamily`: Font family for text content.

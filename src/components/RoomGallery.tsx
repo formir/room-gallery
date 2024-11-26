@@ -257,7 +257,7 @@ export const RoomGallery = forwardRef(
       ((isZoomed() && settings.paginationsOnZoom !== PaginationsOnZoom.hide) || !isZoomed()) && 
         <div className={`room-paginations ${settings.paginations === Paginations.thumb ? 'room-paginations-thumbs' : ''}`}>
         { currentState.items.map((item, index) => (
-          item && <button
+          item && <button type="button"
             className={
               `${index === currentState.activeItem.index ? 'active' : ''}
               ${settings.paginationsNav === PaginationsNav.text && settings.paginations !== Paginations.thumb ? ' room-icon' : ''}`
@@ -276,10 +276,10 @@ export const RoomGallery = forwardRef(
       return settings.zoomMode === ZoomMode.manual && 
       <>
         {
-          isZoomed() ? <button className={`room-exit-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
+          isZoomed() ? <button type="button" className={`room-exit-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
             { settings?.icons?.zoomOut ?? <ZoomOutIcon/> }
           </button> :
-          <button className={`room-zoom-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
+          <button type="button" className={`room-zoom-btn ${settings.zoomNav === ZoomNav.icon ? 'room-icon' : ''}`} onClick={() => toggleZoom()}>
             { settings?.icons?.zoomIn ?? <ZoomInIcon/> }
           </button>
         }
@@ -288,7 +288,7 @@ export const RoomGallery = forwardRef(
 
     function renderDarkNav() {
       return settings.darkMode === DarkMode.manual && 
-      <button className={`room-dark-btn ${settings.darkNav === DarkNav.icon ? 'room-icon' : ''}`} onClick={() => toggleDarkMode()}>
+      <button type="button" className={`room-dark-btn ${settings.darkNav === DarkNav.icon ? 'room-icon' : ''}`} onClick={() => toggleDarkMode()}>
         { isDarkMode() ? settings?.icons?.lightOn ?? <LightOffIcon/> : settings?.icons?.lightOff ?? <LightOffIcon/> }
       </button>
     }
@@ -302,10 +302,10 @@ export const RoomGallery = forwardRef(
           settings.arrowNav && <>
             {
               ['number', 'blank'].includes(settings.arrowNav) ?
-              <button className="room-prev" onClick={() => gotoPrevItem()}>
+              <button type="button" className="room-prev" onClick={() => gotoPrevItem()}>
                 { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index}</span> }
               </button> :
-              <button className="room-prev room-icon" onClick={() => gotoPrevItem()}>
+              <button type="button" className="room-prev room-icon" onClick={() => gotoPrevItem()}>
                 { settings?.icons?.prev ?? <PrevIcon/> }
               </button>
             }
@@ -317,10 +317,10 @@ export const RoomGallery = forwardRef(
           settings.arrowNav && <>
             {
               ['number', 'blank'].includes(settings.arrowNav) ?
-              <button className="room-next" onClick={() => gotoNextItem()}>
+              <button type="button" className="room-next" onClick={() => gotoNextItem()}>
                 { settings.arrowNav === ArrowNav.number && <span>{currentState.activeItem.index + 2.0}</span> }
               </button> :
-              <button className="room-next room-icon" onClick={() => gotoNextItem()}>
+              <button type="button" className="room-next room-icon" onClick={() => gotoNextItem()}>
                 { settings?.icons?.next ?? <NextIcon/> }
               </button>
             }
@@ -335,7 +335,7 @@ export const RoomGallery = forwardRef(
 
     useEffect(() => {
       build();
-    }, [])
+    }, [dataItems, fetchMethod, children, dataSettings, styles])
 
     useEffect(() => {
       const handleKeyDown = (event:KeyboardEvent) => {

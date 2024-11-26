@@ -20,7 +20,7 @@ const insertItem = (
   }
 
   if (item) wall.items.push(item)
-  preRooms[roomIndex].walls.push(wall)
+  if (preRooms[roomIndex] && preRooms[roomIndex].walls) preRooms[roomIndex].walls.push(wall)
 }
 
 export const findItemByPosition = (position: Position, items: Array<ItemType>) => {
