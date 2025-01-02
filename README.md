@@ -476,6 +476,7 @@ These CSS variables allow you to control the styling of various components and e
 - `$room-item`: item to display on the wall
 - `$room-item-active`: active item
 - `$room-item-image`: image container
+- `$room-item-video`: video container
 - `$room-item-desc`: image description
 - `$room-zoom`: zoom control input
 - `$room-paginations`: pagination wrapper

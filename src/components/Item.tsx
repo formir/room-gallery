@@ -86,6 +86,32 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
     return `room-item${atPosition() ? ' item-active' : ''}`
   }
 
+  function displayDescription() {
+    return <>
+      {
+        (title || description) &&
+        <div className="item-desc">
+          {
+            title &&
+            <p>
+              {title}
+            </p>
+          }
+          {
+            description &&
+            <span>
+              {description}
+            </span>
+          }
+        </div>
+      }
+      {
+        (descriptionHtml) &&
+        <div className="item-desc" dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(descriptionHtml, sanitizeConfig) : descriptionHtml }}/>
+      }
+    </>
+  }
+
   if (element) {
     return <div className={itemClass()}>{element}</div>;
   } else if (HtmlElement) {
@@ -94,17 +120,26 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
     return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(html, sanitizeConfig) : html }}></div>
   } else if (video) {
     return <div className={itemClass()}>
-      <video width={width ?? "640"} height={height ?? "360"} controls>
-        <source src={video}/>
-      </video>
+      <div className="item-video">
+        <video width={width ?? "640"} height={height ?? "360"} controls>
+          <source src={video}/>
+        </video>
+      </div>
+      {displayDescription()}
     </div>
   } else if (vimeo) {
     return <div className={itemClass()}>
-      <iframe title="vimeo-player" src={vimeo} width={width ?? "640"} height={height ?? "360"} frameBorder="0" allowFullScreen></iframe>
+      <div className="item-video">
+        <iframe title="vimeo-player" src={vimeo} width={width ?? "640"} height={height ?? "360"} frameBorder="0" allowFullScreen></iframe>
+      </div>
+      {displayDescription()}
     </div>
   } else if (youtube) {
     return <div className={itemClass()}>
-      <iframe width={width ?? "560"} height={height ?? "315"} src={youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      <div className="item-video">
+        <iframe width={width ?? "560"} height={height ?? "315"} src={youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      </div>
+      {displayDescription()}
     </div>
   } else {
     return <div className={itemClass()}>
@@ -124,27 +159,7 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
         <Image ref={refZoomImage} className="item-zoom-image" onLoad={zoomOnLoad} style={{ ...dimentions(), opacity: zoomLoaded && displayZoom() ? 1 : 0 }} src={image.zoom} />
       }
     </div>
-    {
-      (title || description) &&
-      <div className="item-desc">
-        {
-          title &&
-          <p>
-            {title}
-          </p>
-        }
-        {
-          description &&
-          <span>
-            {description}
-          </span>
-        }
-      </div>
-    }
-    {
-      (descriptionHtml) &&
-      <div className="item-desc" dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(descriptionHtml, sanitizeConfig) : descriptionHtml }}/>
-    }
+    {displayDescription()}
   </div>
   }
 }

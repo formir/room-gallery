@@ -16,6 +16,7 @@ $room-floor: room-floor;
 $room-item: room-item; // item to display on the wall
 $room-item-active: item-active;
 $room-item-image: item-image; // image container
+$room-item-video: item-video; // video container
 $room-item-desc: item-desc; // image drescription
 $room-zoom: room-zoom; // zoom control input
 $room-paginations: room-paginations; // pagination wrapper
@@ -701,6 +702,24 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
       max-height: 100%;
       height: auto;
       width: auto;
+      object-fit: contain;
+    }
+  }
+
+  .#{$room-item-video} {
+    object-fit: contain;
+    flex: 1 0 auto;
+    min-width: 0;
+    min-height: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    > iframe, > video {
+      max-width: 100%;
+      height: auto;
       object-fit: contain;
     }
   }
