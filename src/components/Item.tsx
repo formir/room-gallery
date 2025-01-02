@@ -94,17 +94,17 @@ export const Item = ({ image, title, description, descriptionHtml, html, video, 
     return <div className={itemClass()} dangerouslySetInnerHTML={{ __html: settings.sanitizeHtml ? DOMPurify.sanitize(html, sanitizeConfig) : html }}></div>
   } else if (video) {
     return <div className={itemClass()}>
-      <video width={"640" || width} height={"360" || height} controls>
+      <video width={width ?? "640"} height={height ?? "360"} controls>
         <source src={video}/>
       </video>
     </div>
   } else if (vimeo) {
     return <div className={itemClass()}>
-      <iframe title="vimeo-player" src={vimeo} width={"640" || width} height={"360" || height} frameBorder="0" allowFullScreen></iframe>
+      <iframe title="vimeo-player" src={vimeo} width={width ?? "640"} height={height ?? "360"} frameBorder="0" allowFullScreen></iframe>
     </div>
   } else if (youtube) {
     return <div className={itemClass()}>
-      <iframe width={"560" || width} height={"315" || height} src={youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+      <iframe width={width ?? "560"} height={height ?? "315"} src={youtube} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </div>
   } else {
     return <div className={itemClass()}>

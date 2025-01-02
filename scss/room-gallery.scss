@@ -1,4 +1,4 @@
-/*! Formir - Room Gallery v1.4.3-dev by @konrad-k - https://formir.io/room-gallery/ * All rights reserved - Copyright © 2024 */
+/*! Formir - Room Gallery v1.4.4-dev by @konrad-k - https://formir.io/room-gallery/ * All rights reserved - Copyright © 2024 */
 
 // SETUP
 
@@ -635,6 +635,12 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
     align-items: flex-end;
     box-sizing: border-box;
 
+    perspective: $room-perspective;
+
+    @media (max-width: $room-mobile-media-width) {
+      perspective: $room-mobile-perspective;
+    }
+
     .#{$room-zoom-button} {
       z-index: calc($room-zindex + 1000);
       margin: auto;
@@ -652,7 +658,7 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
 }
 
 .#{$room-arena} {
-  perspective: $room-perspective;
+  transform-style: preserve-3d;
   transform: translateY($room-offset-y) scale($room-scale);
   transform-origin: center center;
   position: absolute;
@@ -664,10 +670,6 @@ $room-dark-canvas-shadow: var(--room-dark-canvas-shadow, 0 0 10px rgba(255, 255,
   top: 0;
   will-change: transform;
   transition: transform $room-rotate-speed $room-rotate-timing;
-
-  @media (max-width: $room-mobile-media-width) {
-    perspective: $room-mobile-perspective;
-  }
 }
 
 .#{$room} .#{$room-wall} {

@@ -407,6 +407,36 @@ export const RoomGallery = forwardRef(
       };
     }, [currentState]);
 
+    const rotation = () => {
+    if (position)
+      if (currentState.activeItem.position && currentState.prevItem.position && currentState.activeItem.position.y === 3 && currentState.prevItem.position.y === 0)
+        return -90
+      else
+        return (position.y * 90)
+    else
+      return 0
+  }
+
+  const delay = () => {
+    let distance = 2
+    let min = 2
+    let ratio = 1
+    if (typeof settings?.animationSpeed === 'number')
+      min = settings.animationSpeed
+    else if (typeof settings?.animationSpeed?.min === 'number')
+      min = settings.animationSpeed.min
+    if (typeof settings?.animationSpeed === 'object' && typeof settings?.animationSpeed?.ratio === 'number')
+      ratio = settings.animationSpeed.ratio
+
+    if (
+      currentState.activeItem && currentState.activeItem.position && typeof currentState.activeItem.position.x === 'number'
+      && currentState.prevItem && currentState.prevItem.position && typeof currentState.prevItem.position.x === 'number'
+    ) {
+      distance = currentState.prevItem.position.x - currentState.activeItem.position.x
+    }
+    return `transform ${ Math.abs(distance) > min ? ( Math.abs(distance) * ratio ) : min }s ease-in-out`;
+  }
+
     return (
       <GalleryContext.Provider value={value}>
         <Suspense fallback={<Loading />}>
@@ -415,7 +445,10 @@ export const RoomGallery = forwardRef(
             <div className={`room-gallery${isDarkMode() ? ' room-dark' : ''}${isZoomed() ? ' room-zoom' : ''}`} {...swipeHandlers}>
               <div className="room-body">
                 {
-                  <div className="room-arena">
+                    <div className="room-arena" style={{
+                      transform: 'rotateY(' + rotation() + 'deg) translateX(' + ((position?.x ?? 0) * -100) + '%)',
+                      transition: delay()
+                    }}>
                     {renderRooms()}
                   </div>
                 }

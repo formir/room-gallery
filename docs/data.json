@@ -53,7 +53,9 @@
       "description": "Each image in the slider is displayed in high resolution, ensuring a visually appealing experience for the viewer."
     },
     {
-      "video": "https://www.w3schools.com/html/mov_bbb.mp4"
+      "video": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "height": "280px",
+      "width": "280px"
     },
     {
       "image": {

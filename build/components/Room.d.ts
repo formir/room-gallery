@@ -22,5 +22,5 @@ export type RoomType = {
     };
     index: number;
 };
-export declare const Room: ({ room, rooms, position, index, activeItem, prevItem, settings }: RoomI) => React.JSX.Element;
+export declare const Room: ({ room, rooms, position, index }: RoomI) => React.JSX.Element;
 //# sourceMappingURL=Room.d.ts.map

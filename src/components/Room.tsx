@@ -19,43 +19,15 @@ export type RoomType = {
   index: number;
 }
 
-export const Room = ({ room, rooms, position, index, activeItem, prevItem, settings }: RoomI) => {
+export const Room = ({ room, rooms, position, index }: RoomI) => {
 
-  const rotation = () => {
-    if (position)
-      if (activeItem.position && prevItem.position && activeItem.position.y === 3 && prevItem.position.y === 0)
-        return -90
-      else
-        return (position.y * 90)
-    else
-      return 0
-  }
 
-  const delay = () => {
-    let distance = 2
-    let min = 2
-    let ratio = 1
-    if (typeof settings?.animationSpeed === 'number')
-      min = settings.animationSpeed
-    else if (typeof settings?.animationSpeed?.min === 'number')
-      min = settings.animationSpeed.min
-    if (typeof settings?.animationSpeed === 'object' && typeof settings?.animationSpeed?.ratio === 'number')
-      ratio = settings.animationSpeed.ratio
 
-    if (
-      activeItem && activeItem.position && typeof activeItem.position.x === 'number'
-      && prevItem && prevItem.position && typeof prevItem.position.x === 'number'
-    ) {
-      distance = prevItem.position.x - activeItem.position.x
-    }
-    return `transform ${ Math.abs(distance) > min ? ( Math.abs(distance) * ratio ) : min }s ease-in-out`;
-  }
   return room.walls && position ? <div
     className={`room-walls${index === (rooms.length - 1) ? ' last' : ''} ${index === 0 ? ' first' : ''}`}
     style={
       {
-        transform: 'rotateY(' + rotation() + 'deg) translateX(' + ((index - position.x) * 100) + '%)',
-        transition: delay()
+        transform: 'translateX(' + (index * 100) + '%)'
       }
     }>
     {room.walls.map((wall, wallIndex) => {
