@@ -54,8 +54,7 @@
     },
     {
       "video": "https://www.w3schools.com/html/mov_bbb.mp4",
-      "height": "280px",
-      "width": "280px"
+      "description": "The video feature allows for the inclusion of videos in the slider, making it a versatile component for showcasing multimedia content."
     },
     {
       "image": {
